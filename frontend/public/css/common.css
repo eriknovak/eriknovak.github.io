@@ -28,12 +28,13 @@ h6 {
 }
 
 a {
-    color: #243f0f;
+    color: #597841;
     text-decoration: none;
+    font-weight: 600;
 }
 
 a:hover {
-    color: #162709;
+    color: #324424;
     text-decoration: none;
 }
 
@@ -81,6 +82,11 @@ p.small-padding {
 .footer .pages {
     text-align: right;
 }
+
+.footer a {
+    font-weight: 400;
+}
+
 
 @media screen and (max-width: 767px) {
     main {
