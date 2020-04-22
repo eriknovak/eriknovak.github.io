@@ -1,2 +1,2 @@
-# homepage
-The research profile homepage 
+# Homepage
+The research profile homepage

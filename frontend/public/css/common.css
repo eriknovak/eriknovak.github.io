@@ -1,3 +1,21 @@
+/* The emerging W3C standard
+that is currently Firefox-only */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #050624 #597841;
+}
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+*::-webkit-scrollbar-track {
+    background: #050624;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #597841;
+}
+
 html {
     position: relative;
     min-height: 100%;
@@ -19,7 +37,7 @@ h6 {
 }
 
 .title {
-    margin-top: 50px;
+    margin-top: 70px;
     margin-bottom: 70px;
 }
 
@@ -38,24 +56,35 @@ a:hover {
     text-decoration: none;
 }
 
+.navbar {
+    background-color: #597841;
+}
+
 .navbar .nav-link {
-    color: #597841;
+    color: #050624;
     text-decoration: none;
     font-weight: 500;
+    padding: 10px 20px;
 }
 
 .navbar .nav-link:hover {
-    color: #324424;
+    color: black;
     text-decoration: none;
 }
 
+.navbar .nav-item.active {
+    background-color: #486237;
+}
+
 .navbar .nav-item.active .nav-link {
-    color: #050624;
+    color: white;
 }
 
 .navbar-toggler {
-    color: #050624;
     border-color: #050624;
+    border-radius: 0px;
+    margin-left: auto;
+    color: #050624;
 }
 
 .navbar-toggler .navbar-toggler-icon {
@@ -67,8 +96,12 @@ a:hover {
     white-space: nowrap;
 }
 
+.mt-6 {
+    margin-top: 4rem;
+}
+
 b {
-    font-weight: 500;
+    font-weight: 600;
 }
 
 p.small-padding {
@@ -106,6 +139,11 @@ p.small-padding {
 
 .footer .pages {
     text-align: right;
+}
+
+.footer .contact > ul li,
+.footer .pages > ul li {
+    margin-bottom: 5px;
 }
 
 .footer a {
