@@ -150,6 +150,9 @@ p.small-padding {
     font-weight: 400;
 }
 
+.fa-ul {
+    margin-left: 1.8em;
+}
 
 @media screen and (max-width: 767px) {
     main {
