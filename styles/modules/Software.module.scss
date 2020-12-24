@@ -1,0 +1,36 @@
+@import "../colors.scss";
+
+.software {
+  display: inline-block;
+  @apply mt-7;
+  @apply mb-0;
+  .title {
+    @apply font-semibold;
+    @apply mb-0;
+  }
+  .image {
+    @apply h-10;
+  }
+
+  .links {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply mb-0;
+    }
+    .table {
+      @apply table-auto;
+      .linkLabel {
+        @apply w-40;
+      }
+      .linkUrl {
+        a {
+          color: $primaryHighlight;
+        }
+      }
+    }
+  }
+}

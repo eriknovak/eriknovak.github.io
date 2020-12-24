@@ -1,0 +1,24 @@
+dl.journals,
+dl.conferences {
+  position: relative;
+  list-style-type: none;
+
+  & > dd {
+    padding: 10px 0 10px 40px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    &:before {
+      content: "Pub. " counter(item);
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+dl.journals > dd:before {
+  content: "Jrnl. " counter(item);
+}
+
+dl.conferences > dd:before {
+  content: "Conf. " counter(item);
+}

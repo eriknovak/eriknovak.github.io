@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "Lectures.module.css";
 
 export default function Lectures() {
   return (
@@ -7,10 +6,7 @@ export default function Lectures() {
       <Head>
         <title>Lectures | Erik Novak</title>
       </Head>
-
-      <main>
-
-      </main>
+      <h1>Lectures</h1>
     </div>
   );
 }

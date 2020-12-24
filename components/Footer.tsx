@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuilding, faEnvelope } from "@fortawesome/free-regular-svg-icons";
 
-import styles from "../styles/Footer.module.css";
+import styles from "../styles/modules/Footer.module.scss";
 
 export default function Footer() {
   return (
@@ -13,8 +13,14 @@ export default function Footer() {
           <h3>Contact</h3>
           <ul className="fa-ul">
             <li className={styles.address}>
-              <FontAwesomeIcon icon={faBuilding} listItem fixedWidth style={{marginTop:"4px"}} />
-              Artificial Intelligence Laboratory <br />
+              <FontAwesomeIcon
+                icon={faBuilding}
+                listItem
+                fixedWidth
+                style={{ marginTop: "4px" }}
+              />
+              Department of Artificial Intelligence
+              <br />
               Jožef Stefan Institute <br />
               Jamova cesta 39 <br />
               1000 Ljubljana <br />
@@ -22,7 +28,12 @@ export default function Footer() {
             </li>
             <li className={styles.email}>
               <a href="mailto:erik.novak@ijs.si">
-              <FontAwesomeIcon icon={faEnvelope} listItem fixedWidth style={{marginTop:"4px"}} />
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  listItem
+                  fixedWidth
+                  style={{ marginTop: "4px" }}
+                />
                 erik.novak@ijs.si
               </a>
             </li>
@@ -42,6 +53,9 @@ export default function Footer() {
             </li>
             <li>
               <Link href="/software">Software</Link>
+            </li>
+            <li>
+              <Link href="/lectures">Lectures</Link>
             </li>
           </ul>
         </div>

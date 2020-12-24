@@ -1,0 +1,25 @@
+@import "../colors.scss";
+
+.navbar {
+  @apply grid;
+  @apply sm:grid-cols-6 2xl:grid-cols-12;
+  @apply gap-4;
+  @apply p-5;
+
+  .navigationPannel {
+    @apply sm:col-span-4;
+    @apply sm:col-start-2 2xl:col-start-5;
+    @apply block;
+    @apply text-xl;
+    a {
+      @apply block;
+      @apply mt-4;
+      @apply mr-4;
+      @apply lg:inline-block;
+
+      &.active {
+        color: $secondaryHighlight;
+      }
+    }
+  }
+}

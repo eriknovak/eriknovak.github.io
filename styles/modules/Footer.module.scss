@@ -1,0 +1,55 @@
+// import colors
+@import "../colors.scss";
+
+.footer {
+  @apply grid;
+  @apply grid-cols-1 sm:grid-cols-6 2xl:grid-cols-12;
+  @apply gap-4;
+  @apply p-5;
+  color: $lightColor;
+  background-color: $darkColor;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $lightColor;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+  }
+  a {
+    color: $secondaryHighlight;
+  }
+
+  .grid {
+    @apply sm:col-span-4;
+    @apply sm:col-start-2 2xl:col-start-5;
+
+    @apply flex;
+    @apply flex-col sm:flex-row;
+    @apply sm:flex-wrap;
+    .contacts {
+      @apply flex-grow;
+      text-align: left;
+      ul {
+        margin-left: 1.8em;
+      }
+    }
+    .pages {
+      @apply order-first sm:order-last;
+      @apply flex-grow;
+      @apply text-left sm:text-right;
+      color: $secondaryHighlight;
+      ul {
+        list-style: none;
+        padding-left: 0px;
+      }
+    }
+  }
+}
+
+.contact > ul li,
+.pages > ul li {
+  margin-bottom: 5px;
+}
