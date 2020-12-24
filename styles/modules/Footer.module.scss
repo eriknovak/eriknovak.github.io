@@ -3,7 +3,7 @@
 
 .footer {
   @apply grid;
-  @apply grid-cols-1 sm:grid-cols-6 2xl:grid-cols-12;
+  @apply grid-cols-1 sm:grid-cols-6 xl:grid-cols-10 2xl:grid-cols-12;
   @apply gap-4;
   @apply p-5;
   color: $lightColor;
@@ -23,8 +23,8 @@
   }
 
   .grid {
-    @apply sm:col-span-4;
-    @apply sm:col-start-2 2xl:col-start-5;
+    @apply sm:col-span-4 xl:col-span-6;
+    @apply sm:col-start-2 xl:col-start-3 2xl:col-start-4;
 
     @apply flex;
     @apply flex-col sm:flex-row;

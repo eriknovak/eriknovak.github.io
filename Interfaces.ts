@@ -21,7 +21,7 @@ export interface ProjectProps {
 
 export interface SoftwareProps {
   title: string;
-  labels: string[];
+  labels?: string[];
   description?: string[];
   links?: {
     label: string;

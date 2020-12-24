@@ -9,18 +9,17 @@ export default function Software(props: SoftwareProps) {
 
   return (
     <div className={styles.software}>
-      <h2 className={styles.title}>
-        {title}
-        {labels
-          ? labels.map((label, id) => (
-              <img
-                key={id}
-                className={styles.image}
-                src={label2image[label]}
-              ></img>
-            ))
-          : null}
-      </h2>
+      <h2 className={styles.title}>{title}</h2>
+
+      {labels ? (
+        <div className={styles.labels}>
+          {labels.map((label, id) => (
+            <div key={id} className={styles.label}>
+              {label}
+            </div>
+          ))}
+        </div>
+      ) : null}
 
       {description
         ? description.map((desc, id) => <p key={id}>{desc}</p>)

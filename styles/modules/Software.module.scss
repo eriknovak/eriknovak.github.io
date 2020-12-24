@@ -1,17 +1,26 @@
 @import "../colors.scss";
 
 .software {
-  display: inline-block;
+  @apply inline-block;
   @apply mt-7;
   @apply mb-0;
   .title {
     @apply font-semibold;
     @apply mb-0;
   }
-  .image {
-    @apply h-10;
+  .labels {
+    @apply flex;
+    @apply flex-row;
+    @apply flex-wrap;
+    .label {
+      background: $primaryColor;
+      padding: 2px 8px;
+      @apply mr-1;
+    }
   }
-
+  p:first-of-type {
+    @apply mt-1;
+  }
   .links {
     h1,
     h2,
@@ -24,7 +33,7 @@
     .table {
       @apply table-auto;
       .linkLabel {
-        @apply w-40;
+        @apply w-24;
       }
       .linkUrl {
         a {
