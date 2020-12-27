@@ -21,4 +21,4 @@ jobs:
             cd ../../var/www/homepage
             git pull
             npm install
-            npm run build
+            BASE_PATH=/eriknovak npm run build
