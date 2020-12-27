@@ -6,7 +6,7 @@ export default function Lectures() {
       <Head>
         <title>Lectures | Erik Novak</title>
       </Head>
-      <h1>Lectures</h1>
+      <h1 className="text-4xl font-semibold mt-10">Lectures</h1>
     </div>
   );
 }

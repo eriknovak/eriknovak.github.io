@@ -1,16 +1,30 @@
 import { PublicationProps } from "../Interfaces";
-import styles from "../styles/modules/Publication.module.scss";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
 
 export default function Publication(props: PublicationProps) {
   // get properties
-  const { authors, title, reference, location, year, url } = props;
+  const {
+    authors,
+    title,
+    reference,
+    location,
+    year,
+    url,
+    presentation,
+  } = props;
 
   return (
-    <span className={styles.publication}>
+    <span className="inline-block">
       {authors}
       {". "}
       {url ? (
-        <a className={styles.link} href={url} target="_blank">
+        <a
+          className="transition text-lightblue hover:text-lightblue-dark"
+          href={url}
+          target="_blank"
+        >
           {title}
         </a>
       ) : (
@@ -18,7 +32,21 @@ export default function Publication(props: PublicationProps) {
       )}
       {". "}
       {reference}, {location ? ` ${location}, ` : " "}
-      {year}.
+      {year}.{" "}
+      {presentation ? (
+        <a
+          className="transition text-yellow hover:text-yellow-dark"
+          href={presentation}
+          target="_blank"
+        >
+          <FontAwesomeIcon
+            icon={faPlayCircle}
+            fixedWidth
+            style={{ marginTop: "4px" }}
+          />{" "}
+          Presentation
+        </a>
+      ) : undefined}
     </span>
   );
 }

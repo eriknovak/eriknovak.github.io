@@ -11,7 +11,7 @@ export default function Projects() {
       <Head>
         <title>Projects | Erik Novak</title>
       </Head>
-      <h1>Projects</h1>
+      <h1 className="text-4xl font-semibold mt-10">Projects</h1>
 
       {research.map((item: ProjectProps, id: number) => (
         <div key={id}>

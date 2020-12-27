@@ -1,37 +1,44 @@
 import { ProjectProps } from "../Interfaces";
-import styles from "../styles/modules/Project.module.scss";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function Project(props: ProjectProps) {
   // get properties
   const { title, startDate, endDate, description, links } = props;
 
   return (
-    <div className={styles.project}>
-      <h2 className={styles.title}>{title}</h2>
-      <p className={styles.dates}>
+    <div className="inline-block mt-20 mb-0">
+      <h2 className="text-3xl font-semibold mb-0">{title}</h2>
+      <p className="text-sm mt-0 mb-3">
         {startDate} - {endDate}
       </p>
       {description
-        ? description.map((desc, id) => <p key={id}>{desc}</p>)
+        ? description.map((desc, id) => (
+            <p key={id} className="mb-3">
+              {desc}
+            </p>
+          ))
         : null}
 
       {links ? (
-        <div className={styles.links}>
-          <h4>Links</h4>
-          <table className={styles.table}>
-            <tbody>
-              {links.map((link, id) => (
-                <tr key={id}>
-                  <td className={styles.linkLabel}>{link.label}</td>
-                  <td className={styles.linkUrl}>
-                    <a href={link.url} target="_blank">
-                      {link.url}
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div>
+          <h4 className="text-lg font-semibold mb-0">Links</h4>
+          {links.map((link, id) => (
+            <div
+              className="transition text-lightblue hover:text-lightblue-dark"
+              key={id}
+            >
+              <a href={link.url} target="_blank">
+                <FontAwesomeIcon
+                  icon={faExternalLinkAlt}
+                  fixedWidth
+                  style={{ marginTop: "4px" }}
+                />{" "}
+                {link.label}
+              </a>
+            </div>
+          ))}
         </div>
       ) : null}
     </div>

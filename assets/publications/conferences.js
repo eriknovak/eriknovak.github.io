@@ -15,7 +15,8 @@ module.exports = [
     reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
     location: "Ljubljana",
     year: 2019,
-    presentation: null,
+    presentation:
+      "http://videolectures.net/sikdd2019_massri_legal_domain_documents/",
   },
   {
     authors: "S. Kralj, Ž. Urbančič, E. Novak, K. Kenda",
@@ -24,7 +25,8 @@ module.exports = [
     reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
     location: "Ljubljana",
     year: 2019,
-    presentation: null,
+    presentation:
+      "http://videolectures.net/sikdd2019_urbancic_environmental_legal_documents/",
   },
   {
     authors: "A. Saliha Sunar, E. Novak, J. Urbančič, D. Mladenić",
@@ -34,7 +36,8 @@ module.exports = [
     reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
     location: "Ljubljana",
     year: 2019,
-    presentation: null,
+    presentation:
+      "http://videolectures.net/sikdd2019_sunar_preferences_of_users/",
   },
   {
     authors: "E. Novak, J. Urbančič, M. Jenko",

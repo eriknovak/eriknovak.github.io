@@ -1,12 +1,15 @@
 module.exports = [
   {
     title: "Infominer",
-    labels: ["nodejs", "machine learning"],
+    labels: ["nodejs"],
     description: [
       "Infominer is an semi-automatic exploration tool. It enables the user to create topic ontologies by clustering, labelling and querying textual documents.",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/eriknovak/infominer-public" },
+      {
+        label: "GitHub (code)",
+        url: "https://github.com/eriknovak/infominer-public",
+      },
     ],
   },
   {
@@ -17,7 +20,7 @@ module.exports = [
     ],
     links: [
       {
-        label: "GitHub",
+        label: "GitHub (code)",
         url: "https://github.com/ErikNovak/python-text-embedding-microservice",
       },
     ],
@@ -31,7 +34,7 @@ module.exports = [
       "The service is based on the qtopology module, which is a distributed stream processing layer and is able to construct components for adding them to the tool.",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/ErikNovak/DTProc" },
+      { label: "GitHub (code)", url: "https://github.com/ErikNovak/DTProc" },
       { label: "QTopology", url: "https://github.com/qminer/qtopology" },
     ],
   },

@@ -16,13 +16,9 @@ export default function Softwares() {
         <title>Software | Erik Novak</title>
       </Head>
 
-      <h1>
+      <h1 className="text-4xl font-semibold mt-10">
         <a href="https://github.com/eriknovak">
-          <FontAwesomeIcon
-            icon={faGithub}
-            fixedWidth
-            style={{ marginRight: "5px" }}
-          />
+          <FontAwesomeIcon icon={faGithub} style={{ marginRight: "10px" }} />
         </a>
         Software
       </h1>

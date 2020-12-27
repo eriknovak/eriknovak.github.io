@@ -3,22 +3,21 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuilding, faEnvelope } from "@fortawesome/free-regular-svg-icons";
 
-import styles from "../styles/modules/Footer.module.scss";
-
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.grid}>
-        <div className={styles.contacts}>
-          <h3>Contact</h3>
-          <ul className="fa-ul">
-            <li className={styles.address}>
+    <footer className="footer grid grid-cols-1 sm:grid-cols-6 xl:grid-cols-10 2xl:grid-cols-12 gap-4 p-5">
+      <div className="sm:col-span-6 sm:col-start-1 md:col-span-4 md:col-start-2 xl:col-span-8 xl:col-start-2 2xl:col-start-3 flex flex-col sm:flex-row sm:flex-wrap">
+        <div className="flex-grow text-left">
+          <h3 className="text-xl font-medium mt-5 mb-2">Contact</h3>
+          <ul className="fa-ul ml-8">
+            <li className="mb-1">
               <FontAwesomeIcon
                 icon={faBuilding}
                 listItem
                 fixedWidth
                 style={{ marginTop: "4px" }}
               />
+              Erik Novak <br />
               Department of Artificial Intelligence
               <br />
               Jožef Stefan Institute <br />
@@ -26,8 +25,11 @@ export default function Footer() {
               1000 Ljubljana <br />
               Slovenia
             </li>
-            <li className={styles.email}>
-              <a href="mailto:erik.novak@ijs.si">
+            <li className="mb-1">
+              <a
+                href="mailto:erik.novak@ijs.si"
+                className="text-yellow hover:text-yellow-dark"
+              >
                 <FontAwesomeIcon
                   icon={faEnvelope}
                   listItem
@@ -39,24 +41,24 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className={styles.pages}>
-          <h3>Pages</h3>
-          <ul className={styles.links}>
-            <li>
+        <div className="flex-grow order-first text-left sm:order-last sm:text-right">
+          <h3 className="text-xl font-medium mt-5 mb-2">Pages</h3>
+          <ul className="pl-0">
+            <li className="transition text-yellow hover:text-yellow-dark mb-1">
               <Link href="/">Homepage</Link>
             </li>
-            <li>
+            <li className="transition text-yellow hover:text-yellow-dark mb-1">
               <Link href="/publications">Publications</Link>
             </li>
-            <li>
+            <li className="transition text-yellow hover:text-yellow-dark mb-1">
               <Link href="/projects">Projects</Link>
             </li>
-            <li>
+            <li className="transition text-yellow hover:text-yellow-dark mb-1">
               <Link href="/software">Software</Link>
             </li>
-            <li>
+            {/* <li className="text-yellow hover:text-yellow-dark mb-1">
               <Link href="/lectures">Lectures</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

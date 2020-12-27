@@ -12,11 +12,11 @@ export default function Publications() {
       <Head>
         <title>Publications | Erik Novak</title>
       </Head>
-      <h1>Publications</h1>
+      <h1 className="text-4xl font-semibold mt-10">Publications</h1>
 
-      <div className="section">
-        <h2>Journal Papers</h2>
-        <dl className="journals">
+      <div className="mt-16 mb-0">
+        <h2 className="text-3xl font-semibold">Journal Papers</h2>
+        <dl className="journals relative list-none">
           {journals.map((item: PublicationProps, id: number) => (
             <dd key={id} style={{ counterSet: `item ${journals.length - id}` }}>
               <Publication
@@ -33,9 +33,9 @@ export default function Publications() {
         </dl>
       </div>
 
-      <div className="section">
-        <h2>Conference Papers</h2>
-        <dl className="conferences">
+      <div className="mt-16 mb-0">
+        <h2 className="text-3xl font-semibold">Conference Papers</h2>
+        <dl className="conferences relative list-none">
           {conferences.map((item: PublicationProps, id: number) => (
             <dd
               key={id}
