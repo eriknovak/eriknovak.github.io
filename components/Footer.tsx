@@ -45,19 +45,19 @@ export default function Footer() {
           <h3 className="text-xl font-medium mt-5 mb-2">Pages</h3>
           <ul className="pl-0">
             <li className="transition text-yellow hover:text-yellow-dark mb-1">
-              <Link href="">Homepage</Link>
+              <Link href="index.html">Homepage</Link>
             </li>
             <li className="transition text-yellow hover:text-yellow-dark mb-1">
-              <Link href="publications">Publications</Link>
+              <Link href="publications.html">Publications</Link>
             </li>
             <li className="transition text-yellow hover:text-yellow-dark mb-1">
-              <Link href="projects">Projects</Link>
+              <Link href="projects.html">Projects</Link>
             </li>
             <li className="transition text-yellow hover:text-yellow-dark mb-1">
-              <Link href="software">Software</Link>
+              <Link href="software.html">Software</Link>
             </li>
             {/* <li className="text-yellow hover:text-yellow-dark mb-1">
-              <Link href="lectures">Lectures</Link>
+              <Link href="/lectures.html">Lectures</Link>
             </li> */}
           </ul>
         </div>

@@ -12,7 +12,7 @@ export default function Header() {
   return (
     <nav className="grid md:grid-cols-6 xl:grid-cols-10 2xl:grid-cols-12 gap-4 p-5">
       <div className="md:col-span-4 md:col-start-2 xl:col-span-8 xl:col-start-2 2xl:col-start-3 block text-xl">
-        <Link href="">
+        <Link href="index.html">
           <a
             className={
               homepage
@@ -23,7 +23,7 @@ export default function Header() {
             Home
           </a>
         </Link>
-        <Link href="publications">
+        <Link href="publications.html">
           <a
             className={
               publications
@@ -34,7 +34,7 @@ export default function Header() {
             Publications
           </a>
         </Link>
-        <Link href="projects">
+        <Link href="projects.html">
           <a
             className={
               projects
@@ -45,7 +45,7 @@ export default function Header() {
             Projects
           </a>
         </Link>
-        <Link href="software">
+        <Link href="software.html">
           <a
             className={
               software
@@ -56,7 +56,7 @@ export default function Header() {
             Software
           </a>
         </Link>
-        {/* <Link href="lectures">
+        {/* <Link href="lectures.html">
           <a
             className={
               lectures
