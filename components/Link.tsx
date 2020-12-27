@@ -4,13 +4,16 @@ import getConfig from "next/config";
 
 const { publicRuntimeConfig } = getConfig();
 
-const Link: React.FunctionComponent<LinkProps> = ({ children, ...props }) => (
-  <NextLink
-    {...props}
-    as={`${publicRuntimeConfig.basePath || ""}${format(props.href)}`}
-  >
-    {children}
-  </NextLink>
-);
+const Link: React.FunctionComponent<LinkProps> = ({ children, ...props }) => {
+  console.log(format(props.href));
+  return (
+    <NextLink
+      {...props}
+      as={`${publicRuntimeConfig.basePath || ""}${format(props.href)}`}
+    >
+      {children}
+    </NextLink>
+  );
+};
 
 export default Link;
