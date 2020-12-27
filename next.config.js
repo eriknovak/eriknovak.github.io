@@ -4,5 +4,8 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
-  assetPrefix: "./",
+  assetPrefix: process.env.BASE_PATH || "",
+  publicRuntimeConfig: {
+    basePath: process.env.BASE_PATH || "",
+  },
 };
