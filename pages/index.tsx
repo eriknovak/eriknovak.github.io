@@ -59,7 +59,7 @@ export default function Home() {
           <div className="flex justify-center xl:hidden my-10">
             <img
               className="rounded-full border-8 border-white"
-              src="/imgs/profile.png"
+              src="./imgs/profile.png"
             ></img>
           </div>
 
@@ -105,7 +105,7 @@ export default function Home() {
         <div className="flex-none hidden xl:block">
           <img
             className="rounded-full border-8 border-white"
-            src="/imgs/profile.png"
+            src="./imgs/profile.png"
           ></img>
         </div>
       </div>
