@@ -1,0 +1,70 @@
+module.exports = [
+  {
+    authors: "A. Saliha Sunar, E. Novak, J. Urbančič, D. Mladenić",
+    title: "Users’ Learning Pathways on Cross-site Open Educational Resources",
+    url: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Besher_Final.pdf",
+    reference: "12th International Conference on Computer Supported Education",
+    location: null,
+    year: 2020,
+    presentation: null,
+  },
+  {
+    authors: "M. B. Massri, S. Brezec, E. Novak, K. Kenda",
+    title: "Semantic Enrichment and Analysis of Legal Domain Documents",
+    url: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Besher_Final.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2019,
+    presentation:
+      "http://videolectures.net/sikdd2019_massri_legal_domain_documents/",
+  },
+  {
+    authors: "S. Kralj, Ž. Urbančič, E. Novak, K. Kenda",
+    title: "Document Embedding Models on Environmental Legal Documents",
+    url: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Kralj_Urbancic_Final.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2019,
+    presentation:
+      "http://videolectures.net/sikdd2019_urbancic_environmental_legal_documents/",
+  },
+  {
+    authors: "A. Saliha Sunar, E. Novak, J. Urbančič, D. Mladenić",
+    title:
+      "Preferences of Users on Cross-Site OER Recommendations: Stay or Leave?",
+    url: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Sunar_Final.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2019,
+    presentation:
+      "http://videolectures.net/sikdd2019_sunar_preferences_of_users/",
+  },
+  {
+    authors: "E. Novak, J. Urbančič, M. Jenko",
+    title: "Preparing Multi-Modal Data for Natural Language Processing",
+    url: "http://ailab.ijs.si/dunja/SiKDD2018/Papers/NovakErik.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2018,
+    presentation:
+      "http://videolectures.net/sikdd2018_novak_natural_language_processing/",
+  },
+  {
+    authors: "E. Novak, I. Novalija",
+    title: "Connecting Professional Skill Demand with Supply",
+    url: "http://ailab.ijs.si/dunja/SiKDD2017/Papers/Novak_Skill.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2017,
+    presentation: "http://videolectures.net/sikdd2017_novak_skill_demand/",
+  },
+  {
+    authors: "E. Novak, I. Novalija",
+    title: "Visual and Statistical Analysis of VideoLectures.NET",
+    url: "http://ailab.ijs.si/dunja/SiKDD2016/Papers/Novak_VLN.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2016,
+    presentation: "http://videolectures.net/sikdd2016_novak_videoLectures/",
+  },
+];

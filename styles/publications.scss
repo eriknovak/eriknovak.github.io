@@ -1,0 +1,20 @@
+dl.journals,
+dl.conferences {
+  & > dd {
+    padding: 10px 0 10px 85px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    &:before {
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+dl.journals > dd:before {
+  content: "Jrnl. " counter(item);
+}
+
+dl.conferences > dd:before {
+  content: "Conf. " counter(item);
+}
