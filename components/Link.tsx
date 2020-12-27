@@ -5,7 +5,6 @@ import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 
 const Link: React.FunctionComponent<LinkProps> = ({ children, ...props }) => {
-  console.log(format(props.href));
   return (
     <NextLink
       {...props}
