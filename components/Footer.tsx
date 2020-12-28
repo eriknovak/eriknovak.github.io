@@ -17,8 +17,7 @@ export default function Footer() {
                 fixedWidth
                 style={{ marginTop: "4px" }}
               />
-              Erik Novak <br />
-              Department of Artificial Intelligence
+              Department for Artificial Intelligence
               <br />
               Jožef Stefan Institute <br />
               Jamova cesta 39 <br />

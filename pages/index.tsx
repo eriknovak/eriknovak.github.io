@@ -34,17 +34,19 @@ export default function Home() {
           <h1 className="text-4xl font-semibold mt-10 mb-2">
             Hi, I'm Erik Novak
           </h1>
+
           <p className="mb-3">
             I am an Asistant Researcher at the{" "}
             <a
               className="transition text-lightblue hover:text-lightblue-dark"
               href="https://ailab.ijs.si/"
             >
-              Department of Artificial Intelligence, Jozef Stefan Institute
+              Department for Artificial Intelligence, Jozef Stefan Institute
             </a>
             . My research interests are data and text stream analysis,
             (semi-)automatic data exploration, and data visualization.
           </p>
+
           <p className="mb-3">
             I am also teaching as an Asistant at the{" "}
             <a
@@ -85,6 +87,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
             <div className="flex-1">
               <h2 className="text-2xl font-semibold mt-10 mb-2">
                 Programming Skills
@@ -102,6 +105,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+
         <div className="flex-none hidden xl:block">
           <img
             className="rounded-full border-8 border-white"
