@@ -60,7 +60,7 @@ module.exports = [
     ],
   },
   {
-    title: "EDSA (European Data Science Academy)",
+    title: "European Data Science Academy (EDSA)",
     startDate: "Sep 2015",
     endDate: "Jan 2018",
     description: [
