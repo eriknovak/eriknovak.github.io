@@ -1,4 +1,12 @@
-module.exports = [
+const papers: {
+  authors: string;
+  title: string;
+  url: string;
+  reference: string;
+  location: string | null;
+  year: number;
+  presentation: string | null;
+}[] = [
   {
     authors: "A. Saliha Sunar, E. Novak, J. Urbančič, D. Mladenić",
     title: "Users’ Learning Pathways on Cross-site Open Educational Resources",
@@ -68,3 +76,5 @@ module.exports = [
     presentation: "http://videolectures.net/sikdd2016_novak_videoLectures/",
   },
 ];
+
+export default papers;

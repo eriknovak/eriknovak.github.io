@@ -1,5 +1,19 @@
 module.exports = [
   {
+    title: "Humane AI Net",
+    startDate: "Jan 2021",
+    endDate: "Present",
+    description: [
+      "Our vision is built around ethics values and trust (Responsible AI). These are intimately interwoven with the impact of AI on society, including problems associated with complex dynamic interactions between networked AI systems, the environment, and humans.",
+    ],
+    links: [
+      {
+        label: "Project Homepage",
+        url: "https://www.humane-ai.eu/",
+      },
+    ],
+  },
+  {
     title: "EnviroLENS",
     startDate: "Dec 2018",
     endDate: "Present",

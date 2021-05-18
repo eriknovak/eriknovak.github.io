@@ -1,6 +1,14 @@
 import Head from "next/head";
+import Link from "../components/Link";
+import Publication from "../components/Publication";
 
 import academic from "../assets/profile/academic";
+
+import research from "../assets/projects/research";
+
+import conferences from "../assets/publications/conferences";
+import journals from "../assets/publications/journals";
+
 import programming from "../assets/profile/programming";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,6 +30,15 @@ const logos = {
   faGithub: faGithub,
 };
 
+// get the list of current projects
+const currentProjects = research.filter((p) => p.endDate === "Present");
+
+// get the list of latest publications
+const latestPublications = journals
+  .concat(conferences)
+  .sort((a, b) => b.year - a.year)
+  .slice(0, 3);
+
 export default function Home() {
   return (
     <div className="page">
@@ -29,13 +46,10 @@ export default function Home() {
         <title>Home | Erik Novak</title>
       </Head>
 
-      <div className="flex flex-col xl:flex-row">
-        <div className="flex-initial xl:mr-4">
-          <h1 className="text-4xl font-semibold mt-10 mb-2">
-            Hi, I'm Erik Novak
-          </h1>
-
-          <p className="mb-3">
+      <div className="flex flex-col lg:flex-row">
+        <div className="flex-initial md:mr-4">
+          <h1 className="text-5xl font-semibold mt-10 mb-8">Erik Novak</h1>
+          <p className="mb-6">
             I am an Asistant Researcher at the{" "}
             <a
               className="transition text-lightblue hover:text-lightblue-dark"
@@ -47,8 +61,8 @@ export default function Home() {
             (semi-)automatic data exploration, and data visualization.
           </p>
 
-          <p className="mb-3">
-            I am also teaching as an Asistant at the{" "}
+          <p className="mb-6">
+            I am also a Teaching Asistant at the{" "}
             <a
               className="transition text-lightblue hover:text-lightblue-dark"
               href="https://www.mps.si/en/"
@@ -57,60 +71,99 @@ export default function Home() {
             </a>
             .
           </p>
-
-          <div className="flex justify-center xl:hidden my-10">
-            <img
-              className="rounded-full border-8 border-white"
-              src="./imgs/profile.png"
-            ></img>
-          </div>
-
-          <div className="flex flex-col lg:flex-row xl:flex-col">
-            <div className="flex-1 mr-6">
-              <h2 className="text-2xl font-semibold mt-10 mb-2">
-                Academic Profiles
-              </h2>
-
-              {academic.map((link, id) => (
-                <div
-                  className="transition text-lightblue hover:text-lightblue-dark"
-                  key={id}
-                >
-                  <a href={link.url} target="_blank">
-                    <FontAwesomeIcon
-                      icon={logos[link.logo]}
-                      fixedWidth
-                      style={{ marginTop: "4px" }}
-                    />{" "}
-                    {link.label}
-                  </a>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex-1">
-              <h2 className="text-2xl font-semibold mt-10 mb-2">
-                Programming Skills
-              </h2>
-              <div className="flex flex-row flex-wrap">
-                {programming.map((link, id) => (
-                  <img
-                    key={id}
-                    className="h-10 my-1 mx-2"
-                    src={link.image}
-                    alt={link.label}
-                  ></img>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
-
-        <div className="flex-none hidden xl:block">
+        <div className="flex-shrink-0 my-10">
           <img
-            className="rounded-full border-8 border-white"
+            className="rounded-full border-8 border-white m-auto"
             src="./imgs/profile.png"
           ></img>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-semibold mt-18 mb-4">
+        Current Projects{" "}
+        <Link href="/projects">
+          <a className="transition text-white hover:text-white-dark">
+            (see more)
+          </a>
+        </Link>
+      </h2>
+      <div className="grid grid-cols-12 grid-flow-row gap-4">
+        {currentProjects.map(
+          ({ title, startDate, endDate, description, links }, i) => (
+            <a
+              key={i}
+              className="project block transition hover:shadow-lg hover:text-lightblue p-4 pb-6 rounded cursor-pointer col-span-12 md:col-span-6 xl:col-span-4"
+              href={links[0]?.url}
+              target="_blank"
+            >
+              <h4 className="text-lg font-semibold">{title}</h4>
+              <p className="text-sm mt-0 mb-3">
+                {startDate} - {endDate}
+              </p>
+              <p>
+                {description[0]?.split(" ").slice(0, 15).join(" ") + " ..."}
+              </p>
+            </a>
+          )
+        )}
+      </div>
+
+      <h2 className="text-2xl font-semibold mt-24 mb-4">
+        Latest Publications{" "}
+        <Link href="/publications">
+          <a className="transition text-white hover:text-white-dark">
+            (see more)
+          </a>
+        </Link>
+      </h2>
+
+      <div className="grid grid-flow-row gap-4">
+        {latestPublications.map((p, i) => (
+          <div key={i} className="project block p-4 pb-6 rounded">
+            <Publication {...p} />
+          </div>
+        ))}
+      </div>
+
+      <div className="flex flex-col lg:flex-row">
+        <div className="flex-shrink-0 2xl:flex-1 mr-24">
+          <h2 className="text-2xl font-semibold mt-24 mb-4">
+            Academic Profiles
+          </h2>
+
+          {academic.map((link, id) => (
+            <div key={id}>
+              <a
+                href={link.url}
+                target="_blank"
+                className="transition text-lightblue hover:text-lightblue-dark"
+              >
+                <FontAwesomeIcon
+                  icon={logos[link.logo]}
+                  fixedWidth
+                  style={{ marginTop: "4px" }}
+                />{" "}
+                {link.label}
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex-2">
+          <h2 className="text-2xl font-semibold mt-24 mb-4">
+            Programming Skills
+          </h2>
+          <div className="flex flex-row flex-wrap">
+            {programming.map((link, id) => (
+              <img
+                key={id}
+                className="h-10 my-1 mx-2"
+                src={link.image}
+                alt={link.label}
+              ></img>
+            ))}
+          </div>
         </div>
       </div>
     </div>

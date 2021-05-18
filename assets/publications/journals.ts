@@ -1,4 +1,12 @@
-module.exports = [
+const papers: {
+  authors: string;
+  title: string;
+  url: string;
+  reference: string;
+  location: string | null;
+  year: number;
+  presentation: string | null;
+}[] = [
   {
     authors: "K. Kenda, B. Kažič, E. Novak, D. and Mladenić",
     title: "Streaming Data Fusion for the Internet of Things",
@@ -9,3 +17,5 @@ module.exports = [
     presentation: null,
   },
 ];
+
+export default papers;

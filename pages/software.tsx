@@ -1,3 +1,5 @@
+import React from "react";
+
 import Head from "next/head";
 
 import Software from "../components/Software";
@@ -11,7 +13,7 @@ import { SoftwareProps } from "../Interfaces";
 
 export default function Softwares() {
   return (
-    <div>
+    <React.Fragment>
       <Head>
         <title>Software | Erik Novak</title>
       </Head>
@@ -33,6 +35,6 @@ export default function Softwares() {
           />
         </div>
       ))}
-    </div>
+    </React.Fragment>
   );
 }
