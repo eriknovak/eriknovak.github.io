@@ -46,3 +46,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+$baseline: darken(#12263a, 4%);
+
+.darker-bg {
+  background-color: $baseline;
+}

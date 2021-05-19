@@ -10,8 +10,9 @@ const papers: {
   {
     authors: "A. Saliha Sunar, E. Novak, J. Urbančič, D. Mladenić",
     title: "Users’ Learning Pathways on Cross-site Open Educational Resources",
-    url: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Besher_Final.pdf",
-    reference: "12th International Conference on Computer Supported Education",
+    url: "https://www.scitepress.org/Link.aspx?doi=10.5220/0009391600840095",
+    reference:
+      "Proceedings of the 12th International Conference on Computer Supported Education - Volume 2: CSEDU",
     location: null,
     year: 2020,
     presentation: null,

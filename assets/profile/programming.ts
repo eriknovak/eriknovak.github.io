@@ -1,4 +1,7 @@
-module.exports = [
+const skills: {
+  label: string;
+  image: string;
+}[] = [
   {
     label: "Python",
     image: "./imgs/skills/python.png",
@@ -44,3 +47,5 @@ module.exports = [
     image: "./imgs/skills/elasticsearch.svg",
   },
 ];
+
+export default skills;

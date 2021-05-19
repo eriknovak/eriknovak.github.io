@@ -80,7 +80,7 @@ export default function Home() {
         </div>
       </div>
 
-      <h2 className="text-2xl font-semibold mt-18 mb-4">
+      <h2 className="text-2xl font-semibold mt-14 lg:mt-6 mb-4">
         Current Projects{" "}
         <Link href="/projects">
           <a className="transition text-white hover:text-white-dark">
@@ -93,7 +93,7 @@ export default function Home() {
           ({ title, startDate, endDate, description, links }, i) => (
             <a
               key={i}
-              className="project block transition hover:shadow-lg hover:text-lightblue p-4 pb-6 rounded cursor-pointer col-span-12 md:col-span-6 xl:col-span-4"
+              className="darker-bg block transition hover:text-lightblue p-4 pb-6 rounded cursor-pointer col-span-12 md:col-span-6 xl:col-span-4"
               href={links[0]?.url}
               target="_blank"
             >
@@ -109,7 +109,7 @@ export default function Home() {
         )}
       </div>
 
-      <h2 className="text-2xl font-semibold mt-24 mb-4">
+      <h2 className="text-2xl font-semibold mt-20 mb-4">
         Latest Publications{" "}
         <Link href="/publications">
           <a className="transition text-white hover:text-white-dark">
@@ -120,7 +120,7 @@ export default function Home() {
 
       <div className="grid grid-flow-row gap-4">
         {latestPublications.map((p, i) => (
-          <div key={i} className="project block p-4 pb-6 rounded">
+          <div key={i} className="darker-bg block p-4 pb-6 rounded">
             <Publication {...p} />
           </div>
         ))}
@@ -128,7 +128,7 @@ export default function Home() {
 
       <div className="flex flex-col lg:flex-row">
         <div className="flex-shrink-0 2xl:flex-1 mr-24">
-          <h2 className="text-2xl font-semibold mt-24 mb-4">
+          <h2 className="text-2xl font-semibold mt-20 mb-4">
             Academic Profiles
           </h2>
 
@@ -151,7 +151,7 @@ export default function Home() {
         </div>
 
         <div className="flex-2">
-          <h2 className="text-2xl font-semibold mt-24 mb-4">
+          <h2 className="text-2xl font-semibold mt-20 mb-4">
             Programming Skills
           </h2>
           <div className="flex flex-row flex-wrap">
