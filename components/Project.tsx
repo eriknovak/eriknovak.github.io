@@ -8,7 +8,7 @@ export default function Project(props: ProjectProps) {
   const { title, startDate, endDate, description, links } = props;
 
   return (
-    <div className="darker-bg rounded inline-block mt-12 mb-0 p-5 pb-8">
+    <div className="darker-bg rounded inline-block mt-12 p-5 pb-8">
       <h2 className="text-2xl font-semibold mb-0">{title}</h2>
       <p className="text-sm mt-0 mb-4">
         {startDate} - {endDate}

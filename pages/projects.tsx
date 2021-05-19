@@ -14,15 +14,14 @@ export default function Projects() {
       <h1 className="text-4xl font-semibold mt-10">Projects</h1>
 
       {research.map((item: ProjectProps, id: number) => (
-        <div key={id}>
-          <Project
-            title={item.title}
-            startDate={item.startDate}
-            endDate={item.endDate}
-            description={item.description}
-            links={item.links}
-          />
-        </div>
+        <Project
+          title={item.title}
+          startDate={item.startDate}
+          endDate={item.endDate}
+          description={item.description}
+          links={item.links}
+          key={id}
+        />
       ))}
     </div>
   );
