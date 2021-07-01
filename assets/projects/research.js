@@ -16,7 +16,7 @@ module.exports = [
   {
     title: "EnviroLENS",
     startDate: "Dec 2018",
-    endDate: "Present",
+    endDate: "Jun 2021",
     description: [
       "EnviroLENS bridges the gap for the utilization of the European Satellite capacities provided by Copernicus for environmental law enforcement and related cross-cutting sectors. The project is responding to the demands of the jurisdictional sector for ready-to-access evidence and scenario information on environmental situations.",
       "The main aim of the project is to deliver Earth observation-based services providing evidences on environmental incidences and legal violations in order to support the evidence data gathering process and to foster data-driven decision-making.",
