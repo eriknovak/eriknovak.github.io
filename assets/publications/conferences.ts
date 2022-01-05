@@ -8,6 +8,15 @@ const papers: {
   presentation: string | null;
 }[] = [
   {
+    authors: "E. Novak",
+    title: "News Stream Clustering using Multilingual Language Models",
+    url: "https://ailab.ijs.si/dunja/SiKDD2021/Papers/Novak.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2021,
+    presentation: "http://videolectures.net/sikdd2021_novak_news_stream/",
+  },
+  {
     authors: "A. Saliha Sunar, E. Novak, J. Urbančič, D. Mladenić",
     title: "Users’ Learning Pathways on Cross-site Open Educational Resources",
     url: "https://www.scitepress.org/Link.aspx?doi=10.5220/0009391600840095",
