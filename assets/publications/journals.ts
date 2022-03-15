@@ -8,6 +8,15 @@ const papers: {
   presentation: string | null;
 }[] = [
   {
+    authors: "E. Novak, L. Bizjak, D. Mladenić, and M. Grobelnik",
+    title: "Why is a document relevant? Understanding the relevance scores in cross-lingual document retrieval",
+    url: "https://www.sciencedirect.com/science/article/pii/S0950705122002416",
+    reference: "Knowledge-Based Systems",
+    location: null,
+    year: 2022,
+    presentation: null,
+  },
+  {
     authors: "K. Kenda, B. Kažič, E. Novak, D. and Mladenić",
     title: "Streaming Data Fusion for the Internet of Things",
     url: "https://www.mdpi.com/1424-8220/19/8/1955",
