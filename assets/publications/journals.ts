@@ -9,7 +9,7 @@ const papers: {
 }[] = [
   {
     authors: "E. Novak, L. Bizjak, D. Mladenić, and M. Grobelnik",
-    title: "Why is a document relevant? Understanding the relevance scores in cross-lingual document retrieval",
+    title: "Why is a Document Relevant? Understanding the Relevance Scores in Cross-Lingual Document Retrieval",
     url: "https://www.sciencedirect.com/science/article/pii/S0950705122002416",
     reference: "Knowledge-Based Systems",
     location: null,
