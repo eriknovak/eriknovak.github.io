@@ -50,7 +50,7 @@ export default function Home() {
         <div className="flex-initial md:mr-4">
           <h1 className="text-5xl font-semibold mt-10 mb-8">Erik Novak</h1>
           <p className="mb-6">
-            I am an Asistant Researcher at the{" "}
+            I am an Assistant Researcher at the{" "}
             <a
               className="transition text-lightblue hover:text-lightblue-dark"
               href="https://ailab.ijs.si/"
@@ -62,7 +62,7 @@ export default function Home() {
           </p>
 
           <p className="mb-6">
-            I am also a Teaching Asistant at the{" "}
+            I am also a Teaching Assistant at the{" "}
             <a
               className="transition text-lightblue hover:text-lightblue-dark"
               href="https://www.mps.si/en/"
