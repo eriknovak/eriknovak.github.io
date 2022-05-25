@@ -9,12 +9,12 @@ export default function Software(props: SoftwareProps) {
 
   return (
     <div className="inline-block mt-20 mb-0">
-      <h2 className="text-2xl font-semibold uppercase mb-2">{title}</h2>
+      <h2 className="text-2xl font-semibold mb-2">{title}</h2>
 
       {labels ? (
         <div className="flex flex-row flex-wrap gap-1 mb-2">
           {labels.map((label, id) => (
-            <div key={id} className="px-2 py-1 bg-lightblue-dark text-sm rounded-sm">
+            <div key={id} className="px-2 py-1 bg-blue-light text-sm rounded-sm">
               {label}
             </div>
           ))}
