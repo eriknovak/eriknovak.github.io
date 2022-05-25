@@ -9,12 +9,12 @@ export default function Software(props: SoftwareProps) {
 
   return (
     <div className="inline-block mt-20 mb-0">
-      <h2 className="text-3xl font-semibold mb-1">{title}</h2>
+      <h2 className="text-2xl font-semibold uppercase mb-2">{title}</h2>
 
       {labels ? (
-        <div className="flex flex-row flex-wrap">
+        <div className="flex flex-row flex-wrap gap-1 mb-2">
           {labels.map((label, id) => (
-            <div key={id} className="px-2 py-1 bg-blue mr-1 text-sm">
+            <div key={id} className="px-2 py-1 bg-lightblue-dark text-sm rounded-sm">
               {label}
             </div>
           ))}
@@ -23,7 +23,7 @@ export default function Software(props: SoftwareProps) {
 
       {description
         ? description.map((desc, id) => (
-            <p key={id} className="mt-1 mb-3">
+            <p key={id} className="mb-4">
               {desc}
             </p>
           ))
@@ -31,7 +31,7 @@ export default function Software(props: SoftwareProps) {
 
       {links ? (
         <div>
-          <h4 className="text-lg font-semibold mb-0">Links</h4>
+          <h4 className="text-lg font-semibold mb-px">Links</h4>
           {links.map((link, id) => (
             <div
               className="transition text-lightblue hover:text-lightblue-dark"
