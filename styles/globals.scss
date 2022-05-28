@@ -6,6 +6,7 @@
   :root {
     // define the colors
     --color-black-dark: 4, 28, 50;
+    --color-black-base: 7, 43, 77;
     --color-blue-dark: 22, 24, 83;
     --color-blue-base: 41, 44, 109;
     --color-green-dark: 6, 114, 110;
@@ -23,7 +24,7 @@
 
     // background
     --color-background-base: var(--color-black-dark);
-    --color-background-highlight: var(--color-blue-dark);
+    --color-background-highlight: var(--color-black-base);
 
     // text
     --color-text-base: var(--color-white-base);
