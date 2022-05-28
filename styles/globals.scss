@@ -1,4 +1,60 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Montserrat&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "default.scss";
-@import "publications.scss";
+@layer base {
+  :root {
+    // define the colors
+    --color-black-dark: 4, 28, 50;
+    --color-blue-dark: 22, 24, 83;
+    --color-blue-base: 41, 44, 109;
+    --color-green-dark: 6, 114, 110;
+    --color-green-base: 5, 161, 156;
+    --color-green-light: 27, 201, 195;
+    --color-yellow-dark: 184, 161, 21;
+    --color-yellow-base: 241, 208, 10;
+    --color-white-base: 250, 237, 240;
+
+    // scrollbar
+    --width-scrollbar-sm: 6px;
+    --width-scrollbar-md: 12px;
+    --color-scrollbar-track: var(--color-green-base);
+    --color-scrollbar-thumb: var(--color-green-dark);
+
+    // background
+    --color-background-base: var(--color-black-dark);
+    --color-background-highlight: var(--color-blue-dark);
+
+    // text
+    --color-text-base: var(--color-white-base);
+    --color-text-highlight: var(--color-yellow-base);
+    --color-text-highlight-hover: var(--color-yellow-dark);
+    --color-text-link: var(--color-green-light);
+    --color-text-link-hover: var(--color-green-base);
+
+    // font familites
+    --font-family-header: "Fira Sans";
+    --font-family-body: "Merriweather Sans";
+  }
+
+  @font-face {
+    font-family: "Merriweather Sans";
+    font-weight: 500;
+    src: url("../public/fonts/MerriweatherSans-Light.woff") format("woff"),
+      url("../public/fonts/MerriweatherSans-Light.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Merriweather Sans";
+    font-weight: 600;
+    src: url("../public/fonts/MerriweatherSans-Bold.woff") format("woff"),
+      url("../public/fonts/MerriweatherSans-Bold.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Fira Sans";
+    font-weight: 600;
+    src: url("../public/fonts/FiraSans-Bold.woff") format("woff"),
+      url("../public/fonts/FiraSans-Bold.woff2") format("woff2");
+  }
+}

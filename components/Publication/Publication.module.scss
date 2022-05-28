@@ -1,0 +1,12 @@
+.container {
+  @apply inline-block;
+}
+
+.link {
+  @apply text-link hover:text-link-hover;
+  @apply transition;
+  &.link--video {
+    @apply inline-block;
+    @apply text-highlight hover:text-highlight-hover;
+  }
+}

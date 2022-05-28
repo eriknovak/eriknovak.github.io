@@ -1,38 +1,66 @@
-const plugin = require("tailwindcss/plugin");
+/**
+ * Enables variable coloring with opacity.
+ * @param {String} variableName - The CSS variable name.
+ * @returns The function that allows opacity configuration.
+ */
+function withOpacity(variableName) {
+  return ({ opacityValue }) =>
+    opacityValue !== undefined
+      ? `rgba(var(${variableName}), ${opacityValue})`
+      : `rgba(var(${variableName}))`;
+}
 
 module.exports = {
-  purge: ["./pages/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  mode: "jit",
+  content: [
+    "./pages/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
-    extend: {},
-    colors: {
-      white: {
-        light: "#FFFDFC",
-        DEFAULT: "#f4edea",
-        dark: "#CDC0BA",
+    screens: {
+      sm: "640px",
+      md: "786px",
+      lg: "1024px",
+    },
+
+    fontFamily: {
+      header: "var(--font-family-header)",
+      body: "var(--font-family-body)",
+    },
+
+    fontSize: {
+      xs: ["10px", "14px"],
+      sm: ["14px", "18px"],
+      md: ["16px", "24px"],
+      xl: ["20px", "25px"],
+      "2xl": ["28px", "35px"],
+      "3xl": ["36px", "45px"],
+      "4xl": ["44px", "48px"],
+    },
+
+    textColor: {
+      base: withOpacity("--color-text-base"),
+      highlight: withOpacity("--color-text-highlight"),
+      "highlight-hover": withOpacity("--color-text-highlight-hover"),
+      link: withOpacity("--color-text-link"),
+      "link-hover": withOpacity("--color-text-link-hover"),
+    },
+
+    extend: {
+      backgroundColor: {
+        base: {
+          DEFAULT: withOpacity("--color-background-base"),
+          highlight: withOpacity("--color-background-highlight"),
+        },
+        scrollbar: {
+          track: withOpacity("--color-scrollbar-track"),
+          thumb: withOpacity("--color-scrollbar-thumb"),
+        },
       },
-      blue: {
-        light: "#435084",
-        DEFAULT: "#273469",
-        dark: "#111D4D",
-      },
-      darkblue: {
-        DEFAULT: "#12263a",
-      },
-      lightblue: {
-        light: "#FFFFFF",
-        DEFAULT: "#e4d9ff",
-        dark: "#C0A6FF",
-      },
-      yellow: {
-        light: "#FFEAD5",
-        DEFAULT: "#f4d1ae",
-        dark: "#CEA175",
+      color: {
+        white: withOpacity("--color-text-base"),
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };

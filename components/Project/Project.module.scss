@@ -1,0 +1,23 @@
+.container {
+  @apply grid grid-flow-row gap-2;
+}
+
+.duration {
+  @apply text-sm;
+  @apply text-highlight;
+}
+
+.description {
+  @apply grid grid-flow-row gap-4;
+}
+
+.links {
+  @apply mt-2;
+  @apply grid grid-flow-row gap-1;
+}
+
+.link {
+  @apply inline-block;
+  @apply text-link hover:text-link-hover;
+  @apply transition;
+}

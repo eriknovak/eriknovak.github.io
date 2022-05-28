@@ -1,8 +1,4 @@
-const profiles: {
-  label: string;
-  url: string;
-  logo: string;
-}[] = [
+const ACADEMIC_PROFILES = [
   {
     label: "ORCID",
     url: "https://orcid.org/0000-0002-7010-314X",
@@ -30,4 +26,4 @@ const profiles: {
   },
 ];
 
-export default profiles;
+export default ACADEMIC_PROFILES;

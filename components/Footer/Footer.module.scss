@@ -1,0 +1,15 @@
+.container {
+  @apply block px-4 py-4 pt-20 w-full;
+  @apply text-2xl;
+}
+
+.content {
+  @apply flex flex-row justify-center gap-4;
+  @apply m-auto;
+}
+
+.link {
+  @apply inline-block;
+  @apply text-highlight hover:text-highlight-hover;
+  @apply transition-colors;
+}
