@@ -2,12 +2,12 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-  # this workflow will update the homepage on 
+  # this workflow will update the homepage on
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -20,5 +20,5 @@ jobs:
           script: |
             cd ../../var/www/homepage
             git pull
-            npm install
+            npm ci
             BASE_PATH=/eriknovak npm run build

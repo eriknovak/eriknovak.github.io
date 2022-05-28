@@ -4,7 +4,7 @@ import styles from "./Publication.module.scss";
 import cn from "classnames";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilmSimple } from "@fortawesome/free-solid-svg-icons";
+import { faFilm } from "@fortawesome/free-solid-svg-icons";
 
 function createTitle(title: string, URL: string) {
   return URL ? (
@@ -32,7 +32,7 @@ export default function Publication(props: PublicationProps) {
           href={presentation}
           target="_blank"
         >
-          <FontAwesomeIcon icon={faFilmSimple} fixedWidth /> Video
+          <FontAwesomeIcon icon={faFilm} fixedWidth /> Video
         </a>
       ) : undefined}
     </span>
