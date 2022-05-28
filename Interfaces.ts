@@ -14,7 +14,7 @@ export interface ProjectProps {
   endDate: string;
   description?: string[];
   links?: {
-    type: "homepage" | "service" | "code";
+    type: string;
     label: string;
     url: string;
   }[];
