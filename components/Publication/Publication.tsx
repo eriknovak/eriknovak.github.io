@@ -23,7 +23,7 @@ export default function Publication(props: PublicationProps) {
 
   return (
     <span className={styles.container}>
-      {authors}. {createTitle(title, url)}. {reference},{" "}
+      {createTitle(title, url)}. {authors}. {reference},{" "}
       {location ? ` ${location}, ` : " "}
       {year}.{" "}
       {presentation ? (
