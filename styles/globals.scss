@@ -5,16 +5,16 @@
 @layer base {
   :root {
     // define the colors
-    --color-black-dark: 4, 28, 50;
-    --color-black-base: 7, 43, 77;
+    --color-black-dark: 3, 19, 33; // 4, 28, 50;
+    --color-black-base: 7, 37, 62;
     --color-blue-dark: 22, 24, 83;
     --color-blue-base: 41, 44, 109;
     --color-green-dark: 6, 114, 110;
     --color-green-base: 5, 161, 156;
     --color-green-light: 27, 201, 195;
-    --color-yellow-dark: 184, 161, 21;
+    --color-yellow-dark: 191, 169, 36; // 184, 161, 21;
     --color-yellow-base: 241, 208, 10;
-    --color-white-base: 250, 237, 240;
+    --color-white-base: 232, 244, 255; // 250, 237, 240;
 
     // scrollbar
     --width-scrollbar-sm: 6px;

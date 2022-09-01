@@ -10,6 +10,7 @@ export interface PublicationProps {
 
 export interface ProjectProps {
   title: string;
+  type: string;
   startDate: string;
   endDate: string;
   description?: string[];

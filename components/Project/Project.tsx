@@ -14,13 +14,13 @@ const ICON_TYPE_MAP = {
 
 export default function Project(props: ProjectProps) {
   // get properties
-  const { title, startDate, endDate, description, links } = props;
+  const { title, startDate, endDate, description, links, type } = props;
 
   return (
     <div className={styles.container}>
-      <h2 className="text-2xl font-semibold">{title}</h2>
+      <h2 className="text-2xl font-semibold inline-block">{title}</h2>
       <p className={styles.duration}>
-        {startDate} - {endDate}
+        {startDate} - {endDate} | {type || "Unknown"}
       </p>
 
       <div className={styles.description}>

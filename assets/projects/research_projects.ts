@@ -1,6 +1,39 @@
 const RESEARCH_PROJECTS = [
   {
+    title: "Humane AI Network",
+    type: "Horizon 2020",
+    startDate: "Sept 2020",
+    endDate: "Present",
+    description: [
+      "Our vision is built around ethics values and trust (Responsible AI). These are intimately interwoven with the impact of AI on society, including problems associated with complex dynamic interactions between networked AI systems, the environment, and humans.",
+    ],
+    links: [
+      {
+        type: "homepage",
+        label: "Project Homepage",
+        url: "https://www.humane-ai.eu/",
+      },
+    ],
+  },
+  {
+    title: "CURLICAT",
+    type: "CEF Telecomm Programme",
+    startDate: "Jun 2020",
+    endDate: "Present",
+    description: [
+      "The overall objective of the Curated Multilingual Language Resources for CEF AT Action is to compile curated datasets in seven languages targeted by the consortium (Bulgarian, Croatian, Hungarian, Polish, Romanian, Slovak and Slovenian) in domains of relevance to the European Digital Service Infrastructures (DSIs) with a view to enhance the Automated Translation.",
+    ],
+    links: [
+      {
+        type: "homepage",
+        label: "Project Homepage",
+        url: "https://curlicat.eu/",
+      },
+    ],
+  },
+  {
     title: "RSDO | Development of Slovene in a Digital Environment",
+    type: "Development of Slovene in a Digital Environment",
     startDate: "May 2020",
     endDate: "Present",
     description: [
@@ -10,7 +43,7 @@ const RESEARCH_PROJECTS = [
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
         url: "https://www.cjvt.si/rsdo/en/project/",
       },
       {
@@ -21,68 +54,55 @@ const RESEARCH_PROJECTS = [
     ],
   },
   {
-    title: "CURLICAT",
-    startDate: "Jun 2020",
+    title: "Infinitech",
+    type: "Horizon 2020",
+    startDate: "Oct 2019",
     endDate: "Present",
     description: [
-      "The overall objective of the Curated Multilingual Language Resources for CEF AT Action is to compile curated datasets in seven languages targeted by the consortium (Bulgarian, Croatian, Hungarian, Polish, Romanian, Slovak and Slovenian) in domains of relevance to the European Digital Service Infrastructures (DSIs) with a view to enhance the Automated Translation.",
+      "The EU-funded INFINITECH project will undertake an innovative effort to boost regulatory compliance and enhance directed investments.",
+      "Leaders in finance and ICT will aim to provide novel Big Data/IoT/AI technologies for managing and querying all kinds of data along with data governance capabilities.",
+      "These disruptive tools will enhance innovations in business sectors and support nine novelty testbeds and sandboxes to offer open application programming interfaces (APIs).",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
-        url: "https://curlicat.eu/",
-      },
-    ],
-  },
-  {
-    title: "Humane AI Net",
-    startDate: "Jan 2021",
-    endDate: "Present",
-    description: [
-      "Our vision is built around ethics values and trust (Responsible AI). These are intimately interwoven with the impact of AI on society, including problems associated with complex dynamic interactions between networked AI systems, the environment, and humans.",
-    ],
-    links: [
-      {
-        type: "homepage",
-        label: "Homepage",
-        url: "https://www.humane-ai.eu/",
+        label: "Project Homepage",
+        url: "https://www.infinitech-h2020.eu/",
       },
     ],
   },
   {
     title: "EnviroLENS",
+    type: "Horizon 2020",
     startDate: "Dec 2018",
     endDate: "Jun 2021",
     description: [
-      "EnviroLENS bridges the gap for the utilization of the European Satellite capacities provided by Copernicus for environmental law enforcement and related cross-cutting sectors. The project is responding to the demands of the jurisdictional sector for ready-to-access evidence and scenario information on environmental situations.",
+      "EnviroLENS bridges the gap for the utilization of the European Satellite capacities provided by Copernicus for environmental law enforcement and related cross-cutting sectors.",
+      " The project is responding to the demands of the jurisdictional sector for ready-to-access evidence and scenario information on environmental situations.",
       "The main aim of the project is to deliver Earth observation-based services providing evidences on environmental incidences and legal violations in order to support the evidence data gathering process and to foster data-driven decision-making.",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
         url: "https://envirolens.eu/",
-      },
-      {
-        type: "service",
-        label: "eLENS Miner System",
-        url: "https://envirolens.ijs.si/",
       },
     ],
   },
   {
     title: "X5GON",
+    type: "Horizon 2020",
     startDate: "Sep 2017",
     endDate: "Dec 2020",
     description: [
-      "We are leading a breakthrough EU H2020 project, creating a solution that will help users/students find what they need not just in OER repositories, but across all open educational resources on the web. This solution will adapt to the user’s needs and learn how to make ongoing customized recommendations and suggestions through a truly interactive and impactful learning experience.",
+      "We are leading a breakthrough EU H2020 project, creating a solution that will help users/students find what they need not just in OER repositories, but across all open educational resources on the web.",
+      "This solution will adapt to the user’s needs and learn how to make ongoing customized recommendations and suggestions through a truly interactive and impactful learning experience.",
       "This new AI-driven platform will deliver OER content from everywhere, for the students’ need at the right time and place.",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
         url: "https://x5gon.org/",
       },
       {
@@ -98,37 +118,45 @@ const RESEARCH_PROJECTS = [
     ],
   },
   {
-    title: "QMiner",
-    startDate: "Feb 2015",
-    endDate: "Jun 2022",
+    title: "European Data Science Academy",
+    type: "Horizon 2020",
+    startDate: "Sep 2015",
+    endDate: "Jan 2018",
     description: [
-      "QMiner is a data analytics platform for processing of large-scale real-time streams containing structured and unstructured data. The platform provides support for preprocessing, feature engineering, data mining and machine learning.",
+      "The European Data Science Academy (EDSA) designs curricula for data science training and data science education across the European Union (EU).",
+      "EDSA establishes a virtuous learning production cycle whereby we:",
+      "a) analyse the required sector specific skillsets for data scientists across the main industrial sectors in Europe;",
+      "b) develop modular and adaptable data science curricula to meet industry expectations; and",
+      "c) deliver data science training supported by multi-platform and multilingual learning resources.",
+      "The curricula and learning resources are continuously evaluated by pedagogical and data science experts during both development and deployment.",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
+        url: "https://edsa-project.eu/",
+      },
+    ],
+  },
+  {
+    title: "QMiner",
+    type: "Open Source Project",
+    startDate: "Feb 2015",
+    endDate: "Jun 2022",
+    description: [
+      "QMiner is a data analytics platform for processing of large-scale real-time streams containing structured and unstructured data.",
+      "The platform provides support for preprocessing, feature engineering, data mining and machine learning.",
+    ],
+    links: [
+      {
+        type: "homepage",
+        label: "Project Homepage",
         url: "https://qminer.github.io/",
       },
       {
         type: "code",
         label: "Source Code",
         url: "https://github.com/qminer/qminer",
-      },
-    ],
-  },
-  {
-    title: "European Data Science Academy (EDSA)",
-    startDate: "Sep 2015",
-    endDate: "Jan 2018",
-    description: [
-      "The European Data Science Academy (EDSA) designs curricula for data science training and data science education across the European Union (EU). EDSA establishes a virtuous learning production cycle whereby we: a) analyse the required sector specific skillsets for data scientists across the main industrial sectors in Europe; b) develop modular and adaptable data science curricula to meet industry expectations; and c) deliver data science training supported by multi-platform and multilingual learning resources. The curricula and learning resources are continuously evaluated by pedagogical and data science experts during both development and deployment.",
-    ],
-    links: [
-      {
-        type: "homepage",
-        label: "Homepage",
-        url: "https://edsa-project.eu/",
       },
     ],
   },

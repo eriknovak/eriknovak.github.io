@@ -6,6 +6,24 @@ import CONFERENCE_PAPERS from "../assets/publications/conference_papers";
 import JOURNAL_PAPERS from "../assets/publications/journal_papers";
 import { PublicationProps } from "../Interfaces";
 
+import { sortByDate } from "../utils/sort";
+
+//===============================================
+// Variable Definitions
+//===============================================
+
+const SORTED_JOURNAL_PAPERS = JOURNAL_PAPERS.sort((a, b) =>
+  sortByDate(a, b, "year")
+);
+
+const SORTED_CONFERENCE_PAPERS = CONFERENCE_PAPERS.sort((a, b) =>
+  sortByDate(a, b, "year")
+);
+
+//===============================================
+// Page Definition
+//===============================================
+
 export default function Publications() {
   return (
     <div className="grid gap-20">
@@ -18,7 +36,7 @@ export default function Publications() {
       <div className="grid grid-flow-row gap-4">
         <h2 className="text-2xl font-semibold">Journal Papers</h2>
         <div className="grid grid-flow-row gap-6">
-          {JOURNAL_PAPERS.map((item: PublicationProps, id: number) => (
+          {SORTED_JOURNAL_PAPERS.map((item: PublicationProps, id: number) => (
             <Publication key={id} {...item} />
           ))}
         </div>
@@ -27,9 +45,11 @@ export default function Publications() {
       <div className="grid grid-flow-row gap-4">
         <h2 className="text-2xl font-semibold">Conference Papers</h2>
         <div className="grid grid-flow-row gap-6">
-          {CONFERENCE_PAPERS.map((item: PublicationProps, id: number) => (
-            <Publication key={id} {...item} />
-          ))}
+          {SORTED_CONFERENCE_PAPERS.map(
+            (item: PublicationProps, id: number) => (
+              <Publication key={id} {...item} />
+            )
+          )}
         </div>
       </div>
     </div>

@@ -22,6 +22,12 @@ import {
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 
+import { sortByDate } from "../utils/sort";
+
+//===============================================
+// Variable Definitions
+//===============================================
+
 const logos = {
   faResearchgate: faResearchgate,
   faGraduationCap: faGraduationCap,
@@ -33,11 +39,11 @@ const logos = {
 // get the list of current projects
 const CURRENT_PROJECTS = RESEARCH_PROJECTS.filter(
   (p) => p.endDate === "Present"
-);
+).sort((a, b) => sortByDate(a, b, "startDate"));
 
 // get the list of latest publications
 const LATEST_PUBLICATIONS = JOURNAL_PAPERS.concat(CONFERENCE_PAPERS)
-  .sort((a, b) => b.year - a.year)
+  .sort((a, b) => sortByDate(a, b, "year"))
   .slice(0, 3);
 
 export default function Home() {
@@ -97,16 +103,17 @@ export default function Home() {
         </h2>
         <div className="grid grid-flow-row grid-cols-12 gap-4">
           {CURRENT_PROJECTS.map(
-            ({ title, startDate, endDate, description, links }, i) => (
+            ({ title, startDate, endDate, description, links, type }, i) => (
               <a
                 key={i}
                 className="bg-base-highlight p-4 col-span-12 md:col-span-6 xl:col-span-4 rounded transition hover:shadow-lg cursor-pointer flex flex-col gap-2"
                 href={links[0]?.url}
                 target="_blank"
+                rel="noopener"
               >
                 <h4 className="text-lg font-semibold">{title}</h4>
                 <p className="text-sm text-highlight">
-                  {startDate} - {endDate}
+                  {startDate} - {endDate} | {type}
                 </p>
                 <p>{description[0]}</p>
               </a>
@@ -126,6 +133,7 @@ export default function Home() {
                 className="transition block text-link hover:text-link-hover"
                 href={link.url}
                 target="_blank"
+                rel="noopener"
               >
                 <FontAwesomeIcon
                   icon={logos[link.logo]}
@@ -144,9 +152,10 @@ export default function Home() {
             {PROGRAMMING_SKILLS.map((link, id) => (
               <img
                 key={id}
-                className="h-10 my-1 mx-2"
+                className="h-10 w-10 my-2 mx-2"
                 src={link.image}
                 alt={link.label}
+                title={link.label}
               ></img>
             ))}
           </div>

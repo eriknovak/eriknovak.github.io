@@ -1,15 +1,12 @@
 const path = require("path");
 
 module.exports = {
-  future: {
-    webpack5: true,
-  },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
-  assetPrefix: process.env.BASE_PATH || "",
+  assetPrefix: process.env.BASE_PATH || undefined,
   publicRuntimeConfig: {
-    basePath: process.env.BASE_PATH || "",
+    basePath: process.env.BASE_PATH || undefined,
   },
   trailingSlash: true,
 };

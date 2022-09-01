@@ -1,18 +1,20 @@
 const PROFILE: { [key: string]: React.ReactNode } = {
   title: "Erik Novak",
-  subtitle: "PhD Researcher in Artificial Intelligence",
+  subtitle: "Researcher in Artificial Intelligence",
   description: (
     <>
       <p>👋🏽 Hi!</p>
       <p>
-        I am an PhD Researcher at the{" "}
+        I am a Researcher at the{" "}
         <a
           className="transition text-link hover:text-link-hover"
           href="https://ailab.ijs.si/"
+          target="_blank"
+          rel="noopener"
         >
           Department for Artificial Intelligence, Jozef Stefan Institute
         </a>
-        . My research interests are data and text stream analysis,
+        . My research interests are text document and text stream analysis,
         (semi-)automatic data exploration, and data visualization.
       </p>
       <p>
@@ -20,6 +22,8 @@ const PROFILE: { [key: string]: React.ReactNode } = {
         <a
           className="transition text-link hover:text-link-hover"
           href="https://www.mps.si/en/"
+          target="_blank"
+          rel="noopener"
         >
           Jozef Stefan International Postgraduate School
         </a>
