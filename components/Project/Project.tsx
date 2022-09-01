@@ -33,7 +33,13 @@ export default function Project(props: ProjectProps) {
         <div className={styles.links}>
           <h4 className="text-xl font-semibold">Links</h4>
           {links.map((link, id) => (
-            <a key={id} className={styles.link} href={link.url} target="_blank">
+            <a
+              key={id}
+              className={styles.link}
+              href={link.url}
+              target="_blank"
+              rel="noopener"
+            >
               <FontAwesomeIcon icon={ICON_TYPE_MAP[link.type]} fixedWidth />{" "}
               {link.label}
             </a>

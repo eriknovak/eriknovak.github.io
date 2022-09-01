@@ -8,7 +8,7 @@ import { faFilm } from "@fortawesome/free-solid-svg-icons";
 
 function createTitle(title: string, URL: string) {
   return URL ? (
-    <a className={styles.link} href={URL} target="_blank">
+    <a className={styles.link} href={URL} target="_blank" rel="noopener">
       {title}
     </a>
   ) : (
@@ -31,6 +31,7 @@ export default function Publication(props: PublicationProps) {
           className={cn(styles.link, styles["link--video"])}
           href={presentation}
           target="_blank"
+          rel="noopener"
         >
           <FontAwesomeIcon icon={faFilm} fixedWidth /> Video
         </a>
