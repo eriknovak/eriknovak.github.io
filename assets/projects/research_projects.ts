@@ -32,7 +32,7 @@ const RESEARCH_PROJECTS = [
     ],
   },
   {
-    title: "RSDO | Development of Slovene in a Digital Environment",
+    title: "RSDO",
     type: "Development of Slovene in a Digital Environment",
     startDate: "May 2020",
     endDate: "Present",
