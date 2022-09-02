@@ -94,7 +94,7 @@ export default function Home() {
       {/** PROJECTS */}
       <div className="grid grid-flow-row gap-4">
         <h2 className="text-2xl font-semibold">
-          Current Projects{" "}
+          Active Projects{" "}
           <Link href="/projects">
             <a className="transition text-link hover:text-link-hover">
               (see more)
