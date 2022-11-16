@@ -1,5 +1,32 @@
 const CONFERENCE_PAPERS = [
   {
+    authors: "A. Mladenić Grobelnik, E. Novak, D. Mladenić, M. Grobelnik",
+    title: "SLOmet - Slovenian Commonsense Description",
+    url: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_5674.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2022,
+    presentation: "http://videolectures.net/sikdd2022_grobelnik_novak_mladenic/",
+  },
+  {
+    authors: "E. Calcina, E. Novak",
+    title: "Measuring the Similarity of Song Artists using Topic Modelling",
+    url: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_5269.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2022,
+    presentation: "http://videolectures.net/sikdd2022_calcina_novak/",
+  },
+  {
+    authors: "S. Korenič Tratnik, E. Novak",
+    title: "Automatically Generating Text from Film Material - A Comparison of Three Models",
+    url: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_4772.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2022,
+    presentation: "http://videolectures.net/sikdd2022_calcina_novak/",
+  },
+  {
     authors: "E. Novak",
     title: "News Stream Clustering using Multilingual Language Models",
     url: "https://ailab.ijs.si/dunja/SiKDD2021/Papers/Novak.pdf",
