@@ -14,8 +14,9 @@ const PROFILE: { [key: string]: React.ReactNode } = {
         >
           Department for Artificial Intelligence, Jozef Stefan Institute
         </a>
-        . My research interests are text document and text stream analysis,
-        (semi-)automatic data exploration, and data visualization.
+        . My research interests are NLP, more specifically text document and
+        text stream analysis, (semi-)automatic data exploration, and text data
+        visualization.
       </p>
       <p>
         I am also a Teaching Assistant at the{" "}
