@@ -24,7 +24,7 @@ const CONFERENCE_PAPERS = [
     reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
     location: "Ljubljana",
     year: 2022,
-    presentation: "http://videolectures.net/sikdd2022_calcina_novak/",
+    presentation: null,
   },
   {
     authors: "E. Novak",
