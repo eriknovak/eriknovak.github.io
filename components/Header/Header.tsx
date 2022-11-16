@@ -17,7 +17,7 @@ export default function Header() {
     <nav className={styles.container}>
       <div className={styles.content}>
         {pages.map((page, id) => (
-          <Link href={page.route} key={id}>
+          <Link href={page.route} key={id} legacyBehavior>
             <a
               className={cn(styles.link, {
                 [styles["link--active"]]: router.route === page.route,

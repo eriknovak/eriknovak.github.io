@@ -6,6 +6,7 @@ export interface PublicationProps {
   location?: string;
   year: number;
   presentation?: string;
+  type?: string;
 }
 
 export interface ProjectProps {

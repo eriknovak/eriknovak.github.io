@@ -18,11 +18,11 @@ function createTitle(title: string, URL: string) {
 
 export default function Publication(props: PublicationProps) {
   // get properties
-  const { authors, title, reference, location, year, url, presentation } =
+  const { authors, title, reference, location, year, url, presentation, type } =
     props;
 
   return (
-    <span className={styles.container}>
+    <span className={cn(styles.container, styles[`publication--${type}`])}>
       {createTitle(title, url)}. {authors}. {reference},{" "}
       {location ? ` ${location}, ` : " "}
       {year}.{" "}

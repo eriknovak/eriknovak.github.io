@@ -72,7 +72,7 @@ export default function Home() {
       <div className="grid grid-flow-row gap-4">
         <h2 className="text-2xl font-semibold">
           Latest Publications{" "}
-          <Link href="/publications">
+          <Link href="/publications" legacyBehavior>
             <a className="transition text-link hover:text-link-hover">
               (see more)
             </a>
@@ -95,7 +95,7 @@ export default function Home() {
       <div className="grid grid-flow-row gap-4">
         <h2 className="text-2xl font-semibold">
           Active Projects{" "}
-          <Link href="/projects">
+          <Link href="/projects" legacyBehavior>
             <a className="transition text-link hover:text-link-hover">
               (see more)
             </a>

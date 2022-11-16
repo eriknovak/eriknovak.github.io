@@ -2,6 +2,10 @@
   @apply inline-block;
 }
 
+.publication--journal {
+  @apply bg-base-highlight p-4 block rounded transition hover:shadow-lg;
+}
+
 .link {
   @apply text-link hover:text-link-hover;
   @apply transition;
