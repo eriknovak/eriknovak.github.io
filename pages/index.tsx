@@ -62,7 +62,7 @@ export default function Home() {
         </div>
         <div className="flex-shrink-0">
           <img
-            className="rounded-full border-8 border-white m-auto"
+            className="rounded-full border-8 border-white m-auto max-w-sm"
             src="./imgs/profile.png"
           ></img>
         </div>
