@@ -1,5 +1,16 @@
 const RESEARCH_PROJECTS = [
   {
+    title: "PREPARE",
+    type: "Horizon Europe",
+    startDate: "May 2022",
+    endDate: "Present",
+    description: [
+      "PREPARE aims at advancing rehabilitation care for patients with chronic non-communicable diseases. As rehabilitation is a complex, multifaceted, and highly personal process, we currently lack reliable patient stratification and outcome prediction tools. While big data approaches provide a path forward, existing data sets pose numerous challenges. These challenges can be overcome by combining advances in clinical research, socio-behavioral and public health research, data science, and advanced statistical and AI learning methods."
+    ],
+    links: [
+    ],
+  },
+  {
     title: "Humane AI Network",
     type: "Horizon 2020",
     startDate: "Sept 2020",
@@ -19,7 +30,7 @@ const RESEARCH_PROJECTS = [
     title: "CURLICAT",
     type: "CEF Telecomm Programme",
     startDate: "Jun 2020",
-    endDate: "Present",
+    endDate: "Nov 2022",
     description: [
       "The overall objective of the Curated Multilingual Language Resources for CEF AT Action is to compile curated datasets in seven languages targeted by the consortium (Bulgarian, Croatian, Hungarian, Polish, Romanian, Slovak and Slovenian) in domains of relevance to the European Digital Service Infrastructures (DSIs) with a view to enhance the Automated Translation.",
     ],
@@ -35,7 +46,7 @@ const RESEARCH_PROJECTS = [
     title: "RSDO",
     type: "Development of Slovene in a Digital Environment",
     startDate: "May 2020",
-    endDate: "Present",
+    endDate: "Dec 2022",
     description: [
       "The project strives to meet the needs for computational tools and services in the field of language technologies for Slovene, which will be used by research organizations, companies, and the general public.",
       "The development of language technologies is crucial for language survival in the digital age; these tools are the only way to keep participating in the new ways of communication, work and leisure that will be available in the future.",
@@ -57,7 +68,7 @@ const RESEARCH_PROJECTS = [
     title: "Infinitech",
     type: "Horizon 2020",
     startDate: "Oct 2019",
-    endDate: "Present",
+    endDate: "Dec 2022",
     description: [
       "The EU-funded INFINITECH project will undertake an innovative effort to boost regulatory compliance and enhance directed investments.",
       "Leaders in finance and ICT will aim to provide novel Big Data/IoT/AI technologies for managing and querying all kinds of data along with data governance capabilities.",
