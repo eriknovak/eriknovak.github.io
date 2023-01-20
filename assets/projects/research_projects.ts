@@ -2,7 +2,7 @@ const RESEARCH_PROJECTS = [
   {
     title: "PREPARE",
     type: "Horizon Europe",
-    startDate: "May 2022",
+    startDate: "May 2023",
     endDate: "Present",
     description: [
       "PREPARE aims at advancing rehabilitation care for patients with chronic non-communicable diseases. As rehabilitation is a complex, multifaceted, and highly personal process, we currently lack reliable patient stratification and outcome prediction tools. While big data approaches provide a path forward, existing data sets pose numerous challenges. These challenges can be overcome by combining advances in clinical research, socio-behavioral and public health research, data science, and advanced statistical and AI learning methods."
