@@ -10,6 +10,33 @@ const RESEARCH_PROJECTS = [
     links: [
     ],
   },
+   {
+    title: "RSDO",
+    type: "Development of Slovene in a Digital Environment",
+    startDate: "May 2020",
+    endDate: "Present",
+    description: [
+      "The project strives to meet the needs for computational tools and services in the field of language technologies for Slovene, which will be used by research organizations, companies, and the general public.",
+      "The development of language technologies is crucial for language survival in the digital age; these tools are the only way to keep participating in the new ways of communication, work and leisure that will be available in the future.",
+    ],
+    links: [
+      {
+        type: "homepage",
+        label: "Project Homepage",
+        url: "https://www.cjvt.si/rsdo/en/project/",
+      },
+      {
+        type: "code",
+        label: "SLOmet Atomic 2020",
+        url: "https://www.clarin.si/repository/xmlui/handle/11356/1729",
+      },
+       {
+        type: "code",
+        label: "SloATOMIC 2020 Dataset",
+        url: "https://www.clarin.si/repository/xmlui/handle/11356/1724",
+      },
+    ],
+  },
   {
     title: "Humane AI Network",
     type: "Horizon 2020",
@@ -39,28 +66,6 @@ const RESEARCH_PROJECTS = [
         type: "homepage",
         label: "Project Homepage",
         url: "https://curlicat.eu/",
-      },
-    ],
-  },
-  {
-    title: "RSDO",
-    type: "Development of Slovene in a Digital Environment",
-    startDate: "May 2020",
-    endDate: "Dec 2022",
-    description: [
-      "The project strives to meet the needs for computational tools and services in the field of language technologies for Slovene, which will be used by research organizations, companies, and the general public.",
-      "The development of language technologies is crucial for language survival in the digital age; these tools are the only way to keep participating in the new ways of communication, work and leisure that will be available in the future.",
-    ],
-    links: [
-      {
-        type: "homepage",
-        label: "Project Homepage",
-        url: "https://www.cjvt.si/rsdo/en/project/",
-      },
-      {
-        type: "code",
-        label: "SLOmet Atomic 2020",
-        url: "https://github.com/RSDO-DS3/RSDO-SLOmet-atomic-2020",
       },
     ],
   },
