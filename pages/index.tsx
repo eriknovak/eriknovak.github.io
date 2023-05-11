@@ -107,7 +107,7 @@ export default function Home() {
               <a
                 key={i}
                 className="bg-base-highlight p-4 col-span-12 md:col-span-6 xl:col-span-4 rounded transition hover:shadow-lg cursor-pointer flex flex-col gap-2"
-                href={links[0]?.url}
+                href={links?.length ? links[0]?.url : "#"}
                 target="_blank"
                 rel="noopener"
               >
