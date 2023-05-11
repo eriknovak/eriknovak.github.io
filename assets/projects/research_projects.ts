@@ -1,20 +1,28 @@
 const RESEARCH_PROJECTS = [
   {
+    title: "SEMTEH",
+    type: "Call Organized by the Slovenian Ministry for Culture",
+    startDate: "Mar 2023",
+    endDate: "Present",
+    description: [
+      "The aim of the project is to upgrade the open access semantic resources for the Slovenian language. The upgrade includes: (1) creation of a new, manually reviewed version of the Slovenian WordNet semantic lexicon; (2) (machine) creation of a database with semantic links between the new version of WordNet and the central open access Digital Dictionary Database (DSB) and other open sources with semantic data for the Slovenian language, and (3) upgrading the API (for DSB) to provide online access to selected linked data. Modern technological solutions (deep learning, neural networks) will be used to prepare existing data for manual review and to connect semantic data.",
+      "The project mainly addresses two shortcomings of the current version of the Slovenian WordNet, which arise from the methodology of its production: (1) coverage of the vocabulary or concepts and (2) data reliability. Depending on the results of the feasibility analysis, the goal of the project is full coverage of concepts or synsets (synonym sets) and manual validation of all synonym sets contained in the English WordNet. By linking data between WordNet and the Digital Dictionary, the project also ensures the availability of semantic data about the Slovenian language (DSB) in extensive semantic collections that are used in language technology and artificial intelligence systems (e.g. BabelNet, Wikidata)."
+    ],
+  },
+  {
     title: "PREPARE",
     type: "Horizon Europe",
-    startDate: "May 2023",
+    startDate: "June 2023",
     endDate: "Present",
     description: [
       "PREPARE aims at advancing rehabilitation care for patients with chronic non-communicable diseases. As rehabilitation is a complex, multifaceted, and highly personal process, we currently lack reliable patient stratification and outcome prediction tools. While big data approaches provide a path forward, existing data sets pose numerous challenges. These challenges can be overcome by combining advances in clinical research, socio-behavioral and public health research, data science, and advanced statistical and AI learning methods."
-    ],
-    links: [
     ],
   },
    {
     title: "RSDO",
     type: "Development of Slovene in a Digital Environment",
     startDate: "May 2020",
-    endDate: "Present",
+    endDate: "Feb 2023",
     description: [
       "The project strives to meet the needs for computational tools and services in the field of language technologies for Slovene, which will be used by research organizations, companies, and the general public.",
       "The development of language technologies is crucial for language survival in the digital age; these tools are the only way to keep participating in the new ways of communication, work and leisure that will be available in the future.",
