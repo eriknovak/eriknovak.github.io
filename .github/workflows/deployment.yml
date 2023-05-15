@@ -19,6 +19,7 @@ jobs:
           password: ${{secrets.PASSWORD}}
           script: |
             cd ../../var/www/homepage
+            nvm use lts/hydrogen
             git pull
             npm ci
             BASE_PATH=/eriknovak npm run build
