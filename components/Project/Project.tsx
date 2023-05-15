@@ -3,13 +3,15 @@ import { ProjectProps } from "../../Interfaces";
 import styles from "./Project.module.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faComputer } from "@fortawesome/free-solid-svg-icons";
+import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
+import { faHouse, faDatabase } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const ICON_TYPE_MAP = {
   homepage: faHouse,
-  service: faComputer,
+  service: faWindowMaximize,
   code: faGithub,
+  data: faDatabase
 };
 
 export default function Project(props: ProjectProps) {

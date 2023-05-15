@@ -3,7 +3,7 @@ const PROFILE: { [key: string]: React.ReactNode } = {
   subtitle: "Researcher in Artificial Intelligence",
   description: (
     <>
-      <p>👋🏽 Hi!</p>
+      <p>Hi!</p>
       <p>
         I am a Researcher at the{" "}
         <a
@@ -14,7 +14,7 @@ const PROFILE: { [key: string]: React.ReactNode } = {
         >
           Department for Artificial Intelligence, Jozef Stefan Institute
         </a>
-        . My research interests is in NLP, more specifically text document and
+        . My research interests are in NLP, more specifically text document and
         text stream analysis, (semi-)automatic data exploration, and text data
         visualization.
       </p>

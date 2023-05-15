@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { faTwitter, faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 import styles from "./Footer.module.scss";
 
@@ -16,9 +16,6 @@ export default function Footer() {
         </a>
         <a href="https://www.linkedin.com/in/novakerik" className={styles.link}>
           <FontAwesomeIcon icon={faLinkedin} />
-        </a>
-        <a href="https://github.com/eriknovak" className={styles.link}>
-          <FontAwesomeIcon icon={faGithub} />
         </a>
       </div>
     </footer>

@@ -30,16 +30,16 @@ const RESEARCH_PROJECTS = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://www.cjvt.si/rsdo/en/project/",
       },
       {
         type: "code",
-        label: "SLOmet Atomic 2020",
+        label: "SLOmet Atomic 2020 Model",
         url: "https://www.clarin.si/repository/xmlui/handle/11356/1729",
       },
        {
-        type: "code",
+        type: "data",
         label: "SloATOMIC 2020 Dataset",
         url: "https://www.clarin.si/repository/xmlui/handle/11356/1724",
       },
@@ -56,7 +56,7 @@ const RESEARCH_PROJECTS = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://www.humane-ai.eu/",
       },
     ],
@@ -72,7 +72,7 @@ const RESEARCH_PROJECTS = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://curlicat.eu/",
       },
     ],
@@ -90,7 +90,7 @@ const RESEARCH_PROJECTS = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://www.infinitech-h2020.eu/",
       },
     ],
@@ -108,7 +108,7 @@ const RESEARCH_PROJECTS = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://envirolens.eu/",
       },
     ],
@@ -126,7 +126,7 @@ const RESEARCH_PROJECTS = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://x5gon.org/",
       },
       {
@@ -157,7 +157,7 @@ const RESEARCH_PROJECTS = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://edsa-project.eu/",
       },
     ],
@@ -174,7 +174,7 @@ const RESEARCH_PROJECTS = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://qminer.github.io/",
       },
       {
