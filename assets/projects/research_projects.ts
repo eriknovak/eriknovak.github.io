@@ -1,7 +1,7 @@
 const RESEARCH_PROJECTS = [
   {
     title: "SEMTEH",
-    type: "Call Organized by the Slovenian Ministry for Culture",
+    type: "Slovenian Ministry for Culture",
     startDate: "Mar 2023",
     endDate: "Present",
     description: [
