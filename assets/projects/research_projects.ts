@@ -3,9 +3,9 @@ const RESEARCH_PROJECTS = [
     title: "SEMTEH",
     type: "Slovenian Ministry for Culture",
     startDate: "Mar 2023",
-    endDate: "Present",
+    endDate: "October 2023",
     description: [
-      "The aim of the project is to upgrade the open access semantic resources for the Slovenian language. The upgrade includes: (1) creation of a new, manually reviewed version of the Slovenian WordNet semantic lexicon; (2) (machine) creation of a database with semantic links between the new version of WordNet and the central open access Digital Dictionary Database (DSB) and other open sources with semantic data for the Slovenian language, and (3) upgrading the API (for DSB) to provide online access to selected linked data. Modern technological solutions (deep learning, neural networks) will be used to prepare existing data for manual review and to connect semantic data.",
+      "The aim of the project is to upgrade the open access semantic resources for the Slovenian language. The upgrade includes (1) the creation of a new, manually reviewed version of the Slovenian WordNet semantic lexicon; (2) (machine) creation of a database with semantic links between the new version of WordNet and the central open access Digital Dictionary Database (DSB) and other open sources with semantic data for the Slovenian language, and (3) upgrading the API (for DSB) to provide online access to selected linked data. Modern technological solutions (deep learning, neural networks) will be used to prepare existing data for manual review and to connect semantic data.",
       "The project mainly addresses two shortcomings of the current version of the Slovenian WordNet, which arise from the methodology of its production: (1) coverage of the vocabulary or concepts and (2) data reliability. Depending on the results of the feasibility analysis, the goal of the project is full coverage of concepts or synsets (synonym sets) and manual validation of all synonym sets contained in the English WordNet. By linking data between WordNet and the Digital Dictionary, the project also ensures the availability of semantic data about the Slovenian language (DSB) in extensive semantic collections that are used in language technology and artificial intelligence systems (e.g. BabelNet, Wikidata)."
     ],
   },
@@ -103,7 +103,7 @@ const RESEARCH_PROJECTS = [
     description: [
       "EnviroLENS bridges the gap for the utilization of the European Satellite capacities provided by Copernicus for environmental law enforcement and related cross-cutting sectors.",
       " The project is responding to the demands of the jurisdictional sector for ready-to-access evidence and scenario information on environmental situations.",
-      "The main aim of the project is to deliver Earth observation-based services providing evidences on environmental incidences and legal violations in order to support the evidence data gathering process and to foster data-driven decision-making.",
+      "The main aim of the project is to deliver Earth observation-based services providing evidence on environmental incidences and legal violations in order to support the evidence data gathering process and to foster data-driven decision-making.",
     ],
     links: [
       {
@@ -121,7 +121,7 @@ const RESEARCH_PROJECTS = [
     description: [
       "We are leading a breakthrough EU H2020 project, creating a solution that will help users/students find what they need not just in OER repositories, but across all open educational resources on the web.",
       "This solution will adapt to the user’s needs and learn how to make ongoing customized recommendations and suggestions through a truly interactive and impactful learning experience.",
-      "This new AI-driven platform will deliver OER content from everywhere, for the students’ need at the right time and place.",
+      "This new AI-driven platform will deliver OER content from everywhere, for the students’ needs at the right time and place.",
     ],
     links: [
       {
@@ -149,7 +149,7 @@ const RESEARCH_PROJECTS = [
     description: [
       "The European Data Science Academy (EDSA) designs curricula for data science training and data science education across the European Union (EU).",
       "EDSA establishes a virtuous learning production cycle whereby we:",
-      "a) analyse the required sector specific skillsets for data scientists across the main industrial sectors in Europe;",
+      "a) analyse the required sector-specific skillsets for data scientists across the main industrial sectors in Europe;",
       "b) develop modular and adaptable data science curricula to meet industry expectations; and",
       "c) deliver data science training supported by multi-platform and multilingual learning resources.",
       "The curricula and learning resources are continuously evaluated by pedagogical and data science experts during both development and deployment.",
