@@ -11,9 +11,6 @@ export default function Footer() {
         <a href="mailto:erik.novak@ijs.si" className={styles.link}>
           <FontAwesomeIcon icon={faEnvelope} />
         </a>
-        <a href="https://twitter.com/novakoverik" className={styles.link}>
-          <FontAwesomeIcon icon={faTwitter} />
-        </a>
         <a href="https://www.linkedin.com/in/novakerik" className={styles.link}>
           <FontAwesomeIcon icon={faLinkedin} />
         </a>
