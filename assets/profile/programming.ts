@@ -35,10 +35,6 @@ const PROGRAMMING_SKILLS: {
     image: "./imgs/skills/react.svg",
   },
   {
-    label: "Storybook",
-    image: "./imgs/skills/storybook.svg",
-  },
-  {
     label: "JavaScript",
     image: "./imgs/skills/javascript.svg",
   },
