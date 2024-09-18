@@ -1,5 +1,15 @@
 const JOURNAL_PAPERS = [
   {
+    authors: "T. Zdolšek Draksler, A. Bouman, A. Guček, E. Novak, P. Burger, F. Colin, T. Kleefstra",
+    title:
+      "Exploring Kleefstra Syndrome Cohort Phenotype Characteristics: Prevalence Insights from Caregiver-Reported Outcomes",
+    url: "https://www.sciencedirect.com/science/article/pii/S1769721224000661",
+    reference: "European Journal of Medical Genetics",
+    location: null,
+    year: 2024,
+    presentation: null,
+  },
+  {
     authors: "E. Novak, L. Bizjak, D. Mladenić, and M. Grobelnik",
     title:
       "Evaluating Text Generation Model Performance by Combining Semantic Meaning and Word Order",
