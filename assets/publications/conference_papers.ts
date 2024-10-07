@@ -1,5 +1,32 @@
 const CONFERENCE_PAPERS = [
   {
+    authors: "L. Dolinar, E. Calcina, E. Novak",
+    title: "Generating Non-English Synthetic Medical Data Sets",
+    url: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_4.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2024,
+    presentation: null,
+  },
+  {
+    authors: "M. D. Longar, E. Novak, M. Grobelnik",
+    title: "Creating Local World Models using LLMs",
+    url: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_22.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2024,
+    presentation: null,
+  },
+  {
+    authors: "K. Gillani, E. Novak, K. Kenda, D. Mladenić",
+    title: "Knowledge graph Extraction from Textual data using LLM",
+    url: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_15.pdf",
+    reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
+    location: "Ljubljana",
+    year: 2024,
+    presentation: null,
+  },
+  {
     authors: "A. Mladenić Grobelnik, E. Novak, D. Mladenić, M. Grobelnik",
     title: "SLOmet - Slovenian Commonsense Description",
     url: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_5674.pdf",
