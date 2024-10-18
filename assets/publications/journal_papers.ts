@@ -1,5 +1,15 @@
 const JOURNAL_PAPERS = [
   {
+    authors: "K. Buza, E. Novak",
+    title:
+      "TARNet for the Classification of Time Series with Missing Values: A Strong Baseline",
+    url: "https://acta.sapientia.ro/en/series/informatica/publications/volume-16-no-1-2024/tarnet-for-the-classification-of-time-series-with-missing-values-a-strong-baseline",
+    reference: "Acta Univ. Sapientiae, Informatica, 16, 1 (2024) 1–19",
+    location: null,
+    year: 2024,
+    presentation: null,
+  },
+  {
     authors: "T. Zdolšek Draksler, A. Bouman, A. Guček, E. Novak, P. Burger, F. Colin, T. Kleefstra",
     title:
       "Exploring Kleefstra Syndrome Cohort Phenotype Characteristics: Prevalence Insights from Caregiver-Reported Outcomes",
