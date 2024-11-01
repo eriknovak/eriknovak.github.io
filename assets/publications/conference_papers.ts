@@ -6,7 +6,8 @@ const CONFERENCE_PAPERS = [
     reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
     location: "Ljubljana",
     year: 2024,
-    presentation: null,
+    presentation: 
+      "https://videolectures.net/videos/sikdd2024_ljubljana_dolinar_generating_non_english",
   },
   {
     authors: "M. D. Longar, E. Novak, M. Grobelnik",
@@ -15,7 +16,8 @@ const CONFERENCE_PAPERS = [
     reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
     location: "Ljubljana",
     year: 2024,
-    presentation: null,
+    presentation: 
+      "https://videolectures.net/videos/sikdd2024_ljubljana_longar_creating_local",
   },
   {
     authors: "K. Gillani, E. Novak, K. Kenda, D. Mladenić",
@@ -24,7 +26,8 @@ const CONFERENCE_PAPERS = [
     reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
     location: "Ljubljana",
     year: 2024,
-    presentation: null,
+    presentation: 
+      "https://videolectures.net/videos/sikdd2024_ljubljana_gillani_knowledge_graph",
   },
   {
     authors: "A. Mladenić Grobelnik, E. Novak, D. Mladenić, M. Grobelnik",
