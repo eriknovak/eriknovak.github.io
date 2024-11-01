@@ -1,5 +1,14 @@
 const RESEARCH_PROJECTS = [
   {
+    title: "PREPARE",
+    type: "Horizon Europe",
+    startDate: "June 2023",
+    endDate: "Present",
+    description: [
+      "PREPARE aims at advancing rehabilitation care for patients with chronic non-communicable diseases. As rehabilitation is a complex, multifaceted, and highly personal process, we currently lack reliable patient stratification and outcome prediction tools. While big data approaches provide a path forward, existing data sets pose numerous challenges. These challenges can be overcome by combining advances in clinical research, socio-behavioral and public health research, data science, and advanced statistical and AI learning methods."
+    ],
+  },
+  {
     title: "SEMTEH",
     type: "Slovenian Ministry for Culture",
     startDate: "Mar 2023",
@@ -10,15 +19,6 @@ const RESEARCH_PROJECTS = [
     ],
   },
   {
-    title: "PREPARE",
-    type: "Horizon Europe",
-    startDate: "June 2023",
-    endDate: "Present",
-    description: [
-      "PREPARE aims at advancing rehabilitation care for patients with chronic non-communicable diseases. As rehabilitation is a complex, multifaceted, and highly personal process, we currently lack reliable patient stratification and outcome prediction tools. While big data approaches provide a path forward, existing data sets pose numerous challenges. These challenges can be overcome by combining advances in clinical research, socio-behavioral and public health research, data science, and advanced statistical and AI learning methods."
-    ],
-  },
-   {
     title: "RSDO",
     type: "Development of Slovene in a Digital Environment",
     startDate: "May 2020",
@@ -49,7 +49,7 @@ const RESEARCH_PROJECTS = [
     title: "Humane AI Network",
     type: "Horizon 2020",
     startDate: "Sept 2020",
-    endDate: "Present",
+    endDate: "Aug 2024",
     description: [
       "Our vision is built around ethics values and trust (Responsible AI). These are intimately interwoven with the impact of AI on society, including problems associated with complex dynamic interactions between networked AI systems, the environment, and humans.",
     ],
