@@ -106,7 +106,7 @@ export default function Home() {
             ({ title, startDate, endDate, description, links, type }, i) => (
               <a
                 key={i}
-                className="bg-base-highlight p-4 col-span-12 md:col-span-6 xl:col-span-4 rounded transition hover:shadow-lg cursor-pointer flex flex-col gap-2"
+                className="bg-base-highlight p-4 col-span-12 md:col-span-6 xl:col-span-4 rounded transition hover:shadow-lg cursor-pointer"
                 href={links?.length ? links[0]?.url : "#"}
                 target="_blank"
                 rel="noopener"
