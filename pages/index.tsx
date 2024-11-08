@@ -101,7 +101,7 @@ export default function Home() {
             </a>
           </Link>
         </h2>
-        <div className="grid grid-flow-row grid-cols-12 gap-4">
+        <div className="grid grid-flow-row gap-4">
           {CURRENT_PROJECTS.map(
             ({ title, startDate, endDate, description, links, type }, i) => (
               <a
