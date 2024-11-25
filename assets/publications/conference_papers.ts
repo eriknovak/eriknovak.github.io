@@ -6,8 +6,7 @@ const CONFERENCE_PAPERS = [
     reference: "Conference on Data Mining and Data Warehouses (SiKDD)",
     location: "Ljubljana",
     year: 2024,
-    presentation: 
-      "https://videolectures.net/videos/sikdd2024_ljubljana_dolinar_generating_non_english",
+    presentation: null,
   },
   {
     authors: "M. D. Longar, E. Novak, M. Grobelnik",
