@@ -1,10 +1,20 @@
 const JOURNAL_PAPERS = [
   {
+    authors: "L. Dolinar, E. Calcina, E. Novak",
+    title:
+      "Evaluating Open-Source Large Language Models for Synthetic Non-English Medical Data Generation Using Prompt-Based Techniques",
+    url: "https://www.informatica.si/index.php/informatica/article/view/7763/4618",
+    reference: "Informatica",
+    location: null,
+    year: 2025,
+    presentation: null,
+  },
+  {
     authors: "K. Buza, E. Novak",
     title:
       "TARNet for the Classification of Time Series with Missing Values: A Strong Baseline",
     url: "https://acta.sapientia.ro/en/series/informatica/publications/volume-16-no-1-2024/tarnet-for-the-classification-of-time-series-with-missing-values-a-strong-baseline",
-    reference: "Acta Univ. Sapientiae, Informatica, 16, 1 (2024) 1–19",
+    reference: "Acta Univ. Sapientiae, Informatica",
     location: null,
     year: 2024,
     presentation: null,
