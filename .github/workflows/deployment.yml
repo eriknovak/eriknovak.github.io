@@ -21,5 +21,7 @@ jobs:
             cd ../../var/www/homepage
             nvm use lts/hydrogen
             git pull
+            rm -rf node_modules
             npm ci
+            npm install -g next
             BASE_PATH=/eriknovak npm run build
