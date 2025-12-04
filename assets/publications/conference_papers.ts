@@ -1,5 +1,14 @@
 const CONFERENCE_PAPERS = [
   {
+    authors: "E. Calcina, E. Novak, D. Mladenić",
+    title: "Semantic Prompting for Large Language Models in Biomedical Named Entity Recognition",
+    url: "https://aile3.ijs.si/dunja/SiKDD2025/Papers/IS2024_-_SIKDD_2025_paper_3.pdf",
+    reference: "Proceedings of the Slovenian KDD conference",
+    location: "Ljubljana",
+    year: 2025,
+    presentation: null,
+  },
+  {
     authors: "L. Dolinar, E. Calcina, E. Novak",
     title: "Generating Non-English Synthetic Medical Data Sets",
     url: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_4.pdf",
