@@ -9,7 +9,7 @@ const PROFILE: { [key: string]: React.ReactNode } = {
         text stream analysis, (semi-)automatic data exploration, and text data
         visualization.
       </p>
-      <p>I am a Data Scientist at{" "}
+      <p>I am employed as a Data Scientist at{" "}
         <a
           className="transition text-link hover:text-link-hover hover:underline"
           href="https://eventregistry.org/"
@@ -21,7 +21,7 @@ const PROFILE: { [key: string]: React.ReactNode } = {
         , where I work on applying NLP to news data.
       </p>
       <p>
-        I am also a Senior Researcher at the{" "}
+        I am also employed as a Senior Researcher at the{" "}
         <a
           className="transition text-link hover:text-link-hover hover:underline"
           href="https://ailab.ijs.si/"
