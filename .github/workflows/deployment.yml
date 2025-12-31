@@ -19,7 +19,7 @@ jobs:
           password: ${{secrets.PASSWORD}}
           script: |
             cd ../../var/www/homepage
-            nvm use lts/hydrogen
+            nvm use lts/krypton
             git pull
             rm -rf node_modules
             npm ci
