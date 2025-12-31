@@ -1,4 +1,5 @@
 import Link from "../Link";
+import ThemeToggle from "../ThemeToggle";
 import { useRouter } from "next/router";
 
 import cn from "classnames";
@@ -16,17 +17,22 @@ export default function Header() {
   return (
     <nav className={styles.container}>
       <div className={styles.content}>
-        {pages.map((page, id) => (
-          <Link href={page.route} key={id} legacyBehavior>
-            <a
-              className={cn(styles.link, {
-                [styles["link--active"]]: router.route === page.route,
-              })}
-            >
-              {page.title}
-            </a>
-          </Link>
-        ))}
+        <div className={styles.links}>
+          {pages.map((page, id) => (
+            <Link href={page.route} key={id} legacyBehavior>
+              <a
+                className={cn(styles.link, {
+                  [styles["link--active"]]: router.route === page.route,
+                })}
+              >
+                {page.title}
+              </a>
+            </Link>
+          ))}
+        </div>
+        <div className={styles.toggle}>
+          <ThemeToggle />
+        </div>
       </div>
     </nav>
   );

@@ -5,8 +5,16 @@
 }
 
 .content {
-  @apply flex flex-row justify-center gap-8;
-  @apply m-auto;
+  @apply flex flex-row justify-between items-center;
+  @apply m-auto max-w-screen-lg;
+}
+
+.links {
+  @apply flex flex-row gap-8;
+}
+
+.toggle {
+  @apply flex items-center;
 }
 
 .link {

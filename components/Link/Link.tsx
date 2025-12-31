@@ -1,7 +1,6 @@
 import NextLink, { LinkProps } from "next/link";
-import getConfig from "next/config";
 
-const { publicRuntimeConfig } = getConfig();
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 interface ChidrenProps {
   children: React.ReactNode;
@@ -14,7 +13,7 @@ const Link: React.FunctionComponent<ChidrenProps & LinkProps> = ({
   return (
     <NextLink
       {...props}
-      as={`${publicRuntimeConfig.basePath || ""}${props.href}`}
+      as={`${basePath}${props.href}`}
     >
       {children}
     </NextLink>

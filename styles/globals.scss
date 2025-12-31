@@ -38,6 +38,23 @@
     --font-family-body: "Merriweather Sans";
   }
 
+  :root[data-theme="light"] {
+    // background
+    --color-background-base: var(--color-white-base);
+    --color-background-highlight: 220, 230, 240;
+
+    // text
+    --color-text-base: var(--color-black-dark);
+    --color-text-highlight: var(--color-blue-base);
+    --color-text-highlight-hover: var(--color-blue-dark);
+    --color-text-link: var(--color-green-dark);
+    --color-text-link-hover: var(--color-green-base);
+
+    // scrollbar
+    --color-scrollbar-track: 200, 210, 220;
+    --color-scrollbar-thumb: var(--color-green-base);
+  }
+
   @font-face {
     font-family: "Merriweather Sans";
     font-weight: 500;
