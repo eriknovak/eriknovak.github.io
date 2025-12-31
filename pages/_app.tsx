@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Header />
-      <main className="container px-4 sm:px-12 sm:mx-auto pt-32">
+      <main className="px-4 max-w-screen-lg mx-auto pt-32 pb-20">
         <Component {...pageProps} />
       </main>
       <Footer />

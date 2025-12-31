@@ -2,6 +2,9 @@
   @apply fixed px-4 py-4 w-full;
   @apply bg-base border-b-2;
   @apply text-xl;
+  @apply z-50 shadow-lg;
+  backdrop-filter: blur(10px);
+  background-color: rgba(var(--color-background-base), 0.95);
 }
 
 .content {

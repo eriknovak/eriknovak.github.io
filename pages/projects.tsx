@@ -25,24 +25,39 @@ const PAST_PROJECTS = RESEARCH_PROJECTS.filter(
 
 export default function Projects() {
   return (
-    <div className="grid gap-20">
+    <div className="grid gap-16">
       <Head>
         <title>Projects | Erik Novak</title>
       </Head>
-      <h1 className="text-4xl font-semibold">Active Projects</h1>
 
-      <div className="grid grid-flow-row gap-16">
-        {ACTIVE_PROJECTS.map((item: ProjectProps, id: number) => (
-          <Project key={id} {...item} />
-        ))}
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h1 className="text-4xl lg:text-5xl font-bold">Active Projects</h1>
+          <p className="text-xl text-highlight">Current Research Initiatives</p>
+        </div>
+
+        <div className="grid grid-flow-row gap-12">
+          {ACTIVE_PROJECTS.map((item: ProjectProps, id: number) => (
+            <div key={id}>
+              <Project {...item} />
+            </div>
+          ))}
+        </div>
       </div>
 
-      <h1 className="text-4xl font-semibold">Past Projects</h1>
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h1 className="text-4xl lg:text-5xl font-bold">Past Projects</h1>
+          <p className="text-xl text-highlight">Completed Research Work</p>
+        </div>
 
-      <div className="grid grid-flow-row gap-16">
-        {PAST_PROJECTS.map((item: ProjectProps, id: number) => (
-          <Project key={id} {...item} />
-        ))}
+        <div className="grid grid-flow-row gap-12">
+          {PAST_PROJECTS.map((item: ProjectProps, id: number) => (
+            <div key={id}>
+              <Project {...item} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

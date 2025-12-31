@@ -18,6 +18,6 @@
 
 .link {
   @apply inline-block;
-  @apply text-link hover:text-link-hover;
+  @apply text-link hover:text-link-hover hover:underline;
   @apply transition;
 }

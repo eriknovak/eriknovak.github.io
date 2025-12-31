@@ -23,23 +23,23 @@ const SORTED_PAPERS = [
 
 export default function Publications() {
   return (
-    <div className="grid gap-20">
+    <div className="grid gap-16">
       <Head>
         <title>Publications | Erik Novak</title>
       </Head>
 
-      <h1 className="text-4xl font-semibold">Publications</h1>
-
-      <div className="grid grid-flow-row gap-4">
-        <h2 className="text-2xl font-semibold">
+      <div className="space-y-4">
+        <h1 className="text-4xl lg:text-5xl font-bold">Publications</h1>
+        <p className="text-xl text-highlight">
           Journal and Conference Papers
-        </h2>
-        <div className="grid grid-flow-row gap-6">
-          {SORTED_PAPERS.map((item: PublicationProps, id: number) => (
-            <Publication key={id} {...item} />
-          ))}
-        </div>
+        </p>
       </div>
-    </div>
+
+      <div className="grid grid-flow-row gap-6">
+        {SORTED_PAPERS.map((item: PublicationProps, id: number) => (
+          <Publication key={id} {...item} />
+        ))}
+      </div>
+    </div >
   );
 }

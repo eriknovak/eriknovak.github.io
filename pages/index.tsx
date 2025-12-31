@@ -54,36 +54,62 @@ export default function Home() {
       </Head>
 
       {/** PROFILE */}
-      <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
-        <div className="flex-initial flex flex-col gap-8">
-          <h1 className="text-4xl font-bold">{PROFILE.title}</h1>
-          <h4 className="text-xl">{PROFILE.subtitle}</h4>
-          <div className="grid grid-flow-row gap-4">{PROFILE.description}</div>
+      <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center lg:items-start">
+        <div className="flex-shrink-0 relative">
+          <div className="relative">
+            <img
+              className="rounded-md w-64 lg:w-80 object-cover"
+              src="./imgs/profile.jpg"
+              alt="Profile"
+            />
+          </div>
         </div>
-        <div className="flex-shrink-0">
-          <img
-            className="rounded-full border-8 border-white m-auto max-w-sm"
-            src="./imgs/profile.jpg"
-          ></img>
+        <div className="flex-1 flex flex-col gap-6">
+          <div className="space-y-4">
+            <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
+              {PROFILE.title}
+            </h1>
+            <h2 className="text-xl lg:text-2xl text-highlight">
+              {PROFILE.subtitle}
+            </h2>
+          </div>
+          <div className="grid grid-flow-row gap-4 text-base leading-relaxed">
+            {PROFILE.description}
+          </div>
+          <div className="flex flex-wrap gap-4 mt-4">
+            {ACADEMIC_PROFILE.map((link, id) => (
+              <a
+                key={id}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-base-highlight rounded-lg transition-all hover:shadow-lg hover:scale-105 text-link hover:text-link-hover"
+                href={link.url}
+                target="_blank"
+                rel="noopener"
+                title={link.label}
+              >
+                <FontAwesomeIcon icon={logos[link.logo]} fixedWidth />
+                <span className="text-sm font-medium">{link.label}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
       {/** PUBLICATIONS */}
-      <div className="grid grid-flow-row gap-4">
-        <h2 className="text-2xl font-semibold">
+      <div className="grid grid-flow-row gap-6">
+        <h2 className="text-2xl lg:text-3xl font-semibold">
           Latest Publications{" "}
           <Link href="/publications" legacyBehavior>
-            <a className="transition text-link hover:text-link-hover">
+            <a className="transition text-link hover:text-link-hover text-xl">
               (see more)
             </a>
           </Link>
         </h2>
 
-        <div className="grid grid-flow-row gap-4">
+        <div className="grid grid-flow-row gap-6">
           {LATEST_PUBLICATIONS.map((p, i) => (
             <div
               key={i}
-              className="bg-base-highlight p-4 block col-span-12 md:col-span-6 xl:col-span-4 rounded transition hover:shadow-lg"
+              className="bg-base-highlight p-6 block col-span-12 md:col-span-6 xl:col-span-4 rounded-xl"
             >
               <Publication {...p} />
             </div>
@@ -92,73 +118,53 @@ export default function Home() {
       </div>
 
       {/** PROJECTS */}
-      <div className="grid grid-flow-row gap-4">
-        <h2 className="text-2xl font-semibold">
+      <div className="grid grid-flow-row gap-6">
+        <h2 className="text-2xl lg:text-3xl font-semibold">
           Active Projects{" "}
           <Link href="/projects" legacyBehavior>
-            <a className="transition text-link hover:text-link-hover">
+            <a className="transition text-link hover:text-link-hover text-xl">
               (see more)
             </a>
           </Link>
         </h2>
-        <div className="grid grid-flow-row gap-4">
+        <div className="grid grid-flow-row gap-6">
           {CURRENT_PROJECTS.map(
             ({ title, startDate, endDate, description, links, type }, i) => (
               <a
                 key={i}
-                className="bg-base-highlight p-4 col-span-12 md:col-span-6 xl:col-span-4 rounded transition hover:shadow-lg cursor-pointer"
+                className="bg-base-highlight p-6 col-span-12 md:col-span-6 xl:col-span-4 rounded-xl cursor-pointer"
                 href={links?.length ? links[0]?.url : "#"}
                 target="_blank"
                 rel="noopener"
               >
-                <h4 className="text-lg font-semibold">{title}</h4>
-                <p className="text-sm text-highlight">
+                <h4 className="text-lg font-semibold mb-2">{title}</h4>
+                <p className="text-sm text-highlight mb-3">
                   {startDate} - {endDate} | {type}
                 </p>
-                <p>{description[0]}</p>
+                <p className="leading-relaxed">{description[0]}</p>
               </a>
             )
           )}
         </div>
       </div>
 
-      {/** MISC */}
-      <div className="flex flex-col lg:flex-row align-top items-start gap-24">
-        <div className="flex-shrink-0 grid grid-flow-row gap-4">
-          <h2 className="text-2xl font-semibold">Academic Profiles</h2>
-          <div className="grid grid-flow-row gap-2">
-            {ACADEMIC_PROFILE.map((link, id) => (
-              <a
-                key={id}
-                className="transition block text-link hover:text-link-hover"
-                href={link.url}
-                target="_blank"
-                rel="noopener"
-              >
-                <FontAwesomeIcon
-                  icon={logos[link.logo]}
-                  fixedWidth
-                  style={{ marginTop: "4px" }}
-                />{" "}
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex-2 grid grid-flow-row gap-4">
-          <h2 className="text-2xl font-semibold">Programming Skills</h2>
-          <div className="flex flex-row flex-wrap gap-0">
-            {PROGRAMMING_SKILLS.map((link, id) => (
+      {/** PROGRAMMING SKILLS */}
+      <div className="grid grid-flow-row gap-6">
+        <h2 className="text-2xl font-semibold">Programming Skills</h2>
+        <div className="flex flex-row flex-wrap gap-4">
+          {PROGRAMMING_SKILLS.map((link, id) => (
+            <div
+              key={id}
+              className="bg-base-highlight p-3 rounded-lg"
+              title={link.label}
+            >
               <img
-                key={id}
-                className="h-10 w-10 my-2 mx-2"
+                className="h-10 w-10"
                 src={link.image}
                 alt={link.label}
-                title={link.label}
-              ></img>
-            ))}
-          </div>
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>

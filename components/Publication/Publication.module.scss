@@ -3,11 +3,11 @@
 }
 
 .publication--journal {
-  @apply bg-base-highlight p-4 block rounded transition hover:shadow-lg;
+  @apply bg-base-highlight p-4 block rounded;
 }
 
 .link {
-  @apply text-link hover:text-link-hover;
+  @apply text-link hover:text-link-hover hover:underline;
   @apply transition;
   &.link--video {
     @apply inline-block;

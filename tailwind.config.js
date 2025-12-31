@@ -36,6 +36,7 @@ module.exports = {
       "2xl": ["28px", "35px"],
       "3xl": ["36px", "45px"],
       "4xl": ["44px", "48px"],
+      "5xl": ["52px", "58px"],
     },
 
     textColor: {
@@ -59,6 +60,37 @@ module.exports = {
       },
       color: {
         white: withOpacity("--color-text-base"),
+      },
+      colors: {
+        "green-light": withOpacity("--color-green-light"),
+        "green-base": withOpacity("--color-green-base"),
+        "green-dark": withOpacity("--color-green-dark"),
+        "yellow-base": withOpacity("--color-yellow-base"),
+        "yellow-dark": withOpacity("--color-yellow-dark"),
+      },
+      animation: {
+        "fade-in": "fadeIn 0.6s ease-out forwards",
+        "slide-in": "slideIn 0.6s ease-out forwards",
+        "scale-in": "scaleIn 0.5s ease-out forwards",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideIn: {
+          "0%": { opacity: "0", transform: "translateX(30px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        scaleIn: {
+          "0%": { opacity: "0", transform: "scale(0.95)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+      },
+      spacing: {
+        18: "4.5rem",
+        88: "22rem",
+        128: "32rem",
       },
     },
   },
