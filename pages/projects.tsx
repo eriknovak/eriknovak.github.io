@@ -1,6 +1,5 @@
-import Head from "next/head";
-
 import Project from "../components/Project";
+import SEO from "../components/SEO";
 
 import RESEARCH_PROJECTS from "../assets/projects/research_projects";
 import { ProjectProps } from "../Interfaces";
@@ -12,11 +11,11 @@ import { sortByDate } from "../utils/sort";
 //===============================================
 
 const ACTIVE_PROJECTS = RESEARCH_PROJECTS.filter(
-  (p) => p.endDate === "Present"
+  (p) => p.endDate === "Present",
 ).sort((a, b) => sortByDate(a, b, "startDate"));
 
 const PAST_PROJECTS = RESEARCH_PROJECTS.filter(
-  (p) => p.endDate !== "Present"
+  (p) => p.endDate !== "Present",
 ).sort((a, b) => sortByDate(a, b, "startDate"));
 
 //===============================================
@@ -26,9 +25,11 @@ const PAST_PROJECTS = RESEARCH_PROJECTS.filter(
 export default function Projects() {
   return (
     <div className="grid gap-16">
-      <Head>
-        <title>Projects | Erik Novak</title>
-      </Head>
+      <SEO
+        title="Projects"
+        description="Research projects by Erik Novak including active and past European research initiatives in artificial intelligence, NLP, and data analysis."
+        path="/projects/"
+      />
 
       <div className="space-y-8">
         <div className="space-y-4">

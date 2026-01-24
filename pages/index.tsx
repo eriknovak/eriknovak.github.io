@@ -1,7 +1,7 @@
 // import components
-import Head from "next/head";
 import Link from "../components/Link";
 import Publication from "../components/Publication";
+import SEO from "../components/SEO";
 
 // import data
 import PROFILE from "../assets/profile/profile";
@@ -38,7 +38,7 @@ const logos = {
 
 // get the list of current projects
 const CURRENT_PROJECTS = RESEARCH_PROJECTS.filter(
-  (p) => p.endDate === "Present"
+  (p) => p.endDate === "Present",
 ).sort((a, b) => sortByDate(a, b, "startDate"));
 
 // get the list of latest publications
@@ -49,9 +49,12 @@ const LATEST_PUBLICATIONS = JOURNAL_PAPERS.concat(CONFERENCE_PAPERS)
 export default function Home() {
   return (
     <div className="grid gap-20">
-      <Head>
-        <title>Home | Erik Novak</title>
-      </Head>
+      <SEO
+        title="Home"
+        description="Erik Novak - AI researcher specializing in NLP, text analysis, and data visualization. Data Scientist at Event Registry and Senior Researcher at Jozef Stefan Institute."
+        path="/"
+        type="profile"
+      />
 
       {/** PROFILE */}
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center lg:items-start">
@@ -143,7 +146,7 @@ export default function Home() {
                 </p>
                 <p className="leading-relaxed">{description[0]}</p>
               </a>
-            )
+            ),
           )}
         </div>
       </div>
@@ -158,11 +161,7 @@ export default function Home() {
               className="bg-base-highlight p-3 rounded-lg"
               title={link.label}
             >
-              <img
-                className="h-10 w-10"
-                src={link.image}
-                alt={link.label}
-              />
+              <img className="h-10 w-10" src={link.image} alt={link.label} />
             </div>
           ))}
         </div>
