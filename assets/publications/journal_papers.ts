@@ -30,7 +30,7 @@ const JOURNAL_PAPERS: PublicationProps[] = [
     reference: "European Journal of Medical Genetics",
     location: null,
     year: 2024,
-    doi: "10.1016/j.ejmg.2024.104923",
+    doi: "10.1016/j.ejmg.2024.104974",
   },
   {
     authors: "E. Novak, L. Bizjak, D. Mladenić, and M. Grobelnik",
