@@ -1,0 +1,17 @@
+{
+  "nav": {
+    "home": "Domov",
+    "publications": "Publikacije",
+    "projects": "Projekti",
+    "collaborate": "Sodelovanje"
+  },
+  "language": {
+    "en": "Angleščina",
+    "sl": "Slovenščina"
+  },
+  "notFound": {
+    "title": "Stran ni najdena",
+    "description": "Stran, ki jo iščete, ne obstaja ali je bila premaknjena.",
+    "backHome": "Nazaj na domov"
+  }
+}

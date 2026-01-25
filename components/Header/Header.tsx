@@ -1,18 +1,31 @@
+import { useState, useEffect } from "react";
 import Link from "../Link";
 import ThemeToggle from "../ThemeToggle";
+import LanguageSwitcher from "../LanguageSwitcher";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 import cn from "classnames";
 import styles from "./Header.module.scss";
 
 const pages = [
-  { title: "Home", route: "/" },
-  { title: "Publications", route: "/publications" },
-  { title: "Projects", route: "/projects" },
+  { titleKey: "nav.home", fallback: "Home", route: "/" },
+  { titleKey: "nav.projects", fallback: "Projects", route: "/projects" },
+  {
+    titleKey: "nav.publications",
+    fallback: "Publications",
+    route: "/publications",
+  },
 ];
 
 export default function Header() {
   const router = useRouter();
+  const { t, ready } = useTranslation("common");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <nav className={styles.container}>
@@ -25,12 +38,13 @@ export default function Header() {
                   [styles["link--active"]]: router.route === page.route,
                 })}
               >
-                {page.title}
+                {mounted && ready ? t(page.titleKey) : page.fallback}
               </a>
             </Link>
           ))}
         </div>
-        <div className={styles.toggle}>
+        <div className={styles.controls}>
+          {mounted && <LanguageSwitcher />}
           <ThemeToggle />
         </div>
       </div>

@@ -1,10 +1,13 @@
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+
 // import components
 import Link from "../components/Link";
 import Publication from "../components/Publication";
 import SEO from "../components/SEO";
 
 // import data
-import PROFILE from "../assets/profile/profile";
+import { useProfile } from "../assets/profile/useProfile";
 import ACADEMIC_PROFILE from "../assets/profile/academic";
 import RESEARCH_PROJECTS from "../assets/projects/research_projects";
 import JOURNAL_PAPERS from "../assets/publications/journal_papers";
@@ -42,11 +45,22 @@ const CURRENT_PROJECTS = RESEARCH_PROJECTS.filter(
 ).sort((a, b) => sortByDate(a, b, "startDate"));
 
 // get the list of latest publications
-const LATEST_PUBLICATIONS = JOURNAL_PAPERS.concat(CONFERENCE_PAPERS)
+const LATEST_PUBLICATIONS = [
+  ...JOURNAL_PAPERS.map((paper) => ({ ...paper, type: "journal" })),
+  ...CONFERENCE_PAPERS.map((paper) => ({ ...paper, type: "conference" })),
+]
   .sort((a, b) => sortByDate(a, b, "year"))
   .slice(0, 3);
 
 export default function Home() {
+  const { t, ready } = useTranslation("home");
+  const profile = useProfile();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <div className="grid gap-20">
       <SEO
@@ -63,21 +77,23 @@ export default function Home() {
             <img
               className="rounded-md w-64 lg:w-80 object-cover"
               src="./imgs/profile.jpg"
-              alt="Profile"
+              alt="Dr. Erik Novak - AI Researcher"
             />
           </div>
         </div>
         <div className="flex-1 flex flex-col gap-6">
           <div className="space-y-4">
             <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
-              {PROFILE.title}
+              {mounted && profile.ready ? profile.title : "Erik Novak"}
             </h1>
             <h2 className="text-xl lg:text-2xl text-highlight">
-              {PROFILE.subtitle}
+              {mounted && profile.ready
+                ? profile.subtitle
+                : "Researcher in Artificial Intelligence"}
             </h2>
           </div>
           <div className="grid grid-flow-row gap-4 text-base leading-relaxed">
-            {PROFILE.description}
+            {mounted && profile.ready ? profile.description : null}
           </div>
           <div className="flex flex-wrap gap-4 mt-4">
             {ACADEMIC_PROFILE.map((link, id) => (
@@ -97,36 +113,13 @@ export default function Home() {
         </div>
       </div>
 
-      {/** PUBLICATIONS */}
-      <div className="grid grid-flow-row gap-6">
-        <h2 className="text-2xl lg:text-3xl font-semibold">
-          Latest Publications{" "}
-          <Link href="/publications" legacyBehavior>
-            <a className="transition text-link hover:text-link-hover text-xl">
-              (see more)
-            </a>
-          </Link>
-        </h2>
-
-        <div className="grid grid-flow-row gap-6">
-          {LATEST_PUBLICATIONS.map((p, i) => (
-            <div
-              key={i}
-              className="bg-base-highlight p-6 block col-span-12 md:col-span-6 xl:col-span-4 rounded-xl"
-            >
-              <Publication {...p} />
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/** PROJECTS */}
       <div className="grid grid-flow-row gap-6">
         <h2 className="text-2xl lg:text-3xl font-semibold">
-          Active Projects{" "}
+          {mounted && ready ? t("activeProjects") : "Active Projects"}{" "}
           <Link href="/projects" legacyBehavior>
             <a className="transition text-link hover:text-link-hover text-xl">
-              (see more)
+              {mounted && ready ? t("seeMore") : "(see more)"}
             </a>
           </Link>
         </h2>
@@ -135,7 +128,7 @@ export default function Home() {
             ({ title, startDate, endDate, description, links, type }, i) => (
               <a
                 key={i}
-                className="bg-base-highlight p-6 col-span-12 md:col-span-6 xl:col-span-4 rounded-xl cursor-pointer"
+                className="col-span-12 md:col-span-6 xl:col-span-4 cursor-pointer"
                 href={links?.length ? links[0]?.url : "#"}
                 target="_blank"
                 rel="noopener"
@@ -151,9 +144,30 @@ export default function Home() {
         </div>
       </div>
 
+      {/** PUBLICATIONS */}
+      <div className="grid grid-flow-row gap-6">
+        <h2 className="text-2xl lg:text-3xl font-semibold">
+          {mounted && ready ? t("latestPublications") : "Latest Publications"}{" "}
+          <Link href="/publications" legacyBehavior>
+            <a className="transition text-link hover:text-link-hover text-xl">
+              {mounted && ready ? t("seeMore") : "(see more)"}
+            </a>
+          </Link>
+        </h2>
+
+        <div className="grid grid-flow-row gap-6">
+          {LATEST_PUBLICATIONS.map((p, i) => (
+            <Publication key={i} {...p} />
+          ))}
+        </div>
+      </div>
+
+
       {/** PROGRAMMING SKILLS */}
       <div className="grid grid-flow-row gap-6">
-        <h2 className="text-2xl font-semibold">Programming Skills</h2>
+        <h2 className="text-2xl font-semibold">
+          {mounted && ready ? t("programmingSkills") : "Programming Skills"}
+        </h2>
         <div className="flex flex-row flex-wrap gap-4">
           {PROGRAMMING_SKILLS.map((link, id) => (
             <div

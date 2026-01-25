@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+
 import Publication from "../components/Publication";
 import SEO from "../components/SEO";
 
@@ -21,6 +24,13 @@ const SORTED_PAPERS = [
 //===============================================
 
 export default function Publications() {
+  const { t, ready } = useTranslation("publications");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <div className="grid gap-16">
       <SEO
@@ -30,8 +40,12 @@ export default function Publications() {
       />
 
       <div className="space-y-4">
-        <h1 className="text-4xl lg:text-5xl font-bold">Publications</h1>
-        <p className="text-xl text-highlight">Journal and Conference Papers</p>
+        <h1 className="text-4xl lg:text-5xl font-bold">
+          {mounted && ready ? t("title") : "Publications"}
+        </h1>
+        <p className="text-xl text-highlight">
+          {mounted && ready ? t("subtitle") : "Journal and Conference Papers"}
+        </p>
       </div>
 
       <div className="grid grid-flow-row gap-6">

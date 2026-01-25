@@ -7,6 +7,27 @@ export interface PublicationProps {
   year: number;
   presentation?: string;
   type?: string;
+  keywords?: string[];
+  doi?: string;
+  pdf?: string;
+}
+
+export interface ProjectLink {
+  type:
+    | "homepage"
+    | "service"
+    | "code"
+    | "data"
+    | "model"
+    | "github"
+    | "github-org";
+  label: string;
+  url?: string;
+  // For GitHub repos
+  owner?: string;
+  repo?: string;
+  // For GitHub orgs
+  org?: string;
 }
 
 export interface ProjectProps {
@@ -15,19 +36,6 @@ export interface ProjectProps {
   startDate: string;
   endDate: string;
   description?: string[];
-  links?: {
-    type: string;
-    label: string;
-    url: string;
-  }[];
-}
-
-export interface SoftwareProps {
-  title: string;
-  labels?: string[];
-  description?: string[];
-  links?: {
-    label: string;
-    url: string;
-  }[];
+  links?: ProjectLink[];
+  resources?: ProjectLink[];
 }

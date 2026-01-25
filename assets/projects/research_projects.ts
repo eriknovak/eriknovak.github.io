@@ -1,19 +1,53 @@
-const RESEARCH_PROJECTS = [
+import { ProjectProps } from "../../Interfaces";
+
+const RESEARCH_PROJECTS: ProjectProps[] = [
   {
     title: "PREPARE",
     type: "Horizon Europe",
     startDate: "June 2023",
     endDate: "Present",
     description: [
-      "PREPARE aims at advancing rehabilitation care for patients with chronic non-communicable diseases. As rehabilitation is a complex, multifaceted, and highly personal process, we currently lack reliable patient stratification and outcome prediction tools. While big data approaches provide a path forward, existing data sets pose numerous challenges. These challenges can be overcome by combining advances in clinical research, socio-behavioral and public health research, data science, and advanced statistical and AI learning methods."
+      "PREPARE is a Horizon Europe project aimed at improving the lives of people with chronic noncommunicable diseases by developing tools that enable patients and healthcare providers to select optimal therapy strategies. The project transforms rehabilitation through personalized care approaches, combining advances in clinical research, socio-behavioral science, data science, and AI methods to overcome challenges in patient stratification and outcome prediction.",
+      "Our contributions include developing text anonymization tools (Anonipy) and medical terminology extraction methods (Medtermex) to support privacy-preserving health data analysis. In addition, we developed an extraction tool to support medical term extraction and mapping to standardized medical vocabularies.",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
         url: "https://prepare-rehab.eu/",
       },
-    ]
+    ],
+    resources: [
+      {
+        type: "github",
+        label: "Anonipy",
+        owner: "eriknovak",
+        repo: "anonipy",
+      },
+      {
+        type: "github",
+        label: "Medtermex",
+        owner: "E3-JSI",
+        repo: "medtermex",
+      },
+    ],
+  },
+  {
+    title: "European Statistics Awards",
+    type: "Eurostat Contract",
+    startDate: "January 2022",
+    endDate: "December 2025",
+    description: [
+      "The European Statistics Awards is a Eurostat initiative promoting statistical literacy and data-driven thinking among students and young researchers across Europe. The project developed and maintains a competition platform that hosts annual challenges where participants analyze official European statistics to address real-world questions.",
+      "Our contribution involves developing and maintaining the web platform that manages competition organization, team registrations, submissions, and evaluation workflows.",
+    ],
+    links: [
+      {
+        type: "homepage",
+        label: "Competition Platform",
+        url: "https://statistics-awards.eu/",
+      },
+    ],
   },
   {
     title: "SEMTEH",
@@ -21,8 +55,7 @@ const RESEARCH_PROJECTS = [
     startDate: "Mar 2023",
     endDate: "October 2023",
     description: [
-      "The aim of the project is to upgrade the open access semantic resources for the Slovenian language. The upgrade includes (1) the creation of a new, manually reviewed version of the Slovenian WordNet semantic lexicon; (2) (machine) creation of a database with semantic links between the new version of WordNet and the central open access Digital Dictionary Database (DSB) and other open sources with semantic data for the Slovenian language, and (3) upgrading the API (for DSB) to provide online access to selected linked data. Modern technological solutions (deep learning, neural networks) will be used to prepare existing data for manual review and to connect semantic data.",
-      "The project mainly addresses two shortcomings of the current version of the Slovenian WordNet, which arise from the methodology of its production: (1) coverage of the vocabulary or concepts and (2) data reliability. Depending on the results of the feasibility analysis, the goal of the project is full coverage of concepts or synsets (synonym sets) and manual validation of all synonym sets contained in the English WordNet. By linking data between WordNet and the Digital Dictionary, the project also ensures the availability of semantic data about the Slovenian language (DSB) in extensive semantic collections that are used in language technology and artificial intelligence systems (e.g. BabelNet, Wikidata)."
+      "SEMTEH upgraded open-access semantic resources for the Slovenian language by creating a new, manually reviewed version of the Slovenian WordNet semantic lexicon and establishing semantic links to the Digital Dictionary Database (DSB). The project employed deep learning and neural network methods to prepare data for manual review and to connect semantic resources, improving both vocabulary coverage and data reliability of the existing WordNet. The resulting linked data ensures availability of Slovenian semantic resources in major language technology collections such as BabelNet and Wikidata.",
     ],
   },
   {
@@ -31,24 +64,28 @@ const RESEARCH_PROJECTS = [
     startDate: "May 2020",
     endDate: "Feb 2023",
     description: [
-      "The project strives to meet the needs for computational tools and services in the field of language technologies for Slovene, which will be used by research organizations, companies, and the general public.",
-      "The development of language technologies is crucial for language survival in the digital age; these tools are the only way to keep participating in the new ways of communication, work and leisure that will be available in the future.",
+      "RSDO developed modern language technologies for the Slovenian language, creating computational tools and services for research institutions, businesses, and the general public. The project delivered applications for speech recognition, machine transcription, machine translation, and terminology extraction, all released under open licenses through a public portal.",
+      "Our contributions included developing commonsense knowledge resources (SloATOMIC) and language models for Slovenian to ensure the language remains viable in the digital age.",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
         url: "https://www.cjvt.si/rsdo/en/project/",
       },
+    ],
+    resources: [
       {
-        type: "code",
-        label: "SLOmet Atomic 2020 Model",
-        url: "https://www.clarin.si/repository/xmlui/handle/11356/1729",
-      },
-       {
-        type: "data",
+        type: "github",
         label: "SloATOMIC 2020 Dataset",
-        url: "https://www.clarin.si/repository/xmlui/handle/11356/1724",
+        owner: "E3-JSI",
+        repo: "dataset-SloATOMIC-2020",
+      },
+      {
+        type: "github",
+        label: "SloMET ATOMIC 2020 Model",
+        owner: "E3-JSI",
+        repo: "model-SloMET-ATOMIC-2020",
       },
     ],
   },
@@ -58,12 +95,12 @@ const RESEARCH_PROJECTS = [
     startDate: "Sept 2020",
     endDate: "Aug 2024",
     description: [
-      "Our vision is built around ethics values and trust (Responsible AI). These are intimately interwoven with the impact of AI on society, including problems associated with complex dynamic interactions between networked AI systems, the environment, and humans.",
+      "The Humane AI Network is a European initiative advancing human-centered artificial intelligence that meaningfully integrates with human contexts and capabilities. The network coordinates research across multiple work packages covering human-in-the-loop systems, multimodal perception, ethics, and societal applications, while funding over 120 collaborative micro-projects. The initiative bridges AI research with societal impact, examining how artificial intelligence affects diverse communities and addressing ethical dimensions of AI deployment.",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
         url: "https://www.humane-ai.eu/",
       },
     ],
@@ -74,12 +111,12 @@ const RESEARCH_PROJECTS = [
     startDate: "Jun 2020",
     endDate: "Nov 2022",
     description: [
-      "The overall objective of the Curated Multilingual Language Resources for CEF AT Action is to compile curated datasets in seven languages targeted by the consortium (Bulgarian, Croatian, Hungarian, Polish, Romanian, Slovak and Slovenian) in domains of relevance to the European Digital Service Infrastructures (DSIs) with a view to enhance the Automated Translation.",
+      "CURLICAT compiled curated multilingual language datasets in seven Central and Eastern European languages (Bulgarian, Croatian, Hungarian, Polish, Romanian, Slovak, and Slovenian) to enhance the EU's Automated Translation infrastructure. The project targeted domains relevant to European Digital Service Infrastructures, creating high-quality parallel corpora for training machine translation systems. These resources support improved translation capabilities for underrepresented European languages within the CEF digital services.",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
         url: "https://curlicat.eu/",
       },
     ],
@@ -90,14 +127,12 @@ const RESEARCH_PROJECTS = [
     startDate: "Oct 2019",
     endDate: "Dec 2022",
     description: [
-      "The EU-funded INFINITECH project will undertake an innovative effort to boost regulatory compliance and enhance directed investments.",
-      "Leaders in finance and ICT will aim to provide novel Big Data/IoT/AI technologies for managing and querying all kinds of data along with data governance capabilities.",
-      "These disruptive tools will enhance innovations in business sectors and support nine novelty testbeds and sandboxes to offer open application programming interfaces (APIs).",
+      "Infinitech developed novel Big Data, IoT, and AI technologies for managing diverse data types in the finance and insurance sectors, with strong emphasis on regulatory compliance and data governance. The project established nine testbeds and sandboxes offering open APIs for testing and validating innovative fintech solutions. These tools support both regulatory authorities and financial institutions in adopting data-driven decision-making while maintaining compliance.",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
         url: "https://www.infinitech-h2020.eu/",
       },
     ],
@@ -108,15 +143,22 @@ const RESEARCH_PROJECTS = [
     startDate: "Dec 2018",
     endDate: "Jun 2021",
     description: [
-      "EnviroLENS bridges the gap for the utilization of the European Satellite capacities provided by Copernicus for environmental law enforcement and related cross-cutting sectors.",
-      " The project is responding to the demands of the jurisdictional sector for ready-to-access evidence and scenario information on environmental situations.",
-      "The main aim of the project is to deliver Earth observation-based services providing evidence on environmental incidences and legal violations in order to support the evidence data gathering process and to foster data-driven decision-making.",
+      "EnviroLENS bridged the gap between European satellite capabilities provided by Copernicus and environmental law enforcement needs. The project delivered Earth observation-based services providing evidence on environmental incidents and legal violations to support judicial data-gathering processes and foster data-driven decision-making.",
+      "Our contribution included developing the eLENS Miner System for processing and analyzing environmental legal documents and connecting them to geo-locations.",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
         url: "https://envirolens.eu/",
+      },
+    ],
+    resources: [
+      {
+        type: "github",
+        label: "eLENS Miner System",
+        owner: "E3-JSI",
+        repo: "eLENS-miner-system",
       },
     ],
   },
@@ -126,14 +168,12 @@ const RESEARCH_PROJECTS = [
     startDate: "Sep 2017",
     endDate: "Dec 2020",
     description: [
-      "We are leading a breakthrough EU H2020 project, creating a solution that will help users/students find what they need not just in OER repositories, but across all open educational resources on the web.",
-      "This solution will adapt to the user’s needs and learn how to make ongoing customized recommendations and suggestions through a truly interactive and impactful learning experience.",
-      "This new AI-driven platform will deliver OER content from everywhere, for the students’ needs at the right time and place.",
+      "X5GON created an AI-driven platform connecting open educational resources across languages, cultures, and domains to deliver personalized learning experiences. The project developed discovery, recommendation, and translation services that adapt to learner needs, making educational materials accessible regardless of language barriers. The technology formed the basis for UNESCO's International Research Centre on Artificial Intelligence work in education.",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
         url: "https://x5gon.org/",
       },
       {
@@ -147,6 +187,13 @@ const RESEARCH_PROJECTS = [
         url: "https://discovery.x5gon.org/",
       },
     ],
+    resources: [
+      {
+        type: "github-org",
+        label: "X5GON Organization",
+        org: "X5GON",
+      },
+    ],
   },
   {
     title: "European Data Science Academy",
@@ -154,17 +201,12 @@ const RESEARCH_PROJECTS = [
     startDate: "Sep 2015",
     endDate: "Jan 2018",
     description: [
-      "The European Data Science Academy (EDSA) designs curricula for data science training and data science education across the European Union (EU).",
-      "EDSA establishes a virtuous learning production cycle whereby we:",
-      "a) analyse the required sector-specific skillsets for data scientists across the main industrial sectors in Europe;",
-      "b) develop modular and adaptable data science curricula to meet industry expectations; and",
-      "c) deliver data science training supported by multi-platform and multilingual learning resources.",
-      "The curricula and learning resources are continuously evaluated by pedagogical and data science experts during both development and deployment.",
+      "EDSA addressed Europe's data science skills shortage by designing modular curricula for data science training across the European Union. The project analyzed sector-specific skillsets, developed adaptable training programs, and delivered learning resources through multi-platform and multilingual channels. The initiative established a virtuous learning cycle connecting industry demands with educational offerings through an interactive dashboard and aggregated courses portal.",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
         url: "https://edsa-project.eu/",
       },
     ],
@@ -175,19 +217,21 @@ const RESEARCH_PROJECTS = [
     startDate: "Feb 2015",
     endDate: "Jun 2022",
     description: [
-      "QMiner is a data analytics platform for processing of large-scale real-time streams containing structured and unstructured data.",
-      "The platform provides support for preprocessing, feature engineering, data mining and machine learning.",
+      "QMiner is a data analytics platform for processing large-scale real-time streams containing structured and unstructured data. Built as a Node.js addon, it provides support for text mining, full-text search, similarity matching, stream processing, and machine learning on continuous data flows. The platform enables anomaly detection, keyword analysis, and document classification for applications requiring real-time data analysis.",
     ],
     links: [
       {
         type: "homepage",
-        label: "Homepage",
+        label: "Project Homepage",
         url: "https://qminer.github.io/",
       },
+    ],
+    resources: [
       {
-        type: "code",
-        label: "Source Code",
-        url: "https://github.com/qminer/qminer",
+        type: "github",
+        label: "qminer",
+        owner: "qminer",
+        repo: "qminer",
       },
     ],
   },

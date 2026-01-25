@@ -1,0 +1,21 @@
+.container {
+  @apply flex items-center gap-1 text-sm;
+}
+
+.divider {
+  @apply mx-1;
+  color: rgba(var(--color-text-highlight), 0.5);
+}
+
+.button {
+  @apply bg-transparent cursor-pointer;
+  @apply text-highlight hover:text-link;
+  @apply transition;
+  @apply font-medium;
+  border: none;
+
+  &--active {
+    @apply text-link;
+    font-weight: bold;
+  }
+}

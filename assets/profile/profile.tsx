@@ -1,5 +1,5 @@
 const PROFILE: { [key: string]: React.ReactNode } = {
-  title: "dr. Erik Novak",
+  title: "Erik Novak",
   subtitle: "Researcher in Artificial Intelligence",
   description: (
     <>
@@ -8,6 +8,19 @@ const PROFILE: { [key: string]: React.ReactNode } = {
         My research interests are in NLP, more specifically, text documents and
         text stream analysis, (semi-)automatic data exploration, and text data
         visualization.
+      </p>
+      <p>
+        I am employed as a Senior Researcher at the{" "}
+        <a
+          className="transition text-link hover:text-link-hover hover:underline"
+          href="https://ailab.ijs.si/"
+          target="_blank"
+          rel="noopener"
+        >
+          Department for Artificial Intelligence, Jozef Stefan Institute
+        </a>
+        , where I am managing a number of European Research Projects and mentoring
+        junior researchers and students.
       </p>
       <p>I am employed as a Data Scientist at{" "}
         <a
@@ -19,19 +32,6 @@ const PROFILE: { [key: string]: React.ReactNode } = {
           Event Registry
         </a>
         , where I work on applying NLP to news data.
-      </p>
-      <p>
-        I am also employed as a Senior Researcher at the{" "}
-        <a
-          className="transition text-link hover:text-link-hover hover:underline"
-          href="https://ailab.ijs.si/"
-          target="_blank"
-          rel="noopener"
-        >
-          Department for Artificial Intelligence, Jozef Stefan Institute
-        </a>
-        , where I am managing a number of European Research Projects and mentoring
-        junior researchers and students.
       </p>
       <p>
         Furthermore, I am a Teaching Assistant at the{" "}

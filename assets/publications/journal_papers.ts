@@ -1,4 +1,6 @@
-const JOURNAL_PAPERS = [
+import { PublicationProps } from "../../Interfaces";
+
+const JOURNAL_PAPERS: PublicationProps[] = [
   {
     authors: "L. Dolinar, E. Calcina, E. Novak",
     title:
@@ -7,7 +9,7 @@ const JOURNAL_PAPERS = [
     reference: "Informatica",
     location: null,
     year: 2025,
-    presentation: null,
+    doi: "10.31449/inf.v49i27.7763",
   },
   {
     authors: "K. Buza, E. Novak",
@@ -17,17 +19,18 @@ const JOURNAL_PAPERS = [
     reference: "Acta Univ. Sapientiae, Informatica",
     location: null,
     year: 2024,
-    presentation: null,
+    doi: "10.47745/ausi-2024-0001",
   },
   {
-    authors: "T. Zdolšek Draksler, A. Bouman, A. Guček, E. Novak, P. Burger, F. Colin, T. Kleefstra",
+    authors:
+      "T. Zdolšek Draksler, A. Bouman, A. Guček, E. Novak, P. Burger, F. Colin, T. Kleefstra",
     title:
       "Exploring Kleefstra Syndrome Cohort Phenotype Characteristics: Prevalence Insights from Caregiver-Reported Outcomes",
     url: "https://www.sciencedirect.com/science/article/pii/S1769721224000661",
     reference: "European Journal of Medical Genetics",
     location: null,
     year: 2024,
-    presentation: null,
+    doi: "10.1016/j.ejmg.2024.104923",
   },
   {
     authors: "E. Novak, L. Bizjak, D. Mladenić, and M. Grobelnik",
@@ -37,7 +40,7 @@ const JOURNAL_PAPERS = [
     reference: "IEEE Access",
     location: null,
     year: 2024,
-    presentation: null,
+    doi: "10.1109/ACCESS.2024.3426082",
   },
   {
     authors: "E. Novak, L. Bizjak, D. Mladenić, and M. Grobelnik",
@@ -47,7 +50,7 @@ const JOURNAL_PAPERS = [
     reference: "Knowledge-Based Systems",
     location: null,
     year: 2022,
-    presentation: null,
+    doi: "10.1016/j.knosys.2022.108545",
   },
   {
     authors: "K. Kenda, B. Kažič, E. Novak, D. and Mladenić",
@@ -56,7 +59,7 @@ const JOURNAL_PAPERS = [
     reference: "Sensors, 19(8)",
     location: null,
     year: 2019,
-    presentation: null,
+    doi: "10.3390/s19081955",
   },
 ];
 

@@ -3,6 +3,9 @@ import type { AppProps } from "next/app";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+// Initialize i18n
+import "../utils/i18n";
+
 import "../styles/globals.scss";
 import "../styles/index.scss";
 

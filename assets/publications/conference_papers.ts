@@ -1,12 +1,16 @@
-const CONFERENCE_PAPERS = [
+import { PublicationProps } from "../../Interfaces";
+
+const CONFERENCE_PAPERS: PublicationProps[] = [
   {
     authors: "E. Calcina, E. Novak, D. Mladenić",
-    title: "Semantic Prompting for Large Language Models in Biomedical Named Entity Recognition",
+    title:
+      "Semantic Prompting for Large Language Models in Biomedical Named Entity Recognition",
     url: "https://aile3.ijs.si/dunja/SiKDD2025/Papers/IS2024_-_SIKDD_2025_paper_3.pdf",
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2025,
-    presentation: null,
+    keywords: ["NER", "LLM", "biomedical", "NLP"],
+    pdf: "https://aile3.ijs.si/dunja/SiKDD2025/Papers/IS2024_-_SIKDD_2025_paper_3.pdf",
   },
   {
     authors: "L. Dolinar, E. Calcina, E. Novak",
@@ -15,7 +19,8 @@ const CONFERENCE_PAPERS = [
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2024,
-    presentation: null,
+    keywords: ["synthetic data", "medical data", "NLP"],
+    pdf: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_4.pdf",
   },
   {
     authors: "M. D. Longar, E. Novak, M. Grobelnik",
@@ -24,8 +29,8 @@ const CONFERENCE_PAPERS = [
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2024,
-    presentation: 
-      "https://videolectures.net/videos/sikdd2024_ljubljana_longar_creating_local",
+    keywords: ["LLM", "world models", "knowledge representation"],
+    pdf: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_22.pdf",
   },
   {
     authors: "K. Gillani, E. Novak, K. Kenda, D. Mladenić",
@@ -34,8 +39,8 @@ const CONFERENCE_PAPERS = [
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2024,
-    presentation: 
-      "https://videolectures.net/videos/sikdd2024_ljubljana_gillani_knowledge_graph",
+    keywords: ["knowledge graphs", "LLM", "information extraction", "NLP"],
+    pdf: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_15.pdf",
   },
   {
     authors: "A. Mladenić Grobelnik, E. Novak, D. Mladenić, M. Grobelnik",
@@ -44,7 +49,8 @@ const CONFERENCE_PAPERS = [
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2022,
-    presentation: "http://videolectures.net/sikdd2022_grobelnik_novak_mladenic/",
+    keywords: ["commonsense", "knowledge base", "Slovenian", "NLP"],
+    pdf: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_5674.pdf",
   },
   {
     authors: "E. Calcina, E. Novak",
@@ -53,16 +59,19 @@ const CONFERENCE_PAPERS = [
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2022,
-    presentation: "http://videolectures.net/sikdd2022_calcina_novak/",
+    keywords: ["topic modeling", "music", "similarity", "NLP"],
+    pdf: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_5269.pdf",
   },
   {
     authors: "S. Korenič Tratnik, E. Novak",
-    title: "Automatically Generating Text from Film Material - A Comparison of Three Models",
+    title:
+      "Automatically Generating Text from Film Material - A Comparison of Three Models",
     url: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_4772.pdf",
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2022,
-    presentation: null,
+    keywords: ["text generation", "video captioning", "multimodal", "NLP"],
+    pdf: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_4772.pdf",
   },
   {
     authors: "E. Novak",
@@ -71,17 +80,19 @@ const CONFERENCE_PAPERS = [
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2021,
-    presentation: "http://videolectures.net/sikdd2021_novak_news_stream/",
+    keywords: ["news clustering", "multilingual", "language models", "NLP"],
+    pdf: "https://ailab.ijs.si/dunja/SiKDD2021/Papers/Novak.pdf",
   },
   {
     authors: "A. Saliha Sunar, E. Novak, J. Urbančič, D. Mladenić",
-    title: "Users’ Learning Pathways on Cross-site Open Educational Resources",
+    title: "Users' Learning Pathways on Cross-site Open Educational Resources",
     url: "https://www.scitepress.org/Link.aspx?doi=10.5220/0009391600840095",
     reference:
       "Proceedings of the 12th International Conference on Computer Supported Education - Volume 2: CSEDU",
     location: null,
     year: 2020,
-    presentation: null,
+    keywords: ["education", "learning analytics", "OER", "user behavior"],
+    doi: "10.5220/0009391600840095",
   },
   {
     authors: "M. B. Massri, S. Brezec, E. Novak, K. Kenda",
@@ -90,8 +101,8 @@ const CONFERENCE_PAPERS = [
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2019,
-    presentation:
-      "http://videolectures.net/sikdd2019_massri_legal_domain_documents/",
+    keywords: ["legal NLP", "semantic analysis", "document analysis", "NLP"],
+    pdf: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Besher_Final.pdf",
   },
   {
     authors: "S. Kralj, Ž. Urbančič, E. Novak, K. Kenda",
@@ -100,8 +111,8 @@ const CONFERENCE_PAPERS = [
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2019,
-    presentation:
-      "http://videolectures.net/sikdd2019_urbancic_environmental_legal_documents/",
+    keywords: ["document embeddings", "legal NLP", "environmental", "NLP"],
+    pdf: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Kralj_Urbancic_Final.pdf",
   },
   {
     authors: "A. Saliha Sunar, E. Novak, J. Urbančič, D. Mladenić",
@@ -111,8 +122,8 @@ const CONFERENCE_PAPERS = [
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2019,
-    presentation:
-      "http://videolectures.net/sikdd2019_sunar_preferences_of_users/",
+    keywords: ["recommender systems", "OER", "user preferences", "education"],
+    pdf: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Sunar_Final.pdf",
   },
   {
     authors: "E. Novak, J. Urbančič, M. Jenko",
@@ -121,8 +132,8 @@ const CONFERENCE_PAPERS = [
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2018,
-    presentation:
-      "http://videolectures.net/sikdd2018_novak_natural_language_processing/",
+    keywords: ["multimodal", "data preparation", "NLP"],
+    pdf: "http://ailab.ijs.si/dunja/SiKDD2018/Papers/NovakErik.pdf",
   },
   {
     authors: "E. Novak, I. Novalija",
@@ -131,7 +142,8 @@ const CONFERENCE_PAPERS = [
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2017,
-    presentation: "http://videolectures.net/sikdd2017_novak_skill_demand/",
+    keywords: ["skills", "labor market", "matching", "data analysis"],
+    pdf: "http://ailab.ijs.si/dunja/SiKDD2017/Papers/Novak_Skill.pdf",
   },
   {
     authors: "E. Novak, I. Novalija",
@@ -140,7 +152,8 @@ const CONFERENCE_PAPERS = [
     reference: "Proceedings of the Slovenian KDD conference",
     location: "Ljubljana",
     year: 2016,
-    presentation: "http://videolectures.net/sikdd2016_novak_videoLectures/",
+    keywords: ["data visualization", "video lectures", "statistical analysis"],
+    pdf: "http://ailab.ijs.si/dunja/SiKDD2016/Papers/Novak_VLN.pdf",
   },
 ];
 

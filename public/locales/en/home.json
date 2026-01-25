@@ -1,0 +1,15 @@
+{
+  "title": "Erik Novak",
+  "subtitle": "Researcher in Artificial Intelligence",
+  "activeProjects": "Active Projects",
+  "latestPublications": "Latest Publications",
+  "programmingSkills": "Programming Skills",
+  "seeMore": "(see more)",
+  "profile": {
+    "greeting": "Hi!",
+    "bio1": "I am a researcher in Artificial Intelligence. My research interests are in NLP, more specifically, text documents and text stream analysis, (semi-)automatic data exploration, and text data visualization.",
+    "bio2": "I am employed as a Senior Researcher at the <link1>Department for Artificial Intelligence, Jozef Stefan Institute</link1>, where I am managing a number of European Research Projects and mentoring junior researchers and students.",
+    "bio3": "I am employed as a Data Scientist at <link2>Event Registry</link2>, where I work on applying NLP to news data.",
+    "bio4": "Furthermore, I am a Teaching Assistant at the <link3>Jozef Stefan International Postgraduate School</link3>, where I assist at the AI for Data Analysis course."
+  }
+}

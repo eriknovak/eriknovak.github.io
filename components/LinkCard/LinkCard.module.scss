@@ -1,0 +1,42 @@
+.card {
+  @apply flex items-center gap-3 p-3 rounded-lg;
+  @apply bg-base-highlight;
+  @apply transition-all duration-200;
+
+  &:hover {
+    @apply shadow-md;
+    transform: translateY(-1px);
+  }
+}
+
+.iconWrapper {
+  @apply flex items-center justify-center;
+  @apply w-10 h-10 rounded-lg;
+  @apply flex-shrink-0;
+  background-color: rgba(var(--color-text-link), 0.1);
+}
+
+.icon {
+  font-size: 1.125rem;
+  color: var(--color-text-link);
+}
+
+.content {
+  @apply flex flex-col flex-1 min-w-0;
+}
+
+.label {
+  @apply font-medium text-sm truncate;
+  color: var(--color-text);
+}
+
+.url {
+  @apply text-xs truncate;
+  @apply text-highlight;
+}
+
+.external {
+  @apply text-xs flex-shrink-0;
+  @apply text-highlight;
+  @apply opacity-50;
+}

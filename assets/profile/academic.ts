@@ -14,11 +14,11 @@ const ACADEMIC_PROFILES = [
   //   url: "http://videolectures.net/erik_novak/",
   //   logo: "faPlayCircle",
   // },
-  // {
-  //   label: "GitHub",
-  //   url: "https://github.com/eriknovak",
-  //   logo: "faGithub",
-  // }
+  {
+    label: "GitHub",
+    url: "https://github.com/eriknovak",
+    logo: "faGithub",
+  }
 ];
 
 export default ACADEMIC_PROFILES;

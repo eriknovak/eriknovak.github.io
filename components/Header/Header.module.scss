@@ -16,8 +16,8 @@
   @apply flex flex-row gap-8;
 }
 
-.toggle {
-  @apply flex items-center;
+.controls {
+  @apply flex items-center gap-4;
 }
 
 .link {

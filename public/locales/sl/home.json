@@ -1,0 +1,15 @@
+{
+  "title": "Erik Novak",
+  "subtitle": "Raziskovalec na področju umetne inteligence",
+  "activeProjects": "Aktivni Projekti",
+  "latestPublications": "Najnovejše Publikacije",
+  "programmingSkills": "Programerska Znanja",
+  "seeMore": "(več)",
+  "profile": {
+    "greeting": "Pozdravljeni!",
+    "bio1": "Sem raziskovalec na področju umetne inteligence. Moji raziskovalni interesi so na področju NLP, natančneje analiza besedilnih dokumentov in besedilnih tokov, (pol)avtomatsko raziskovanje podatkov ter vizualizacija besedilnih podatkov.",
+    "bio2": "Zaposlen sem kot višji raziskovalec na <link1>Odseku za umetno inteligenco, Inštitut Jožef Stefan</link1>, kjer vodim več evropskih raziskovalnih projektov in mentoriram mlajše raziskovalce ter študente.",
+    "bio3": "Zaposlen sem kot podatkovni znanstvenik v podjetju <link2>Event Registry</link2>, kjer se ukvarjam z uporabo NLP na novičarskih podatkih.",
+    "bio4": "Poleg tega sem asistent na <link3>Mednarodni podiplomski šoli Jožefa Stefana</link3>, kjer pomagam pri predmetu UI za analizo podatkov."
+  }
+}

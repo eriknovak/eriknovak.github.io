@@ -1,16 +1,80 @@
 .container {
   @apply inline-block;
+  border-left: 3px solid transparent;
 }
 
 .publication--journal {
-  @apply bg-base-highlight p-4 block rounded;
+  @apply pl-4 block;
+  border-left: 3px solid #14b8a6;
+}
+
+.publication--conference {
+  @apply pl-4 block;
+  border-left: 3px solid transparent;
+}
+
+.content {
+  @apply block mb-3;
 }
 
 .link {
   @apply text-link hover:text-link-hover hover:underline;
   @apply transition;
-  &.link--video {
-    @apply inline-block;
+}
+
+.actions {
+  @apply flex flex-wrap gap-2 items-center mt-2;
+}
+
+.badge {
+  @apply inline-flex items-center text-xs font-semibold rounded;
+  @apply transition;
+  padding: 0.25rem 0.5rem;
+
+  &--doi {
+    background-color: #2563eb;
+    color: white;
+
+    &:hover {
+      background-color: #1d4ed8;
+    }
+  }
+}
+
+.actionLink {
+  @apply inline-flex items-center gap-1 text-sm rounded;
+  @apply transition;
+  padding: 0.25rem 0.5rem;
+
+  &--pdf {
+    color: #dc2626;
+
+    &:hover {
+      color: #b91c1c;
+      background-color: rgba(220, 38, 38, 0.1);
+    }
+  }
+
+  &--video {
     @apply text-highlight hover:text-highlight-hover;
+  }
+}
+
+.actionButton {
+  @apply inline-flex items-center gap-1 text-sm rounded;
+  @apply bg-transparent cursor-pointer;
+  @apply transition;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid currentColor;
+  color: rgba(var(--color-text-highlight), 1);
+
+  &:hover {
+    color: rgba(var(--color-text-base), 1);
+    background-color: rgba(var(--color-text-highlight), 0.1);
+  }
+
+  &--copied {
+    color: #16a34a;
+    border-color: #16a34a;
   }
 }
