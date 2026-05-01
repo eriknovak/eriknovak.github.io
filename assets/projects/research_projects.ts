@@ -2,6 +2,24 @@ import { ProjectProps } from "../../Interfaces";
 
 const RESEARCH_PROJECTS: ProjectProps[] = [
   {
+    "title": "SLM4IE",
+    "type": "ARIS Postdoctoral Project",
+    "startDate": "March 2026",
+    "endDate": "Present",
+    "description": [
+      "SLM4IE is an ARIS-funded postdoctoral research project focused on developing computationally efficient Small Language Models (SLMs) for zero-shot information extraction in European languages. The project addresses key limitations of current large language models — high computational costs for on-premise deployment, training data gaps for sensitive domains and low-resource languages, and inconsistent outputs in information extraction tasks.",
+      "The project develops SLMs optimized for commercial GPU hardware (targeting <1B parameters and <8GB VRAM), creates multilingual benchmark datasets across sensitive domains such as medicine and science, and conducts systematic evaluations against established metrics. All models, datasets, training code, and documentation will be publicly released, when possible."
+    ],
+    "links": [
+      {
+        "type": "homepage",
+        "label": "Project Homepage",
+        "url": "https://www.ijs.si/ijsw/ARRSProjekti/2026?action=AttachFile&do=get&target=Z2-70067.pdf"
+      }
+    ],
+    "resources": []
+  },
+  {
     title: "PREPARE",
     type: "Horizon Europe",
     startDate: "June 2023",
