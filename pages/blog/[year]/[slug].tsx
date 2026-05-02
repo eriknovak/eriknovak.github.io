@@ -1,3 +1,4 @@
+import Link from "../../../components/Link";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote } from "next-mdx-remote";
 
@@ -12,12 +13,18 @@ import NewThought from "../../../components/Blog/NewThought";
 import SideTable from "../../../components/Blog/SideTable";
 import References from "../../../components/Blog/References";
 
-import { readAllPosts, getPostRaw } from "../../../utils/blog/posts";
+import {
+  readAllPosts,
+  getPostRaw,
+  getPostNeighbors,
+} from "../../../utils/blog/posts";
 import { serializeMdx } from "../../../utils/blog/mdx";
-import type { BlogPostFull } from "../../../Interfaces";
+import type { BlogPostFull, BlogPostMeta } from "../../../Interfaces";
 
 interface PageProps {
   post: BlogPostFull;
+  prev: BlogPostMeta | null;
+  next: BlogPostMeta | null;
 }
 
 const mdxComponents = {
@@ -31,7 +38,7 @@ const mdxComponents = {
   References,
 };
 
-export default function BlogPostPage({ post }: PageProps) {
+export default function BlogPostPage({ post, prev, next }: PageProps) {
   return (
     <>
       <SEO
@@ -43,6 +50,28 @@ export default function BlogPostPage({ post }: PageProps) {
       <BlogPost meta={post}>
         <MDXRemote {...post.mdxSource} components={mdxComponents} />
       </BlogPost>
+      <nav className="grid grid-cols-2 gap-4 mt-12 max-w-3xl mx-auto">
+        <div>
+          {prev && (
+            <Link href={`/blog/${prev.year}/${prev.slug}/`} legacyBehavior>
+              <a className="block text-link hover:text-link-hover">
+                <span className="text-sm text-highlight block">← Previous</span>
+                <span>{prev.title}</span>
+              </a>
+            </Link>
+          )}
+        </div>
+        <div className="text-right">
+          {next && (
+            <Link href={`/blog/${next.year}/${next.slug}/`} legacyBehavior>
+              <a className="block text-link hover:text-link-hover">
+                <span className="text-sm text-highlight block">Next →</span>
+                <span>{next.title}</span>
+              </a>
+            </Link>
+          )}
+        </div>
+      </nav>
     </>
   );
 }
@@ -63,5 +92,6 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   const mdxSource = await serializeMdx(raw.content, {
     bibliography: raw.meta.bibliography,
   });
-  return { props: { post: { ...raw.meta, mdxSource } } };
+  const { prev, next } = getPostNeighbors(year, slug);
+  return { props: { post: { ...raw.meta, mdxSource }, prev, next } };
 };
