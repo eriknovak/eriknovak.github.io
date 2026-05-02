@@ -24,7 +24,7 @@ Add a `/blog` section to the existing Next.js homepage. Posts are authored as MD
 
 ## Architecture overview
 
-MDX content lives in `content/blog/`. At build time, `lib/blog/posts.ts` reads every `.mdx` file, parses frontmatter with `gray-matter`, filters drafts in production, sorts reverse-chronologically, and computes reading time. Template pages under `pages/blog/` use `getStaticPaths` + `getStaticProps` to serialize the relevant MDX with `next-mdx-remote/serialize` and render it through `<MDXRemote>` with a custom component map providing the Tufte primitives.
+MDX content lives in `content/blog/`. At build time, `utils/blog/posts.ts` reads every `.mdx` file, parses frontmatter with `gray-matter`, filters drafts in production, sorts reverse-chronologically, and computes reading time. Template pages under `pages/blog/` use `getStaticPaths` + `getStaticProps` to serialize the relevant MDX with `next-mdx-remote/serialize` and render it through `<MDXRemote>` with a custom component map providing the Tufte primitives.
 
 **Choice rationale:** `next-mdx-remote` over `@next/mdx` (rigid layout, no draft filtering) and over Contentlayer/Velite (heavier abstraction, tooling-stability risk for a small site). `next-mdx-remote` matches Pages-Router + static-export and keeps full control of the file layout, listings, RSS, and tag pages.
 
@@ -49,12 +49,13 @@ components/
     SideTable/
     TagPill/
 
-lib/
+utils/
   blog/
     posts.ts        # readAllPosts(), getPost(slug), filterDrafts(), sortByDate()
     mdx.ts          # MDX serialization config (remark/rehype plugins)
     rss.ts          # RSS feed generation
     citations.ts    # .bib parsing helper for rehype-citation
+  # (utils/ also already contains bibtex.ts, i18n.ts, sort.js, useTheme.ts)
 
 pages/
   blog/
@@ -64,7 +65,6 @@ pages/
     tags/
       index.tsx              # all tags
       [tag].tsx              # posts filtered by tag
-    rss.xml.tsx              # writes static rss.xml at build
 
 styles/
   blog/
@@ -82,7 +82,7 @@ The filename prefix `YYYY-MM-DD-` is a sortable convention but not used in URLs 
 | `/blog/[year]/[slug]/` | `pages/blog/[year]/[slug].tsx` | `getStaticPaths` + `getStaticProps` per post |
 | `/blog/tags/` | `pages/blog/tags/index.tsx` | `getStaticProps` aggregates tag counts |
 | `/blog/tags/[tag]/` | `pages/blog/tags/[tag].tsx` | `getStaticPaths` over unique tags |
-| `/blog/rss.xml` | `pages/blog/rss.xml.tsx` | Page returns `null`; `getStaticProps` writes `public/blog/rss.xml` |
+| `/blog/rss.xml` | `public/blog/rss.xml` (static file) | Generated at build by `writeRssFeed()` invoked from the blog index `getStaticProps` |
 
 `getStaticPaths` always returns `fallback: false`. Drafts are filtered out of the path list in production builds, so they don't get a route.
 
@@ -131,7 +131,7 @@ Drafts are excluded from listings, tag pages, RSS, prev/next, and the static pat
 - Tufte primitives: `Sidenote`, `MarginNote`, `MarginFigure`, `FullWidthFigure`, `Epigraph`, `NewThought`, `SideTable`, `References`.
 - Element overrides: `h1`, `h2`, `h3`, `p`, `blockquote`, `table`, `code`, `pre`, `a`, `img` — to apply Tufte typography automatically.
 
-**Reading time:** computed in `lib/blog/posts.ts` via the `reading-time` package on the raw MDX source; attached to post metadata, surfaced as a small "N min read" badge.
+**Reading time:** computed in `utils/blog/posts.ts` via the `reading-time` package on the raw MDX source; attached to post metadata, surfaced as a small "N min read" badge.
 
 **Static-export safety:** all plugins run at build time on Node — no runtime browser execution required. Confirmed compatible with `output: 'export'`.
 
@@ -209,7 +209,7 @@ All build-time only except `next-mdx-remote` runtime + KaTeX CSS.
 
 ## Implementation phases
 
-**Phase 1 — Plumbing.** Install deps; create `content/blog/` with one sample post + `references.bib`; build `lib/blog/posts.ts` and `lib/blog/mdx.ts`; verify `readAllPosts()` output.
+**Phase 1 — Plumbing.** Install deps; create `content/blog/` with one sample post + `references.bib`; build `utils/blog/posts.ts` and `utils/blog/mdx.ts`; verify `readAllPosts()` output.
 
 **Phase 2 — Single post page.** `pages/blog/[year]/[slug].tsx` rendering with `<MDXRemote>` (no Tufte styling yet). Verify frontmatter, math, code highlighting, citations resolve.
 
@@ -217,7 +217,7 @@ All build-time only except `next-mdx-remote` runtime + KaTeX CSS.
 
 **Phase 4 — Listing pages.** `/blog/`, `/blog/tags/`, `/blog/tags/[tag]/`, prev/next on posts.
 
-**Phase 5 — RSS and nav integration.** `pages/blog/rss.xml.tsx`; header nav entry; i18n locale keys; active-link match for deep routes; SEO meta.
+**Phase 5 — RSS and nav integration.** RSS file written into `public/blog/rss.xml` from the blog index `getStaticProps`; header nav entry; i18n locale keys; active-link match for deep routes; SEO meta.
 
 **Phase 6 — Polish.** Full `npm run build` validation; Lighthouse pass on a sample post; "writing a blog post" section in `CLAUDE.md`.
 
@@ -229,4 +229,4 @@ None.
 
 - **`rehype-citation` maturity.** Smaller package than the others. If it has issues, fallback is to use plain markdown footnotes for citations and skip the BibTeX integration in Phase 1, treating citations as Phase 6 polish.
 - **Mobile sidenote ordering.** Rendering sidenotes "after the paragraph" requires the component to know its containing `<p>`. The simplest implementation is to break the paragraph at the `<Sidenote>` boundary on mobile via CSS `display: block` — this works because the `<aside>` is already a sibling in the DOM. Verify visually in Phase 3.
-- **Static export + `rss.xml.tsx` pattern.** The "page that returns null and writes a file from `getStaticProps`" trick depends on `getStaticProps` running before the static export step. Confirmed working in Next.js 16 but worth a quick smoke test in Phase 5.
+- **Static export + RSS write.** RSS is written from the blog index's `getStaticProps`, which always runs at build. We avoid the `pages/blog/rss.xml.tsx` "page that returns null" pattern because it conflicts with `trailingSlash: true` (the route would emit `frontend/blog/rss.xml/index.html`, colliding with the static `public/blog/rss.xml` file copied into `frontend/`).
