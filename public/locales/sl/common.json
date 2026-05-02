@@ -3,12 +3,7 @@
     "home": "Domov",
     "publications": "Publikacije",
     "projects": "Projekti",
-    "blog": "Blog",
-    "collaborate": "Sodelovanje"
-  },
-  "language": {
-    "en": "Angleščina",
-    "sl": "Slovenščina"
+    "blog": "Blog"
   },
   "notFound": {
     "title": "Stran ni najdena",

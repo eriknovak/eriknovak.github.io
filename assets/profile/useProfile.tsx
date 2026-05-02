@@ -1,24 +1,85 @@
-import { useTranslation, Trans } from "react-i18next";
+import { useEffect, useState } from "react";
+import { Trans, useTranslation } from "react-i18next";
 
 interface ProfileData {
-  title: string;
-  subtitle: string;
   description: React.ReactNode;
   ready: boolean;
 }
 
-const linkClass = "transition text-link hover:text-link-hover hover:underline";
+const linkStyle: React.CSSProperties = {
+  borderBottom: "1px solid var(--ed-fg)",
+  color: "var(--ed-fg)",
+  textDecoration: "none",
+};
+
+const linkClass = "underline-offset-4 hover:underline";
+
+const FallbackDescription = () => (
+  <>
+    <p style={{ margin: "0 0 16px" }}>
+      I work on natural language processing — text-document and text-stream
+      analysis, semi-automatic data exploration, and visualization of text data.
+    </p>
+    <p style={{ margin: 0 }}>
+      Senior Researcher at the{" "}
+      <a
+        className={linkClass}
+        href="https://ailab.ijs.si/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={linkStyle}
+      >
+        Department for Artificial Intelligence
+      </a>
+      , Jožef Stefan Institute. Data Scientist at{" "}
+      <a
+        className={linkClass}
+        href="https://eventregistry.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={linkStyle}
+      >
+        Event Registry
+      </a>
+      . Teaching assistant at the{" "}
+      <a
+        className={linkClass}
+        href="https://www.mps.si/en/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={linkStyle}
+      >
+        IPS PhD School
+      </a>
+      .
+    </p>
+  </>
+);
 
 export function useProfile(): ProfileData {
   const { t, ready } = useTranslation("home");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Until the client has hydrated we MUST render the same content the
+  // server emitted (English), otherwise i18next picks the user's stored
+  // locale on first client render and React reports a hydration mismatch.
+  if (!mounted || !ready) {
+    return {
+      description: <FallbackDescription />,
+      ready: false,
+    };
+  }
 
   const description = (
     <>
-      <p>{t("profile.greeting")}</p>
-      <p>{t("profile.bio1")}</p>
-      <p>
+      <p style={{ margin: "0 0 16px" }}>{t("bio.body1")}</p>
+      <p style={{ margin: 0 }}>
         <Trans
-          i18nKey="profile.bio2"
+          i18nKey="bio.body2"
           ns="home"
           components={{
             link1: (
@@ -26,39 +87,26 @@ export function useProfile(): ProfileData {
                 className={linkClass}
                 href="https://ailab.ijs.si/"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
+                style={linkStyle}
               />
             ),
-          }}
-        />
-      </p>
-      <p>
-        <Trans
-          i18nKey="profile.bio3"
-          ns="home"
-          components={{
             link2: (
               <a
                 className={linkClass}
                 href="https://eventregistry.org/"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
+                style={linkStyle}
               />
             ),
-          }}
-        />
-      </p>
-      <p>
-        <Trans
-          i18nKey="profile.bio4"
-          ns="home"
-          components={{
             link3: (
               <a
                 className={linkClass}
                 href="https://www.mps.si/en/"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
+                style={linkStyle}
               />
             ),
           }}
@@ -68,9 +116,7 @@ export function useProfile(): ProfileData {
   );
 
   return {
-    title: t("title"),
-    subtitle: t("subtitle"),
     description,
-    ready,
+    ready: true,
   };
 }

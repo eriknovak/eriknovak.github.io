@@ -1,9 +1,14 @@
 {
-  "title": "Projekti",
-  "subtitle": "Raziskovalni in razvojni projekti",
-  "activeProjects": "Aktivni Projekti",
-  "currentInitiatives": "Trenutne raziskovalne pobude",
-  "pastProjects": "Pretekli Projekti",
-  "completedWork": "Zaključeno raziskovalno delo",
-  "linksAndResources": "Povezave in Viri"
+  "kicker": "Raziskave · 2015 → danes",
+  "h1": "Projekti",
+  "lead": "Leta evropskih raziskovalnih projektov na področju jezikovnih tehnologij, razvoju platform in raziskav jezikovnih modelov.",
+  "activeProjects": "Aktivni",
+  "activeMeta": "V teku",
+  "pastProjects": "Pretekli",
+  "pastMeta": "Zaključeni",
+  "linkLabels": {
+    "site": "SPLETNA STRAN",
+    "code": "KODA",
+    "resource": "VIR"
+  }
 }

@@ -33,7 +33,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_22.pdf",
   },
   {
-    authors: "K. Gillani, E. Novak, K. Kenda, D. Mladenić",
+    authors: "K. Gillani, K. Kenda, E. Novak, D. Mladenić",
     title: "Knowledge graph Extraction from Textual data using LLM",
     url: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_15.pdf",
     reference: "Proceedings of the Slovenian KDD conference",

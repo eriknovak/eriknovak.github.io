@@ -1,9 +1,14 @@
 {
-  "title": "Projects",
-  "subtitle": "Research and development projects",
-  "activeProjects": "Active Projects",
-  "currentInitiatives": "Current research initiatives",
-  "pastProjects": "Past Projects",
-  "completedWork": "Completed research work",
-  "linksAndResources": "Links and Resources"
+  "kicker": "Research · 2015 → present",
+  "h1": "Projects",
+  "lead": "Years of European research projects on language technology, platform development, and language model research.",
+  "activeProjects": "Active",
+  "activeMeta": "Currently running",
+  "pastProjects": "Past",
+  "pastMeta": "Completed",
+  "linkLabels": {
+    "site": "WEBSITE",
+    "code": "CODE",
+    "resource": "RESOURCE"
+  }
 }

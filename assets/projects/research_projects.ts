@@ -2,27 +2,27 @@ import { ProjectProps } from "../../Interfaces";
 
 const RESEARCH_PROJECTS: ProjectProps[] = [
   {
-    "title": "SLM4IE",
-    "type": "ARIS Postdoctoral Project",
-    "startDate": "March 2026",
-    "endDate": "Present",
-    "description": [
+    title: "SLM4IE",
+    type: "ARIS Postdoctoral",
+    startDate: "Mar 2026",
+    endDate: "Present",
+    description: [
       "SLM4IE is an ARIS-funded postdoctoral research project focused on developing computationally efficient Small Language Models (SLMs) for zero-shot information extraction in European languages. The project addresses key limitations of current large language models — high computational costs for on-premise deployment, training data gaps for sensitive domains and low-resource languages, and inconsistent outputs in information extraction tasks.",
-      "The project develops SLMs optimized for commercial GPU hardware (targeting <1B parameters and <8GB VRAM), creates multilingual benchmark datasets across sensitive domains such as medicine and science, and conducts systematic evaluations against established metrics. All models, datasets, training code, and documentation will be publicly released, when possible."
+      "The project develops SLMs optimized for commercial GPU hardware (targeting <1B parameters and <8GB VRAM), creates multilingual benchmark datasets across sensitive domains such as medicine and science, and conducts systematic evaluations against established metrics. All models, datasets, training code, and documentation will be publicly released, when possible.",
     ],
-    "links": [
+    links: [
       {
-        "type": "homepage",
-        "label": "Project Homepage",
-        "url": "https://www.ijs.si/ijsw/ARRSProjekti/2026?action=AttachFile&do=get&target=Z2-70067.pdf"
-      }
+        type: "homepage",
+        label: "Project Homepage",
+        url: "https://www.ijs.si/ijsw/ARRSProjekti/2026?action=AttachFile&do=get&target=Z2-70067.pdf",
+      },
     ],
-    "resources": []
+    resources: [],
   },
   {
     title: "PREPARE",
     type: "Horizon Europe",
-    startDate: "June 2023",
+    startDate: "Jun 2023",
     endDate: "Present",
     description: [
       "PREPARE is a Horizon Europe project aimed at improving the lives of people with chronic noncommunicable diseases by developing tools that enable patients and healthcare providers to select optimal therapy strategies. The project transforms rehabilitation through personalized care approaches, combining advances in clinical research, socio-behavioral science, data science, and AI methods to overcome challenges in patient stratification and outcome prediction.",
@@ -53,8 +53,8 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
   {
     title: "European Statistics Awards",
     type: "Eurostat Contract",
-    startDate: "January 2022",
-    endDate: "December 2025",
+    startDate: "Jan 2022",
+    endDate: "Dec 2025",
     description: [
       "The European Statistics Awards is a Eurostat initiative promoting statistical literacy and data-driven thinking among students and young researchers across Europe. The project developed and maintains a competition platform that hosts annual challenges where participants analyze official European statistics to address real-world questions.",
       "Our contribution involves developing and maintaining the web platform that manages competition organization, team registrations, submissions, and evaluation workflows.",
@@ -71,7 +71,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     title: "SEMTEH",
     type: "Slovenian Ministry for Culture",
     startDate: "Mar 2023",
-    endDate: "October 2023",
+    endDate: "Oct 2023",
     description: [
       "SEMTEH upgraded open-access semantic resources for the Slovenian language by creating a new, manually reviewed version of the Slovenian WordNet semantic lexicon and establishing semantic links to the Digital Dictionary Database (DSB). The project employed deep learning and neural network methods to prepare data for manual review and to connect semantic resources, improving both vocabulary coverage and data reliability of the existing WordNet. The resulting linked data ensures availability of Slovenian semantic resources in major language technology collections such as BabelNet and Wikidata.",
     ],

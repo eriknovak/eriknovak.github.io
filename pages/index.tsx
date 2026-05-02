@@ -1,56 +1,88 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-// import components
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowUpRightFromSquare,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import cn from "classnames";
+
 import Link from "../components/Link";
+import Project from "../components/Project";
 import Publication from "../components/Publication";
 import SEO from "../components/SEO";
 
-// import data
 import { useProfile } from "../assets/profile/useProfile";
 import ACADEMIC_PROFILE from "../assets/profile/academic";
 import RESEARCH_PROJECTS from "../assets/projects/research_projects";
 import JOURNAL_PAPERS from "../assets/publications/journal_papers";
 import CONFERENCE_PAPERS from "../assets/publications/conference_papers";
-import PROGRAMMING_SKILLS from "../assets/profile/programming";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGraduationCap,
-  faPlayCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  faOrcid,
-  faResearchgate,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
 
 import { sortByDate } from "../utils/sort";
+import styles from "./index.module.scss";
 
-//===============================================
-// Variable Definitions
-//===============================================
-
-const logos = {
-  faResearchgate: faResearchgate,
-  faGraduationCap: faGraduationCap,
-  faPlayCircle: faPlayCircle,
-  faOrcid: faOrcid,
-  faGithub: faGithub,
-};
-
-// get the list of current projects
 const CURRENT_PROJECTS = RESEARCH_PROJECTS.filter(
   (p) => p.endDate === "Present",
 ).sort((a, b) => sortByDate(a, b, "startDate"));
 
-// get the list of latest publications
 const LATEST_PUBLICATIONS = [
   ...JOURNAL_PAPERS.map((paper) => ({ ...paper, type: "journal" })),
   ...CONFERENCE_PAPERS.map((paper) => ({ ...paper, type: "conference" })),
 ]
   .sort((a, b) => sortByDate(a, b, "year"))
   .slice(0, 3);
+
+const SectionHeader = ({
+  title,
+  href,
+  cta,
+}: {
+  title: string;
+  href: string;
+  cta: string;
+}) => (
+  <div
+    style={{
+      marginTop: 80,
+      marginBottom: 24,
+      paddingBottom: 16,
+      borderBottom: "1px solid var(--ed-rule)",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "baseline",
+    }}
+  >
+    <h2
+      style={{
+        fontFamily: "var(--ed-serif)",
+        fontWeight: 400,
+        fontSize: 32,
+        margin: 0,
+        letterSpacing: "-0.5px",
+      }}
+    >
+      {title}
+    </h2>
+    <Link
+      href={href}
+      style={{
+        fontFamily: "var(--ed-sans)",
+        fontSize: 12,
+        letterSpacing: "1px",
+        color: "var(--ed-accent)",
+        textTransform: "uppercase",
+        textDecoration: "none",
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 6,
+      }}
+    >
+      <span>{cta}</span>
+      <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: 10 }} />
+    </Link>
+  </div>
+);
 
 export default function Home() {
   const { t, ready } = useTranslation("home");
@@ -61,8 +93,11 @@ export default function Home() {
     setMounted(true);
   }, []);
 
+  const tt = (key: string, fallback: string) =>
+    mounted && ready ? t(key) : fallback;
+
   return (
-    <div className="grid gap-20">
+    <div className={styles.page}>
       <SEO
         title="Home"
         description="Erik Novak - AI researcher specializing in NLP, text analysis, and data visualization. Data Scientist at Event Registry and Senior Researcher at Jozef Stefan Institute."
@@ -70,116 +105,75 @@ export default function Home() {
         type="profile"
       />
 
-      {/** PROFILE */}
-      <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center lg:items-start">
-        <div className="flex-shrink-0 relative">
-          <div className="relative">
+      <div
+        style={{
+          fontSize: 12,
+          color: "var(--ed-muted)",
+          letterSpacing: "2px",
+          textTransform: "uppercase",
+          marginBottom: 32,
+        }}
+      >
+        {tt("kicker", "Researcher · Ljubljana")}
+      </div>
+
+      <h1 className={styles.heroTitle}>{tt("h1a", "Erik Novak.")}</h1>
+      <h1 className={cn(styles.heroTitle, styles.heroTitleItalic)}>
+        {tt("h1b1", "AI research,")}
+        <br />
+        {tt("h1b2", "language & data.")}
+      </h1>
+
+      <div className={styles.bio}>
+        <div className={styles.bioText}>{profile.description}</div>
+        <div>
+          <div className={styles.bioImageFrame}>
             <img
-              className="rounded-md w-64 lg:w-80 object-cover"
               src="./imgs/profile.jpg"
-              alt="Dr. Erik Novak - AI Researcher"
+              alt="Dr. Erik Novak — AI Researcher"
+              className={styles.bioImage}
             />
           </div>
         </div>
-        <div className="flex-1 flex flex-col gap-6">
-          <div className="space-y-4">
-            <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
-              {mounted && profile.ready ? profile.title : "Erik Novak"}
-            </h1>
-            <h2 className="text-xl lg:text-2xl text-highlight">
-              {mounted && profile.ready
-                ? profile.subtitle
-                : "Researcher in Artificial Intelligence"}
-            </h2>
-          </div>
-          <div className="grid grid-flow-row gap-4 text-base leading-relaxed">
-            {mounted && profile.ready ? profile.description : null}
-          </div>
-          <div className="flex flex-wrap gap-4 mt-4">
-            {ACADEMIC_PROFILE.map((link, id) => (
-              <a
-                key={id}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-base-highlight rounded-lg transition-all hover:shadow-lg hover:scale-105 text-link hover:text-link-hover"
-                href={link.url}
-                target="_blank"
-                rel="noopener"
-                title={link.label}
-              >
-                <FontAwesomeIcon icon={logos[link.logo]} fixedWidth />
-                <span className="text-sm font-medium">{link.label}</span>
-              </a>
-            ))}
-          </div>
-        </div>
       </div>
 
-      {/** PROJECTS */}
-      <div className="grid grid-flow-row gap-6">
-        <h2 className="text-2xl lg:text-3xl font-semibold">
-          {mounted && ready ? t("activeProjects") : "Active Projects"}{" "}
-          <Link href="/projects" legacyBehavior>
-            <a className="transition text-link hover:text-link-hover text-xl">
-              {mounted && ready ? t("seeMore") : "(see more)"}
-            </a>
-          </Link>
-        </h2>
-        <div className="grid grid-flow-row gap-6">
-          {CURRENT_PROJECTS.map(
-            ({ title, startDate, endDate, description, links, type }, i) => (
-              <a
-                key={i}
-                className="col-span-12 md:col-span-6 xl:col-span-4 cursor-pointer"
-                href={links?.length ? links[0]?.url : "#"}
-                target="_blank"
-                rel="noopener"
-              >
-                <h4 className="text-lg font-semibold mb-2">{title}</h4>
-                <p className="text-sm text-highlight mb-3">
-                  {startDate} - {endDate} | {type}
-                </p>
-                <p className="leading-relaxed">{description[0]}</p>
-              </a>
-            ),
-          )}
-        </div>
+      <div className={styles.profileLinks}>
+        {ACADEMIC_PROFILE.map((link) => (
+          <a
+            key={link.label}
+            href={link.url}
+            target={link.url.startsWith("mailto:") ? undefined : "_blank"}
+            rel={
+              link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"
+            }
+            className={styles.profileLink}
+          >
+            <span>{link.label}</span>
+            <FontAwesomeIcon
+              icon={faArrowUpRightFromSquare}
+              style={{ color: "var(--ed-muted)", fontSize: 10 }}
+            />
+          </a>
+        ))}
       </div>
 
-      {/** PUBLICATIONS */}
-      <div className="grid grid-flow-row gap-6">
-        <h2 className="text-2xl lg:text-3xl font-semibold">
-          {mounted && ready ? t("latestPublications") : "Latest Publications"}{" "}
-          <Link href="/publications" legacyBehavior>
-            <a className="transition text-link hover:text-link-hover text-xl">
-              {mounted && ready ? t("seeMore") : "(see more)"}
-            </a>
-          </Link>
-        </h2>
+      <SectionHeader
+        title={tt("activeTitle", "Active Projects")}
+        href="/projects"
+        cta={tt("seeAll", "See all")}
+      />
+      {CURRENT_PROJECTS.map((p) => (
+        <Project key={p.title} {...p} minimal />
+      ))}
 
-        <div className="grid grid-flow-row gap-6">
-          {LATEST_PUBLICATIONS.map((p, i) => (
-            <Publication key={i} {...p} />
-          ))}
-        </div>
-      </div>
-
-
-      {/** PROGRAMMING SKILLS */}
-      <div className="grid grid-flow-row gap-6">
-        <h2 className="text-2xl font-semibold">
-          {mounted && ready ? t("programmingSkills") : "Programming Skills"}
-        </h2>
-        <div className="flex flex-row flex-wrap gap-4">
-          {PROGRAMMING_SKILLS.map((link, id) => (
-            <div
-              key={id}
-              className="bg-base-highlight p-3 rounded-lg"
-              title={link.label}
-            >
-              <img className="h-10 w-10" src={link.image} alt={link.label} />
-            </div>
-          ))}
-        </div>
-      </div>
+      <SectionHeader
+        title={tt("pubsTitle", "Latest Publications")}
+        href="/publications"
+        cta={tt("seeAll", "See all")}
+      />
+      {LATEST_PUBLICATIONS.map((p, i) => (
+        <Publication key={i} {...p} minimal />
+      ))}
     </div>
   );
 }

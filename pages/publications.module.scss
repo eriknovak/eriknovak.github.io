@@ -1,0 +1,135 @@
+.page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 48px 32px 32px;
+  font-family: var(--ed-sans);
+  color: var(--ed-fg);
+}
+
+.hero {
+  margin-bottom: 56px;
+}
+
+.heroKicker {
+  font-size: 12px;
+  color: var(--ed-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.heroH1 {
+  font-family: var(--ed-serif);
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -1.5px;
+}
+
+.heroLead {
+  font-family: var(--ed-serif);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ed-muted);
+  margin: 12px 0 0;
+  line-height: 1.5;
+}
+
+.filterBar {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  border-top: 1px solid var(--ed-rule);
+  border-bottom: 1px solid var(--ed-rule);
+  padding: 12px 0;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.filterChip {
+  background: transparent;
+  border: none;
+  padding: 0 0 2px;
+  cursor: pointer;
+  font-family: var(--ed-sans);
+  font-size: 12px;
+  color: var(--ed-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+}
+
+.filterChipActive {
+  color: var(--ed-fg);
+  border-bottom-color: currentColor;
+}
+
+.yearGroup {
+  margin-bottom: 48px;
+}
+
+.yearHeader {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+
+.yearLabel {
+  font-family: var(--ed-serif);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--ed-muted);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -1px;
+}
+
+.yearMeta {
+  font-size: 11px;
+  color: var(--ed-muted);
+  font-family: var(--ed-sans);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding-top: 8px;
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 32px 20px 24px;
+  }
+
+  .hero {
+    margin-bottom: 40px;
+  }
+
+  .heroH1 {
+    font-size: 40px;
+    letter-spacing: -1px;
+  }
+
+  .heroLead {
+    font-size: 17px;
+  }
+
+  .filterBar {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .yearHeader {
+    grid-template-columns: 60px 1fr;
+    gap: 16px;
+  }
+
+  .yearLabel {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 420px) {
+  .heroH1 {
+    font-size: 32px;
+  }
+}
