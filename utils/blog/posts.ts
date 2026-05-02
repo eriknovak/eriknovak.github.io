@@ -38,6 +38,12 @@ function parseFile(filename: string): BlogPostMeta & { rawContent: string } {
     );
   }
 
+  if (!Array.isArray(data.tags) || data.tags.length === 0) {
+    throw new Error(
+      `Frontmatter 'tags' must be a non-empty array in ${filename}`,
+    );
+  }
+
   const dateString =
     data.date instanceof Date
       ? data.date.toISOString().slice(0, 10)
