@@ -1,24 +1,32 @@
 .container {
-  @apply grid grid-flow-row gap-2;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 40px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--ed-rule);
 }
 
-.duration {
-  @apply text-sm;
-  @apply text-highlight;
+.past {
+  opacity: 0.92;
 }
 
-.description {
-  @apply grid grid-flow-row gap-4;
+.linkRow {
+  display: grid;
+  grid-template-columns: 124px 1fr;
+  gap: 16px;
+  align-items: center;
 }
 
-.linksSection {
-  @apply mt-4;
-}
+@media (max-width: 720px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 0;
+  }
 
-.cardGrid {
-  @apply grid grid-cols-1 md:grid-cols-2 gap-4 mb-4;
-}
-
-.linkGrid {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3;
+  .linkRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    align-items: flex-start;
+  }
 }
