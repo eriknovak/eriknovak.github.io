@@ -39,3 +39,42 @@ export interface ProjectProps {
   links?: ProjectLink[];
   resources?: ProjectLink[];
 }
+
+export interface BlogPostMeta {
+  /** URL slug derived from filename (no date prefix) */
+  slug: string;
+  /** Frontmatter title */
+  title: string;
+  /** ISO date string from frontmatter `date` */
+  date: string;
+  /** Year extracted from `date`, used as URL segment */
+  year: string;
+  /** Frontmatter description (one-liner used in lists and meta tags) */
+  description: string;
+  /** Frontmatter tags (lowercased) */
+  tags: string[];
+  /** True if post is a draft (excluded from production builds) */
+  draft: boolean;
+  /** Optional ISO date string when post was last updated */
+  updated?: string;
+  /** Optional epigraph block at top of post */
+  epigraph?: {
+    quote: string;
+    attribution?: string;
+    source?: string;
+  };
+  /** Optional override path (relative to repo root) for citation bibliography */
+  bibliography?: string;
+  /** Reading time in minutes (computed at build time) */
+  readingMinutes: number;
+}
+
+export interface BlogPostFull extends BlogPostMeta {
+  /** MDX source serialized via next-mdx-remote/serialize */
+  mdxSource: import("next-mdx-remote").MDXRemoteSerializeResult;
+}
+
+export interface BlogTagSummary {
+  tag: string;
+  count: number;
+}
