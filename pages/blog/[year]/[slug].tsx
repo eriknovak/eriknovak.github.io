@@ -12,7 +12,7 @@ interface PageProps {
 
 export default function BlogPostPage({ post }: PageProps) {
   return (
-    <article>
+    <article className="blog-article">
       <SEO
         title={post.title}
         description={post.description}
@@ -20,8 +20,8 @@ export default function BlogPostPage({ post }: PageProps) {
         type="article"
       />
       <header>
-        <h1>{post.title}</h1>
-        <p>
+        <h1 className="blog-title">{post.title}</h1>
+        <p className="blog-meta">
           <time dateTime={post.date}>{post.date}</time> · {post.readingMinutes}{" "}
           min read
         </p>

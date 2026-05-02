@@ -1,0 +1,67 @@
+@import "./typography.scss";
+
+.blog-article {
+  display: grid;
+  grid-template-columns: minmax(0, var(--measure)) minmax(0, var(--margin-col));
+  column-gap: var(--column-gap);
+  max-width: calc(var(--measure) + var(--margin-col) + var(--column-gap));
+  margin: 0 auto;
+
+  > * {
+    grid-column: 1;
+  }
+
+  .blog-aside {
+    grid-column: 2;
+    align-self: start;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: rgb(var(--color-text-highlight));
+  }
+
+  .blog-fullwidth {
+    grid-column: 1 / -1;
+  }
+
+  figure {
+    margin: 1.5rem 0;
+    figcaption {
+      font-size: 0.85rem;
+      color: rgb(var(--color-text-highlight));
+      margin-top: 0.4rem;
+    }
+  }
+
+  .epigraph {
+    font-style: italic;
+    border-left: 2px solid rgb(var(--color-text-highlight));
+    padding-left: 1rem;
+    margin: 0 0 2rem 0;
+    .epigraph-attribution {
+      display: block;
+      margin-top: 0.5rem;
+      font-style: normal;
+      font-size: 0.9rem;
+      color: rgb(var(--color-text-highlight));
+    }
+  }
+
+  .sidenote-ref {
+    color: rgb(var(--color-text-link));
+    cursor: default;
+  }
+
+  // Mobile: collapse to single column, sidenotes appear after the
+  // paragraph that contains them, slightly indented.
+  @media (max-width: 900px) {
+    grid-template-columns: minmax(0, 1fr);
+
+    .blog-aside {
+      grid-column: 1;
+      display: block;
+      margin: 0.5rem 0 1rem 1.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid rgb(var(--color-text-highlight));
+    }
+  }
+}

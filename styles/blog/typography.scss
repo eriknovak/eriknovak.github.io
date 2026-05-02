@@ -1,0 +1,59 @@
+.blog-article {
+  --measure: 55ch;
+  --margin-col: 25ch;
+  --column-gap: 3ch;
+
+  font-family: var(--font-family-body);
+  line-height: 1.7;
+
+  h1.blog-title {
+    font-family: var(--font-family-header);
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .blog-meta {
+    color: rgb(var(--color-text-highlight));
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-family: var(--font-family-header);
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin: 2.4rem 0 0.6rem 0;
+  }
+
+  h3 {
+    font-family: var(--font-family-header);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 1.6rem 0 0.4rem 0;
+  }
+
+  p {
+    margin: 0 0 1rem 0;
+  }
+
+  .heading-anchor {
+    margin-left: 0.4rem;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    color: rgb(var(--color-text-link));
+    text-decoration: none;
+  }
+  h1:hover .heading-anchor,
+  h2:hover .heading-anchor,
+  h3:hover .heading-anchor {
+    opacity: 1;
+  }
+
+  .new-thought {
+    font-variant: small-caps;
+    letter-spacing: 0.06em;
+  }
+}
