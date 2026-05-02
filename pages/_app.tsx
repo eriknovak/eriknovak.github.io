@@ -8,6 +8,7 @@ import "../utils/i18n";
 
 import "../styles/globals.scss";
 import "../styles/index.scss";
+import "katex/dist/katex.min.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
