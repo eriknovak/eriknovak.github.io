@@ -16,6 +16,7 @@ const pages = [
     fallback: "Publications",
     route: "/publications",
   },
+  { titleKey: "nav.blog", fallback: "Blog", route: "/blog" },
 ];
 
 export default function Header() {
@@ -35,7 +36,10 @@ export default function Header() {
             <Link href={page.route} key={id} legacyBehavior>
               <a
                 className={cn(styles.link, {
-                  [styles["link--active"]]: router.route === page.route,
+                  [styles["link--active"]]:
+                    router.route === page.route ||
+                    (page.route !== "/" &&
+                      router.route.startsWith(page.route + "/")),
                 })}
               >
                 {mounted && ready ? t(page.titleKey) : page.fallback}
