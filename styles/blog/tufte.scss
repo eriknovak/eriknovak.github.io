@@ -72,6 +72,16 @@
     }
   }
 
+  .references {
+    margin-top: 3rem;
+    font-size: 0.95rem;
+    .csl-entry {
+      margin-bottom: 0.6rem;
+      padding-left: 1.5rem;
+      text-indent: -1.5rem;
+    }
+  }
+
   // Mobile: collapse to single column, sidenotes appear after the
   // paragraph that contains them, slightly indented.
   @media (max-width: 900px) {
