@@ -6,13 +6,44 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://ailab.ijs.si/eriknovak/projects/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://ailab.ijs.si/eriknovak/publications/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ailab.ijs.si/eriknovak/projects/</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://ailab.ijs.si/eriknovak/blog/</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailab.ijs.si/eriknovak/blog/tags/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ailab.ijs.si/eriknovak/blog/2026/tufte-styled-notes/</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ailab.ijs.si/eriknovak/blog/tags/meta/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://ailab.ijs.si/eriknovak/blog/tags/reference/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://ailab.ijs.si/eriknovak/blog/tags/tufte/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>
