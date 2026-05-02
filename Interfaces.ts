@@ -69,7 +69,7 @@ export interface BlogPostMeta {
   bibliography?: string;
   /** Reading time in minutes (computed at build time) */
   readingMinutes: number;
-  /** Optional post type label (e.g. Notes, Technical, Essay, Reading list) */
+  /** Optional post type label (e.g. Notes, Technical, Summary, Paper review, Project log) */
   type?: string;
   /** Optional explicit TOC for the blog post — pairs of anchor id + title */
   toc?: { id: string; t: string }[];
