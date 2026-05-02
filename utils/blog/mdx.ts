@@ -10,8 +10,11 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeCitation from "rehype-citation";
 
-const DEFAULT_BIB_DIR = path.join(process.cwd(), "content", "blog");
 const DEFAULT_BIB_FILE = "references.bib";
+
+// rehype-citation resolves `bibliography` via `path.join(options.path, value)`,
+// so we anchor at the project root with `path: cwd` and pass a relative path.
+const DEFAULT_BIB_REL = path.join("content", "blog", DEFAULT_BIB_FILE);
 
 export interface MdxSerializeOptions {
   /** Optional override for citation bibliography path (relative to repo root) */
@@ -22,18 +25,7 @@ export async function serializeMdx(
   source: string,
   options: MdxSerializeOptions = {},
 ) {
-  // rehype-citation joins options.path + options.bibliography, so we must
-  // split the path into a directory and filename.
-  let bibDir: string;
-  let bibFile: string;
-  if (options.bibliography) {
-    const absPath = path.join(process.cwd(), options.bibliography);
-    bibDir = path.dirname(absPath);
-    bibFile = path.basename(absPath);
-  } else {
-    bibDir = DEFAULT_BIB_DIR;
-    bibFile = DEFAULT_BIB_FILE;
-  }
+  const bibRel = options.bibliography ?? DEFAULT_BIB_REL;
 
   return serialize(source, {
     mdxOptions: {
@@ -68,8 +60,8 @@ export async function serializeMdx(
         [
           rehypeCitation,
           {
-            bibliography: bibFile,
-            path: bibDir,
+            bibliography: bibRel,
+            path: process.cwd(),
             csl: "apa",
             linkCitations: true,
             inlineClass: ["citation"],
