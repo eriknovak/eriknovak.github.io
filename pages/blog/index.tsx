@@ -3,6 +3,7 @@ import type { GetStaticProps } from "next";
 import SEO from "../../components/SEO";
 import BlogList from "../../components/Blog/BlogList";
 import { readAllPosts } from "../../utils/blog/posts";
+import { writeRssFeed } from "../../utils/blog/rss";
 import type { BlogPostMeta } from "../../Interfaces";
 
 interface PageProps {
@@ -29,5 +30,6 @@ export default function BlogIndexPage({ posts }: PageProps) {
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  writeRssFeed();
   return { props: { posts: readAllPosts() } };
 };
