@@ -8,12 +8,7 @@ import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
-// rehype-citation is CJS; import default
-import rehypeCitationDefault from "rehype-citation";
-
-const rehypeCitation =
-  (rehypeCitationDefault as { default?: typeof rehypeCitationDefault })
-    .default ?? rehypeCitationDefault;
+import rehypeCitation from "rehype-citation";
 
 const DEFAULT_BIB = path.join(
   process.cwd(),
@@ -22,14 +17,14 @@ const DEFAULT_BIB = path.join(
   "references.bib",
 );
 
-export interface SerializeOptions {
-  /** Optional override for citation bibliography (relative to repo root) */
+export interface MdxSerializeOptions {
+  /** Optional override for citation bibliography path (relative to repo root) */
   bibliography?: string;
 }
 
 export async function serializeMdx(
   source: string,
-  options: SerializeOptions = {},
+  options: MdxSerializeOptions = {},
 ) {
   const bibPath = options.bibliography
     ? path.join(process.cwd(), options.bibliography)
