@@ -10,6 +10,8 @@ export interface PublicationProps {
   keywords?: string[];
   doi?: string;
   pdf?: string;
+  /** Optional one-paragraph abstract rendered on the Publications page. */
+  abstract?: string;
 }
 
 export interface ProjectLink {
@@ -67,6 +69,10 @@ export interface BlogPostMeta {
   bibliography?: string;
   /** Reading time in minutes (computed at build time) */
   readingMinutes: number;
+  /** Optional post type label (e.g. Notes, Technical, Essay, Reading list) */
+  type?: string;
+  /** Optional explicit TOC for the blog post — pairs of anchor id + title */
+  toc?: { id: string; t: string }[];
 }
 
 export interface BlogPostFull extends BlogPostMeta {
