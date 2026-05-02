@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Header />
-      <main className="px-4 max-w-screen-lg mx-auto pt-32 pb-20">
+      <main className="pb-20">
         <Component {...pageProps} />
       </main>
       <Footer />

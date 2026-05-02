@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styles from "./LanguageSwitcher.module.scss";
 import cn from "classnames";
+import styles from "./LanguageSwitcher.module.scss";
 
 const languages = [
   { code: "en", label: "EN" },
@@ -9,21 +10,25 @@ const languages = [
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
+  const [mounted, setMounted] = useState(false);
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const active = mounted ? i18n.language : "en";
 
   return (
     <div className={styles.container}>
       {languages.map((lang, index) => (
-        <span key={lang.code}>
-          {index > 0 && <span className={styles.divider}>|</span>}
+        <span key={lang.code} className={styles.cell}>
+          {index > 0 && <span className={styles.divider}>/</span>}
           <button
+            type="button"
             className={cn(styles.button, {
-              [styles["button--active"]]: i18n.language === lang.code,
+              [styles["button--active"]]: active === lang.code,
             })}
-            onClick={() => changeLanguage(lang.code)}
+            onClick={() => i18n.changeLanguage(lang.code)}
             aria-label={`Switch to ${lang.label}`}
           >
             {lang.label}

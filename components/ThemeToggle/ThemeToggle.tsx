@@ -1,26 +1,37 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 import { useTheme } from "../../utils/useTheme";
 import cn from "classnames";
 import styles from "./ThemeToggle.module.scss";
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
-  const isLight = theme === "light";
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isLight = mounted && theme === "light";
 
   return (
     <button
+      type="button"
       onClick={toggleTheme}
-      className={cn(styles.toggle, { [styles["toggle--light"]]: isLight })}
+      className={styles.toggle}
       aria-label={`Switch to ${isLight ? "dark" : "light"} mode`}
       title={`Switch to ${isLight ? "dark" : "light"} mode`}
     >
-      <div className={styles.track}>
-        <FontAwesomeIcon icon={faSun} className={styles.iconSun} />
-        <FontAwesomeIcon icon={faMoon} className={styles.iconMoon} />
-      </div>
-      <div className={styles.thumb} />
+      <span
+        className={cn(styles.label, { [styles["label--active"]]: !isLight })}
+      >
+        Dark
+      </span>
+      <span className={styles.divider}>/</span>
+      <span
+        className={cn(styles.label, { [styles["label--active"]]: isLight })}
+      >
+        Light
+      </span>
     </button>
   );
 }
-

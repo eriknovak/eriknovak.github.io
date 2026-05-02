@@ -4,76 +4,117 @@
 
 @layer base {
   :root {
-    // define the colors
-    --color-black-dark: 3, 19, 33; // 4, 28, 50;
-    --color-black-base: 7, 37, 62;
-    --color-blue-dark: 22, 24, 83;
-    --color-blue-base: 41, 44, 109;
-    --color-green-dark: 6, 114, 110;
-    --color-green-base: 5, 161, 156;
-    --color-green-light: 27, 201, 195;
-    --color-yellow-dark: 191, 169, 36; // 184, 161, 21;
-    --color-yellow-base: 241, 208, 10;
-    --color-white-base: 232, 244, 255; // 250, 237, 240;
+    // Editorial Minimal — navy dark theme by default. Hex tokens are used
+    // directly by the new components; the legacy --color-* triples below
+    // are rewired to the same palette so any unmigrated Tailwind classes
+    // (text-base / bg-base / text-highlight / text-link) keep rendering.
+    --ed-bg: #161a22;
+    --ed-fg: #dde0e8;
+    --ed-text-secondary: #c8c8c5;
+    --ed-muted: #7b8190;
+    --ed-rule: #262b35;
+    --ed-card: #1c212b;
+    --ed-input: #222834;
+    --ed-accent: #39384d;
 
-    // scrollbar
+    // Single-font pairing — Atkinson everywhere (low-vision friendly).
+    // The aliases are kept so a future refactor can re-introduce a serif
+    // pairing in one place.
+    --font-family-header: "Atkinson Hyperlegible";
+    --font-family-body: "Atkinson Hyperlegible";
+    --ed-serif: "Atkinson Hyperlegible", Georgia, serif;
+    --ed-sans: "Atkinson Hyperlegible", -apple-system, system-ui, sans-serif;
+
+    // Legacy RGB-triple tokens. Mapped to the new palette so opacity-aware
+    // Tailwind utilities (rgb(var(--token), 0.5)) continue to work.
+    --color-background-base: 22, 26, 34; // --ed-bg
+    --color-background-highlight: 28, 33, 43; // --ed-card
+    --color-text-base: 221, 224, 232; // --ed-fg
+    --color-text-highlight: 123, 129, 144; // --ed-muted
+    --color-text-highlight-hover: 200, 200, 197;
+    --color-text-link: 57, 56, 77; // --ed-accent (kept low-key)
+    --color-text-link-hover: 200, 200, 197;
+
+    // Scrollbar
     --width-scrollbar-sm: 6px;
     --width-scrollbar-md: 12px;
-    --color-scrollbar-track: var(--color-green-base);
-    --color-scrollbar-thumb: var(--color-green-dark);
-
-    // background
-    --color-background-base: var(--color-black-dark);
-    --color-background-highlight: var(--color-black-base);
-
-    // text
-    --color-text-base: var(--color-white-base);
-    --color-text-highlight: var(--color-yellow-base);
-    --color-text-highlight-hover: var(--color-yellow-dark);
-    --color-text-link: var(--color-green-light);
-    --color-text-link-hover: var(--color-green-base);
-
-    // font familites
-    --font-family-header: "Fira Sans";
-    --font-family-body: "Merriweather Sans";
+    --color-scrollbar-track: var(--color-background-highlight);
+    --color-scrollbar-thumb: var(--color-text-highlight);
   }
 
   :root[data-theme="light"] {
-    // background
-    --color-background-base: var(--color-white-base);
-    --color-background-highlight: 220, 230, 240;
+    --ed-bg: #ffffff;
+    --ed-fg: #0e0e0e;
+    --ed-text-secondary: #333333;
+    --ed-muted: #777777;
+    --ed-rule: #e8e6e0;
+    --ed-card: #fafaf8;
+    --ed-input: #ffffff;
+    --ed-accent: #39384d;
 
-    // text
-    --color-text-base: var(--color-black-dark);
-    --color-text-highlight: var(--color-blue-base);
-    --color-text-highlight-hover: var(--color-blue-dark);
-    --color-text-link: var(--color-green-dark);
-    --color-text-link-hover: var(--color-green-base);
+    --color-background-base: 255, 255, 255;
+    --color-background-highlight: 250, 250, 248;
+    --color-text-base: 14, 14, 14;
+    --color-text-highlight: 119, 119, 119;
+    --color-text-highlight-hover: 51, 51, 51;
+    --color-text-link: 57, 56, 77;
+    --color-text-link-hover: 14, 14, 14;
+  }
 
-    // scrollbar
-    --color-scrollbar-track: 200, 210, 220;
-    --color-scrollbar-thumb: var(--color-green-base);
+  @font-face {
+    font-family: "Atkinson Hyperlegible";
+    font-weight: 400 500;
+    font-style: normal;
+    src:
+      url("../public/fonts/Atkinson-Hyperlegible-Regular-102.woff")
+        format("woff"),
+      url("../public/fonts/Atkinson-Hyperlegible-Regular-102a.woff2")
+        format("woff2");
+  }
+
+  @font-face {
+    font-family: "Atkinson Hyperlegible";
+    font-weight: 600 700;
+    font-style: normal;
+    src:
+      url("../public/fonts/Atkinson-Hyperlegible-Bold-102.woff") format("woff"),
+      url("../public/fonts/Atkinson-Hyperlegible-Bold-102a.woff2")
+        format("woff2");
+  }
+
+  // Italics fall back to browser-synthesized italic (no italic woff2 shipped
+  // yet); declared so font-style: italic resolves to *something*.
+  @font-face {
+    font-family: "Atkinson Hyperlegible";
+    font-weight: 400 500;
+    font-style: italic;
+    src:
+      url("../public/fonts/Atkinson-Hyperlegible-Regular-102.woff")
+        format("woff"),
+      url("../public/fonts/Atkinson-Hyperlegible-Regular-102a.woff2")
+        format("woff2");
+  }
+
+  // Legacy alias — older Tailwind config still references "Merriweather Sans"
+  // via --font-family-body. Map the family name to Atkinson so existing
+  // component CSS keeps rendering.
+  @font-face {
+    font-family: "Merriweather Sans";
+    font-weight: 400 500;
+    src:
+      url("../public/fonts/Atkinson-Hyperlegible-Regular-102.woff")
+        format("woff"),
+      url("../public/fonts/Atkinson-Hyperlegible-Regular-102a.woff2")
+        format("woff2");
   }
 
   @font-face {
     font-family: "Merriweather Sans";
-    font-weight: 500;
-    src: url("../public/fonts/Atkinson-Hyperlegible-Regular-102.woff") format("woff"),
-      url("../public/fonts/Atkinson-Hyperlegible-Regular-102a.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Merriweather Sans";
-    font-weight: 600;
-    src: url("../public/fonts/Atkinson-Hyperlegible-Bold-102.woff") format("woff"),
-      url("../public/fonts/Atkinson-Hyperlegible-Bold-102a.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Fira Sans";
-    font-weight: 600;
-    src: url("../public/fonts/FiraSans-Bold.woff") format("woff"),
-      url("../public/fonts/FiraSans-Bold.woff2") format("woff2");
+    font-weight: 600 700;
+    src:
+      url("../public/fonts/Atkinson-Hyperlegible-Bold-102.woff") format("woff"),
+      url("../public/fonts/Atkinson-Hyperlegible-Bold-102a.woff2")
+        format("woff2");
   }
 
   // Animation keyframes
@@ -109,4 +150,18 @@
       transform: scale(1);
     }
   }
+}
+
+html {
+  // Offset for the sticky Header so anchor jumps (e.g. TOC links to
+  // headings, [#eq-loss] equation refs) land below the header instead of
+  // being hidden under it. Slightly larger than the header height to
+  // leave a small breathing gap.
+  scroll-padding-top: 80px;
+}
+
+html,
+body {
+  background-color: var(--ed-bg);
+  color: var(--ed-fg);
 }

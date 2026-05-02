@@ -31,24 +31,30 @@ export default function Header() {
   return (
     <nav className={styles.container}>
       <div className={styles.content}>
+        <Link href="/" className={styles.brand}>
+          Erik Novak
+        </Link>
         <div className={styles.links}>
-          {pages.map((page, id) => (
-            <Link href={page.route} key={id} legacyBehavior>
-              <a
+          {pages.map((page) => {
+            const isActive =
+              router.route === page.route ||
+              (page.route !== "/" && router.route.startsWith(page.route + "/"));
+            return (
+              <Link
+                href={page.route}
+                key={page.route}
                 className={cn(styles.link, {
-                  [styles["link--active"]]:
-                    router.route === page.route ||
-                    (page.route !== "/" &&
-                      router.route.startsWith(page.route + "/")),
+                  [styles["link--active"]]: isActive,
                 })}
               >
                 {mounted && ready ? t(page.titleKey) : page.fallback}
-              </a>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
         <div className={styles.controls}>
           {mounted && <LanguageSwitcher />}
+          <span className={styles.divider} aria-hidden />
           <ThemeToggle />
         </div>
       </div>
