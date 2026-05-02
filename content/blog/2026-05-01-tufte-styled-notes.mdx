@@ -1,54 +1,169 @@
 ---
 title: "Tufte-styled notes on a personal homepage"
 date: 2026-05-01
-description: "First post — exercising every Tufte primitive end-to-end."
-tags: [meta, tufte]
-draft: false
+description: "Reference post — every blog primitive on a single page."
+tags: [meta, tufte, reference]
+type: Notes
+draft: true
 epigraph:
   quote: "The minimum we should hope for with any display technology is that it should do no harm."
   attribution: "Edward R. Tufte"
   source: "Envisioning Information"
+toc:
+  - { id: "prose--inline-formatting", t: "Prose & formatting" }
+  - { id: "sidenotes--margin-notes", t: "Sidenotes" }
+  - { id: "math", t: "Math" }
+  - { id: "code", t: "Code" }
+  - { id: "citations", t: "Citations" }
+  - { id: "inline-figures", t: "Inline figures" }
+  - { id: "inline-tables", t: "Inline tables" }
+  - { id: "margin-only-figures--tables", t: "Margin figures" }
+  - { id: "full-width-figures", t: "Full-width figures" }
+  - { id: "references", t: "References" }
 ---
 
-<NewThought>This is the very first post</NewThought> on the blog, written to exercise every Tufte primitive that the site supports.
+<NewThought>This post exercises every primitive</NewThought> the blog supports —
+text formatting, math, code, sidenotes, figures, tables, citations, and
+cross-references. Use it as a living reference when writing new posts.
 
-The body column is narrow on purpose; the right margin is wide enough to hold sidenotes alongside the paragraph that references them. <Sidenote>Sidenotes are numbered automatically — you do not pick the number.</Sidenote> Margin notes are similar but unnumbered. <MarginNote>Like this one — useful for asides that do not need a numeric reference.</MarginNote>
+## Prose & inline formatting
+
+You get standard CommonMark + GFM: **bold**, _italic_, `inline code`,
+[external links](https://www.tufte-css.com/), and ~~strikethrough~~. Smart
+quotes and dashes are auto-converted, so writing "double quotes" and
+em --- dashes --- produces typographic punctuation without any escaping.
+
+Lists work as expected:
+
+- Bullet item one
+- Bullet item two with a `code span` inside
+- Bullet item three
+
+1. Numbered item one
+2. Numbered item two
+3. Numbered item three
+
+> Block quotes get an accent left-rule and an italic muted treatment, useful
+> for pulling out a phrase from a paper or interview.
+
+## Sidenotes & margin notes
+
+The body column is narrow on purpose; the right margin holds sidenotes
+alongside the paragraph that references them.<Sidenote>Sidenotes are
+numbered automatically — you do not pick the number.</Sidenote> Margin notes
+are the same primitive without the number, useful when the aside does not
+need a numeric reference.<MarginNote>Like this one — handy for tangential
+context.</MarginNote>
+
+A second paragraph with another sidenote to show that successive asides
+stack vertically rather than overlap.<Sidenote>They queue down the gutter
+in reading order, with `clear: right` between each.</Sidenote>
 
 ## Math
 
-The cross-entropy loss for a binary classifier is
-$$\mathcal{L} = -\sum_{i=1}^{N} \bigl[y_i \log \hat{y}_i + (1 - y_i) \log (1 - \hat{y}_i)\bigr].$$
+Inline math keeps flow: the softmax weights $w_i = e^{x_i} / \sum_j e^{x_j}$
+sum to one. Display math needs the `$$` markers on their **own lines** —
+single-line `$$...$$` is parsed as inline by `remark-math`:
+
+$$
+\mathcal{L} = -\sum_{i=1}^{N} \bigl[y_i \log \hat{y}_i + (1 - y_i) \log (1 - \hat{y}_i)\bigr].
+$$
+
+### Referencing equations
+
+Drop an `<a id="eq-…">` anchor before the equation, optionally use KaTeX's
+`\tag{}` to render a visible label, then reference it from anywhere in the
+post with a normal markdown link.
+
+<a id="eq-loss"></a>
+
+$$
+\mathcal{L}_{\mathrm{CE}} = -\sum_i y_i \log \hat{y}_i \tag{1}
+$$
+
+We minimise [equation (1)](#eq-loss) with stochastic gradient descent.
 
 ## Code
 
+Fenced code blocks are highlighted by Shiki with a dark/light dual theme
+that follows the site theme.
+
 ```python
-def softmax(x):
+import numpy as np
+
+def softmax(x: np.ndarray) -> np.ndarray:
+    """Stable softmax — subtracts the max for numerical safety."""
     e = np.exp(x - x.max())
     return e / e.sum()
 ```
 
+Inline code spans like `np.exp(...)` look like this in body text.
+
 ## Citations
 
-Tufte's principles are laid out across two foundational works [@tufte2001visual; @tufte1990envisioning].
+Citations resolve at build time against `content/blog/references.bib`. Use
+`[@bibtex-key]` for one and `[@key1; @key2]` for many. Tufte's principles
+are laid out across two foundational works [@tufte2001visual; @tufte1990envisioning].
+The `<References />` component below renders the bibliography.
 
-## Figures
+## Inline figures
+
+Inline figures keep the body rhythm; their caption floats into the right
+margin so the eye stays on the article column. Pass `src` for an image, or
+omit it and use `children` for a placeholder block.
+
+<Figure
+  height={220}
+  label="Fig. 1"
+  caption="A placeholder used while the real chart is being prepared. Captions in the margin keep the article column's vertical rhythm."
+>
+  [ chart placeholder · loss vs. step ]
+</Figure>
+
+<Figure
+  src="/imgs/profile.jpg"
+  alt="Portrait placeholder"
+  label="Fig. 2"
+  caption="An inline figure backed by a real image. The caption still lives in the right margin."
+/>
+
+## Inline tables
+
+`<Table>` renders a body-width table with the caption absolutely positioned
+in the gutter. The first column is left-aligned; remaining columns are
+right-aligned with tabular-nums for clean numeric stacking.
+
+<Table
+  label="Tab. 1"
+  cols={["Model", "Params", "fp16 GB", "Slovenian F1"]}
+  rows={[
+    ["GPT-4", "—", "—", "0.81"],
+    ["Llama-3 70B", "70 B", "140", "0.74"],
+    ["Mistral 7B", "7 B", "14", "0.62"],
+    ["SLM4IE-1B", "1 B", "2.0", "0.69"],
+  ]}
+  caption="Smaller models close most of the gap once domain-tuned. Inline tables share the body width with prose."
+/>
+
+## Margin-only figures & tables
 
 <MarginFigure
   src="/imgs/profile.jpg"
   alt="Profile placeholder"
-  caption="Margin figures sit in the right gutter."
+  label="Fig. 3"
+  caption="Margin figures live in the gutter, useful for portrait crops or icons that accompany text."
 />
 
-<FullWidthFigure
-  src="/imgs/profile.jpg"
-  alt="Full-width placeholder"
-  caption="Full-width figures span both columns."
-/>
+For elements that should sit _entirely_ in the right margin instead of
+projecting only their caption there, use `<MarginFigure>` and `<SideTable>`.
 
-## Side tables
+A paragraph next to the margin figure confirms it floats cleanly without
+overlapping body text. The float clears so subsequent margin elements queue
+beneath it.
 
 <SideTable
-  caption="Three numbers."
+  caption="A compact margin table — fits up to ~four narrow columns."
+  label="Tab. 2"
   headers={["Item", "Value"]}
   rows={[
     ["Alpha", "1"],
@@ -56,6 +171,50 @@ Tufte's principles are laid out across two foundational works [@tufte2001visual;
     ["Gamma", "3"],
   ]}
 />
+
+A paragraph next to the side table demonstrates the same float behaviour as
+a margin figure, just with tabular content compressed for the gutter width.
+
+## Full-width figures
+
+When a figure needs more horizontal space than the body column allows, use
+`<FullWidthFigure>` — it breaks out of the body column to span the gutter
+as well, with the caption directly underneath.
+
+<FullWidthFigure
+  src="/imgs/profile.jpg"
+  alt="Wide figure placeholder"
+  label="Fig. 4"
+  caption="Full-width figures cover both columns. Reserve them for charts that lose detail when shrunk to body width."
+/>
+
+## Headings & cross-references
+
+Every heading gets an auto-generated anchor id (`## Foo bar` → `#foo-bar`),
+which means you can link back to any section with a plain markdown link:
+[jump to Citations](#citations) or [jump to the equation](#eq-loss). Hover a
+heading on desktop to see the anchor link icon.
+
+## Optional sticky TOC
+
+Adding a `toc:` array to the frontmatter renders a sticky left-margin
+table of contents on screens ≥1100px. Each entry maps `id` (the heading
+anchor) to `t` (display title):
+
+```yaml
+toc:
+  - { id: "math", t: "Math" }
+  - { id: "code", t: "Code" }
+  - { id: "citations", t: "Citations" }
+```
+
+Below 1100px the TOC collapses inline above the article.
+
+## Drafts & dev workflow
+
+Set `draft: true` to keep the post visible in `npm run dev` but excluded
+from `npm run build`. The blog index, RSS feed, tag pages, and prev/next
+navigation are all generated at build time from `readAllPosts()`.
 
 ## References
 

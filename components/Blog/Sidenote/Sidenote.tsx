@@ -11,12 +11,15 @@ export default function Sidenote({ children }: SidenoteProps) {
   // advances once per Sidenote even though the hook itself is called every render.
   const [n] = useState<number>(() => ctx?.next() ?? 0);
 
+  // <span> instead of <aside> so the element is valid inside <p>; the float
+  // styling on .blog-aside still pulls it into the right margin.
   return (
     <>
       <sup className="sidenote-ref">{n}</sup>
-      <aside className="blog-aside sidenote">
-        <sup>{n}</sup> {children}
-      </aside>
+      <span className="blog-aside sidenote">
+        <sup>{n}</sup>
+        {children}
+      </span>
     </>
   );
 }

@@ -1,79 +1,207 @@
 @import "./typography.scss";
 
+// Tufte-style two-column layout, but built with float-right sidenotes
+// instead of CSS grid. The grid approach failed because <Sidenote> renders
+// inside <p> (the HTML parser then auto-closes the <p>, breaking grid item
+// placement). Floats work even when the aside is a descendant of the
+// floating element's containing block.
+
 .blog-article {
-  display: grid;
-  grid-template-columns: minmax(0, var(--measure)) minmax(0, var(--margin-col));
-  column-gap: var(--column-gap);
-  max-width: calc(var(--measure) + var(--margin-col) + var(--column-gap));
-  margin: 0 auto;
+  --measure: 620px; // body reading column
+  --gutter: 200px; // right margin gutter (sidenotes / captions)
+  --gutter-gap: 32px; // gap between body and gutter
+  --frame-pad: 32px; // outer page padding
 
-  > * {
-    grid-column: 1;
+  font-family: var(--ed-sans);
+  line-height: 1.7;
+  color: var(--ed-fg);
+  position: relative;
+  // Prevent floated asides / projected captions / wide media from causing
+  // page-level horizontal scroll at intermediate widths.
+  overflow-x: clip;
+  min-width: 0;
+
+  // Container width = measure + gap + gutter + 2 * frame padding.
+  max-width: calc(
+    var(--measure) + var(--gutter-gap) + var(--gutter) + 2 * var(--frame-pad)
+  );
+  margin: 48px auto 0;
+  padding-left: var(--frame-pad);
+  // Reserve right-side gutter via padding so body content lives inside
+  // the measure column. Sidenotes float into this reserved area.
+  padding-right: calc(var(--frame-pad) + var(--gutter-gap) + var(--gutter));
+
+  // Headings and block separators clear floated asides so they don't slip
+  // into the wrong section. Paragraphs intentionally do NOT clear, so they
+  // flow alongside MarginFigure / SideTable in the gutter.
+  > h1,
+  > h2,
+  > h3,
+  > hr {
+    clear: right;
   }
 
+  // Asides: floated to the right edge of their containing block, then pulled
+  // into the gutter via a negative right-margin equal to (gutter + gap).
   .blog-aside {
-    grid-column: 2;
-    align-self: start;
-    font-size: 0.85rem;
-    line-height: 1.4;
-    color: rgb(var(--color-text-highlight));
-  }
+    float: right;
+    clear: right;
+    width: var(--gutter);
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    margin-right: calc(-1 * (var(--gutter) + var(--gutter-gap)));
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--ed-muted);
+    font-family: var(--ed-sans);
+    position: relative;
 
-  .blog-fullwidth {
-    grid-column: 1 / -1;
-  }
+    > sup,
+    sup:first-child {
+      color: var(--ed-accent);
+      margin-right: 0.25rem;
+    }
 
-  figure {
-    margin: 1.5rem 0;
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--ed-rule);
+    }
+
     figcaption {
       font-size: 0.85rem;
-      color: rgb(var(--color-text-highlight));
+      color: var(--ed-muted);
       margin-top: 0.4rem;
+    }
+  }
+
+  .sidenote-ref {
+    color: var(--ed-accent);
+    cursor: default;
+  }
+
+  // Side table: a compact table living in the right gutter.
+  .side-table {
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 0;
+    }
+    th,
+    td {
+      text-align: left;
+      padding: 0.2rem 0.4rem;
+      border-bottom: 1px solid var(--ed-rule);
+      font-size: 0.85rem;
+      color: var(--ed-muted);
+    }
+    th {
+      font-weight: 600;
+      color: var(--ed-fg);
+    }
+    .side-table-caption {
+      font-style: italic;
+      margin: 0 0 0.3rem;
+      font-size: 0.85rem;
+      color: var(--ed-muted);
+    }
+  }
+
+  // Shared style for the small caption prefix (e.g. "FIG. 1", "TBL. 2"),
+  // used by inline figures/tables and by the margin/full-width variants.
+  .blog-margin-caption-label {
+    display: inline;
+    margin-right: 0.4rem;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ed-accent);
+  }
+
+  // Inline figures and tables that stay in the body column but project
+  // their captions into the right gutter via absolute positioning.
+  .blog-inline-figure,
+  .blog-inline-table {
+    position: relative;
+    margin: 32px 0;
+
+    > figcaption,
+    > .blog-margin-caption {
+      position: absolute;
+      left: calc(100% + var(--gutter-gap));
+      top: 0;
+      width: var(--gutter);
+      font-size: 0.85rem;
+      line-height: 1.45;
+      color: var(--ed-muted);
+      font-family: var(--ed-sans);
+      margin: 0;
+    }
+  }
+
+  .blog-inline-figure {
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--ed-rule);
+      background: var(--ed-card);
+    }
+    .blog-inline-figure-placeholder {
+      width: 100%;
+      border: 1px solid var(--ed-rule);
+      background: var(--ed-card);
+      color: var(--ed-muted);
+      font-family: var(--ed-sans);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  // Full-width figures break out of the body column to span across the
+  // reserved gutter as well, by negating the right padding.
+  .blog-fullwidth {
+    margin-right: calc(-1 * (var(--gutter) + var(--gutter-gap)));
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--ed-rule);
+    }
+    figcaption {
+      font-size: 0.9rem;
+      color: var(--ed-muted);
+      margin-top: 0.5rem;
+      font-family: var(--ed-sans);
     }
   }
 
   .epigraph {
     font-style: italic;
-    border-left: 2px solid rgb(var(--color-text-highlight));
+    border-left: 2px solid var(--ed-accent);
     padding-left: 1rem;
     margin: 0 0 2rem 0;
+    color: var(--ed-muted);
     .epigraph-attribution {
       display: block;
       margin-top: 0.5rem;
       font-style: normal;
       font-size: 0.9rem;
-      color: rgb(var(--color-text-highlight));
+      color: var(--ed-muted);
     }
   }
 
-  .sidenote-ref {
-    color: rgb(var(--color-text-link));
-    cursor: default;
-  }
-
-  .side-table {
-    font-size: 0.85rem;
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-    th,
-    td {
-      text-align: left;
-      padding: 0.2rem 0.5rem;
-      border-bottom: 1px solid rgb(var(--color-text-highlight));
-    }
-    th {
-      font-weight: 600;
-    }
-    .side-table-caption {
-      font-style: italic;
-      margin-bottom: 0.3rem;
-    }
-  }
-
+  // The bibliography rendered by rehype-citation. `references` sits directly
+  // after the "## References" heading, so the heading already provides the
+  // top spacing — no extra margin-top needed here.
   .references {
-    margin-top: 3rem;
+    margin-top: 0;
     font-size: 0.95rem;
     .csl-entry {
       margin-bottom: 0.6rem;
@@ -82,17 +210,220 @@
     }
   }
 
-  // Mobile: collapse to single column, sidenotes appear after the
-  // paragraph that contains them, slightly indented.
-  @media (max-width: 900px) {
-    grid-template-columns: minmax(0, 1fr);
+  // Small viewports: drop the gutter and inline asides/captions instead.
+  @media (max-width: 1100px) {
+    --gutter: 0px;
+    --gutter-gap: 0px;
+    padding-right: var(--frame-pad);
 
     .blog-aside {
-      grid-column: 1;
-      display: block;
-      margin: 0.5rem 0 1rem 1.5rem;
+      float: none;
+      width: auto;
+      margin: 0.75rem 0 1rem 1.5rem;
       padding-left: 0.75rem;
-      border-left: 2px solid rgb(var(--color-text-highlight));
+      border-left: 2px solid var(--ed-rule);
+      display: block;
+    }
+
+    .blog-inline-figure,
+    .blog-inline-table {
+      > figcaption,
+      > .blog-margin-caption {
+        position: static;
+        width: auto;
+        margin-top: 0.5rem;
+      }
+    }
+
+    .blog-fullwidth {
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width: 720px) {
+    --frame-pad: 20px;
+    margin-top: 32px;
+
+    .blog-aside {
+      margin-left: 1rem;
+    }
+
+    > table,
+    .blog-inline-table > table {
+      font-size: 13px;
+      th,
+      td {
+        padding-right: 8px;
+      }
+    }
+  }
+}
+
+// Shared TOC styles, used by both the sidebar (desktop) and the inline
+// (mobile) variants of <BlogTOC>.
+.blog-toc {
+  font-family: var(--ed-sans);
+  color: var(--ed-muted);
+  line-height: 1.5;
+
+  .blog-toc-summary {
+    cursor: pointer;
+    list-style: none;
+    color: var(--ed-muted);
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+    &::marker {
+      content: "";
+    }
+  }
+
+  .blog-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .blog-toc-list a {
+    color: var(--ed-fg);
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 8px;
+    align-items: baseline;
+    border-bottom: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .blog-toc-num {
+    color: var(--ed-muted);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+// Sidebar variant — sticky narrow column to the left of the article on
+// wide viewports. Hidden on narrow viewports; the inline variant takes
+// over so the TOC reads as part of the article flow.
+.blog-toc--sidebar {
+  font-size: 12px;
+
+  .blog-toc-summary {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--ed-rule);
+  }
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
+}
+
+// Inline variant — boxed widget rendered inside the article (after the
+// header / epigraph) on narrow viewports. Hidden on wide viewports; the
+// sidebar variant is shown there.
+.blog-toc--inline {
+  display: none;
+
+  @media (max-width: 1100px) {
+    display: block;
+    margin: 1.5rem 0 2.5rem;
+    padding: 14px 18px;
+    border: 1px solid var(--ed-rule);
+    background: var(--ed-card);
+    font-size: 14px;
+
+    .blog-toc-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin: 0;
+
+      &::after {
+        content: "▾";
+        font-size: 11px;
+        transition: transform 0.15s ease;
+      }
+    }
+
+    &:not([open]) .blog-toc-summary {
+      margin-bottom: 0;
+
+      &::after {
+        transform: rotate(-90deg);
+      }
+    }
+
+    .blog-toc-inner {
+      margin-top: 12px;
+    }
+
+    .blog-toc-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 20px;
+      row-gap: 8px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    margin: 1.25rem 0 2rem;
+    padding: 12px 14px;
+
+    .blog-toc-list {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}
+
+// Two-column wrapper used when a post defines `toc:` frontmatter. On
+// wide viewports the wrapper is a grid (sidebar TOC + article); on
+// narrow viewports the wrapper collapses to a passthrough so the article
+// renders with its own standalone styling and hosts the inline TOC.
+.blog-with-toc {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 64px;
+  max-width: 1140px;
+  margin: 48px auto 0;
+  padding: 0 32px;
+
+  > .blog-toc--sidebar {
+    grid-column: 1;
+    position: sticky;
+    top: 96px;
+    align-self: start;
+  }
+
+  > .blog-article {
+    grid-column: 2;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  @media (max-width: 1100px) {
+    display: block;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+
+    > .blog-article {
+      // Restore the standalone article layout.
+      margin: 48px auto 0;
+      padding-left: var(--frame-pad);
     }
   }
 }

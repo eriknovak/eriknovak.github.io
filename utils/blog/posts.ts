@@ -70,6 +70,14 @@ function parseFile(filename: string): BlogPostMeta & { rawContent: string } {
 
   const bibliography = data.bibliography ? String(data.bibliography) : null;
 
+  const type = data.type ? String(data.type) : null;
+
+  const toc = Array.isArray(data.toc)
+    ? (data.toc as Array<{ id?: unknown; t?: unknown }>)
+        .filter((entry) => entry && entry.id && entry.t)
+        .map((entry) => ({ id: String(entry.id), t: String(entry.t) }))
+    : null;
+
   return {
     slug,
     title: String(data.title),
@@ -81,6 +89,8 @@ function parseFile(filename: string): BlogPostMeta & { rawContent: string } {
     ...(updated !== null ? { updated } : {}),
     ...(epigraph !== null ? { epigraph } : {}),
     ...(bibliography !== null ? { bibliography } : {}),
+    ...(type !== null ? { type } : {}),
+    ...(toc !== null && toc.length > 0 ? { toc } : {}),
     readingMinutes: Math.max(1, Math.round(readingTime(content).minutes)),
     rawContent: content,
   };

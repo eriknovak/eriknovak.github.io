@@ -1,0 +1,28 @@
+{
+  "kickerSuffix": "posts",
+  "h1": "Blog",
+  "lead": "Notes, technical write-ups, and longer essays.",
+  "filterAll": "All",
+  "yearMetaOne": "post",
+  "yearMetaMany": "posts",
+  "read": "Read",
+  "browseTags": "Browse tags",
+  "contents": "Contents",
+  "filed": "Filed under",
+  "comments": "Comments by email.",
+  "tagsPage": {
+    "seoTitle": "Blog tags",
+    "seoDescription": "Browse blog posts by tag.",
+    "h1": "Tags",
+    "lead": "Every distinct tag across the blog. Click one to see the posts that carry it.",
+    "empty": "No tags yet.",
+    "tagOne": "tag",
+    "tagMany": "tags"
+  },
+  "tagPage": {
+    "seoDescriptionPrefix": "Blog posts tagged",
+    "allTags": "All tags",
+    "lead": "Posts filed under this tag.",
+    "empty": "No posts under this tag."
+  }
+}

@@ -8,6 +8,8 @@ import Sidenote from "../../../components/Blog/Sidenote";
 import MarginNote from "../../../components/Blog/MarginNote";
 import MarginFigure from "../../../components/Blog/MarginFigure";
 import FullWidthFigure from "../../../components/Blog/FullWidthFigure";
+import Figure from "../../../components/Blog/Figure";
+import Table from "../../../components/Blog/Table";
 import Epigraph from "../../../components/Blog/Epigraph";
 import NewThought from "../../../components/Blog/NewThought";
 import SideTable from "../../../components/Blog/SideTable";
@@ -20,6 +22,7 @@ import {
 } from "../../../utils/blog/posts";
 import { serializeMdx } from "../../../utils/blog/mdx";
 import type { BlogPostFull, BlogPostMeta } from "../../../Interfaces";
+import styles from "../post.module.scss";
 
 interface PageProps {
   post: BlogPostFull;
@@ -32,6 +35,8 @@ const mdxComponents = {
   MarginNote,
   MarginFigure,
   FullWidthFigure,
+  Figure,
+  Table,
   Epigraph,
   NewThought,
   SideTable,
@@ -54,26 +59,26 @@ export default function BlogPostPage({ post, prev, next }: PageProps) {
         <MDXRemote {...post.mdxSource} components={mdxComponents} />
       </BlogPost>
       {(prev || next) && (
-        <nav className="grid grid-cols-2 gap-4 mt-12 max-w-3xl mx-auto">
+        <nav className={styles.nav}>
           <div>
             {prev && (
-              <Link href={`/blog/${prev.year}/${prev.slug}/`} legacyBehavior>
-                <a className="block text-link hover:text-link-hover">
-                  <span className="text-sm text-highlight block">
-                    ← Previous
-                  </span>
-                  <span>{prev.title}</span>
-                </a>
+              <Link
+                href={`/blog/${prev.year}/${prev.slug}/`}
+                className={styles.navItem}
+              >
+                <span className={styles.navLabel}>← Previous</span>
+                <span className={styles.navTitle}>{prev.title}</span>
               </Link>
             )}
           </div>
-          <div className="text-right">
+          <div className={styles.navItemNext}>
             {next && (
-              <Link href={`/blog/${next.year}/${next.slug}/`} legacyBehavior>
-                <a className="block text-link hover:text-link-hover">
-                  <span className="text-sm text-highlight block">Next →</span>
-                  <span>{next.title}</span>
-                </a>
+              <Link
+                href={`/blog/${next.year}/${next.slug}/`}
+                className={styles.navItem}
+              >
+                <span className={styles.navLabel}>Next →</span>
+                <span className={styles.navTitle}>{next.title}</span>
               </Link>
             )}
           </div>

@@ -2,12 +2,24 @@ interface Props {
   caption?: string;
   headers: string[];
   rows: (string | number)[][];
+  /** Optional small caption prefix (e.g. "TBL. 1"). */
+  label?: string;
 }
 
-export default function SideTable({ caption, headers, rows }: Props) {
+export default function SideTable({
+  caption,
+  headers,
+  rows,
+  label = "Tbl.",
+}: Props) {
   return (
     <aside className="blog-aside side-table">
-      {caption ? <p className="side-table-caption">{caption}</p> : null}
+      {caption ? (
+        <p className="side-table-caption">
+          <span className="blog-margin-caption-label">{label}</span>
+          {caption}
+        </p>
+      ) : null}
       <table>
         <thead>
           <tr>

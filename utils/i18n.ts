@@ -6,11 +6,13 @@ import enCommon from "../public/locales/en/common.json";
 import enHome from "../public/locales/en/home.json";
 import enPublications from "../public/locales/en/publications.json";
 import enProjects from "../public/locales/en/projects.json";
+import enBlog from "../public/locales/en/blog.json";
 
 import slCommon from "../public/locales/sl/common.json";
 import slHome from "../public/locales/sl/home.json";
 import slPublications from "../public/locales/sl/publications.json";
 import slProjects from "../public/locales/sl/projects.json";
+import slBlog from "../public/locales/sl/blog.json";
 
 const resources = {
   en: {
@@ -18,12 +20,14 @@ const resources = {
     home: enHome,
     publications: enPublications,
     projects: enProjects,
+    blog: enBlog,
   },
   sl: {
     common: slCommon,
     home: slHome,
     publications: slPublications,
     projects: slProjects,
+    blog: slBlog,
   },
 };
 
