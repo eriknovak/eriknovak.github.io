@@ -1,0 +1,62 @@
+---
+title: "Tufte-styled notes on a personal homepage"
+date: 2026-05-01
+description: "First post — exercising every Tufte primitive end-to-end."
+tags: [meta, tufte]
+draft: false
+epigraph:
+  quote: "The minimum we should hope for with any display technology is that it should do no harm."
+  attribution: "Edward R. Tufte"
+  source: "Envisioning Information"
+---
+
+<NewThought>This is the very first post</NewThought> on the blog, written to exercise every Tufte primitive that the site supports.
+
+The body column is narrow on purpose; the right margin is wide enough to hold sidenotes alongside the paragraph that references them. <Sidenote>Sidenotes are numbered automatically — you do not pick the number.</Sidenote> Margin notes are similar but unnumbered. <MarginNote>Like this one — useful for asides that do not need a numeric reference.</MarginNote>
+
+## Math
+
+The cross-entropy loss for a binary classifier is
+$$\mathcal{L} = -\sum_{i=1}^{N} \bigl[y_i \log \hat{y}_i + (1 - y_i) \log (1 - \hat{y}_i)\bigr].$$
+
+## Code
+
+```python
+def softmax(x):
+    e = np.exp(x - x.max())
+    return e / e.sum()
+```
+
+## Citations
+
+Tufte's principles are laid out across two foundational works [@tufte2001visual; @tufte1990envisioning].
+
+## Figures
+
+<MarginFigure
+  src="/imgs/profile.jpg"
+  alt="Profile placeholder"
+  caption="Margin figures sit in the right gutter."
+/>
+
+<FullWidthFigure
+  src="/imgs/profile.jpg"
+  alt="Full-width placeholder"
+  caption="Full-width figures span both columns."
+/>
+
+## Side tables
+
+<SideTable
+  caption="Three numbers."
+  headers={["Item", "Value"]}
+  rows={[
+    ["Alpha", "1"],
+    ["Beta", "2"],
+    ["Gamma", "3"],
+  ]}
+/>
+
+## References
+
+<References />
