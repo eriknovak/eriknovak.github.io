@@ -123,7 +123,11 @@ export default function Publication(props: Props) {
               marginBottom: 8,
             }}
           >
-            {type}
+            {type === "Journal"
+              ? tt("filterJournal", "Journal")
+              : type === "Conference"
+                ? tt("filterConf", "Conference")
+                : type}
           </div>
         )}
         <div
