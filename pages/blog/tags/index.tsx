@@ -3,9 +3,10 @@ import type { GetStaticProps } from "next";
 import SEO from "../../../components/SEO";
 import TagPill from "../../../components/Blog/TagPill";
 import { readAllTags } from "../../../utils/blog/posts";
+import type { BlogTagSummary } from "../../../Interfaces";
 
 interface PageProps {
-  tags: { tag: string; count: number }[];
+  tags: BlogTagSummary[];
 }
 
 export default function TagsIndexPage({ tags }: PageProps) {

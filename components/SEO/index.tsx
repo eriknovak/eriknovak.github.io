@@ -1,5 +1,7 @@
 import Head from "next/head";
 
+import { SITE_URL } from "../../utils/config";
+
 interface SEOProps {
   title: string;
   description: string;
@@ -9,15 +11,14 @@ interface SEOProps {
   noindex?: boolean;
 }
 
-const BASE_URL = "https://ailab.ijs.si/eriknovak";
-const DEFAULT_IMAGE = `${BASE_URL}/imgs/profile.jpg`;
+const DEFAULT_IMAGE = `${SITE_URL}/imgs/profile.jpg`;
 
 const PERSON_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Erik Novak",
   jobTitle: "Researcher in Artificial Intelligence",
-  url: BASE_URL,
+  url: SITE_URL,
   image: DEFAULT_IMAGE,
   worksFor: [
     {
@@ -51,7 +52,7 @@ export default function SEO({
   image = DEFAULT_IMAGE,
   noindex = false,
 }: SEOProps) {
-  const url = `${BASE_URL}${path}`;
+  const url = `${SITE_URL}${path}`;
   const fullTitle = `${title} | Erik Novak`;
 
   return (

@@ -3,8 +3,7 @@ import path from "path";
 import { Feed } from "feed";
 
 import { readAllPosts } from "./posts";
-
-const SITE_URL = "https://ailab.ijs.si/eriknovak";
+import { SITE_URL } from "../config";
 
 export function writeRssFeed(): void {
   const posts = readAllPosts();

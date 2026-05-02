@@ -50,28 +50,32 @@ export default function BlogPostPage({ post, prev, next }: PageProps) {
       <BlogPost meta={post}>
         <MDXRemote {...post.mdxSource} components={mdxComponents} />
       </BlogPost>
-      <nav className="grid grid-cols-2 gap-4 mt-12 max-w-3xl mx-auto">
-        <div>
-          {prev && (
-            <Link href={`/blog/${prev.year}/${prev.slug}/`} legacyBehavior>
-              <a className="block text-link hover:text-link-hover">
-                <span className="text-sm text-highlight block">← Previous</span>
-                <span>{prev.title}</span>
-              </a>
-            </Link>
-          )}
-        </div>
-        <div className="text-right">
-          {next && (
-            <Link href={`/blog/${next.year}/${next.slug}/`} legacyBehavior>
-              <a className="block text-link hover:text-link-hover">
-                <span className="text-sm text-highlight block">Next →</span>
-                <span>{next.title}</span>
-              </a>
-            </Link>
-          )}
-        </div>
-      </nav>
+      {(prev || next) && (
+        <nav className="grid grid-cols-2 gap-4 mt-12 max-w-3xl mx-auto">
+          <div>
+            {prev && (
+              <Link href={`/blog/${prev.year}/${prev.slug}/`} legacyBehavior>
+                <a className="block text-link hover:text-link-hover">
+                  <span className="text-sm text-highlight block">
+                    ← Previous
+                  </span>
+                  <span>{prev.title}</span>
+                </a>
+              </Link>
+            )}
+          </div>
+          <div className="text-right">
+            {next && (
+              <Link href={`/blog/${next.year}/${next.slug}/`} legacyBehavior>
+                <a className="block text-link hover:text-link-hover">
+                  <span className="text-sm text-highlight block">Next →</span>
+                  <span>{next.title}</span>
+                </a>
+              </Link>
+            )}
+          </div>
+        </nav>
+      )}
     </>
   );
 }
