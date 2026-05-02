@@ -49,6 +49,27 @@ function parseFile(filename: string): BlogPostMeta & { rawContent: string } {
       ? data.date.toISOString().slice(0, 10)
       : String(data.date);
 
+  const updated =
+    data.updated instanceof Date
+      ? data.updated.toISOString().slice(0, 10)
+      : data.updated
+        ? String(data.updated)
+        : null;
+
+  const epigraph = data.epigraph
+    ? {
+        quote: String(data.epigraph.quote ?? ""),
+        ...(data.epigraph.attribution
+          ? { attribution: String(data.epigraph.attribution) }
+          : {}),
+        ...(data.epigraph.source
+          ? { source: String(data.epigraph.source) }
+          : {}),
+      }
+    : null;
+
+  const bibliography = data.bibliography ? String(data.bibliography) : null;
+
   return {
     slug,
     title: String(data.title),
@@ -57,24 +78,9 @@ function parseFile(filename: string): BlogPostMeta & { rawContent: string } {
     description: String(data.description),
     tags: (data.tags as string[]).map((t) => String(t).toLowerCase()),
     draft: Boolean(data.draft),
-    updated:
-      data.updated instanceof Date
-        ? data.updated.toISOString().slice(0, 10)
-        : data.updated
-          ? String(data.updated)
-          : undefined,
-    epigraph: data.epigraph
-      ? {
-          quote: String(data.epigraph.quote ?? ""),
-          attribution: data.epigraph.attribution
-            ? String(data.epigraph.attribution)
-            : undefined,
-          source: data.epigraph.source
-            ? String(data.epigraph.source)
-            : undefined,
-        }
-      : undefined,
-    bibliography: data.bibliography ? String(data.bibliography) : undefined,
+    ...(updated !== null ? { updated } : {}),
+    ...(epigraph !== null ? { epigraph } : {}),
+    ...(bibliography !== null ? { bibliography } : {}),
     readingMinutes: Math.max(1, Math.round(readingTime(content).minutes)),
     rawContent: content,
   };
