@@ -9,6 +9,12 @@ interface SEOProps {
   type?: "website" | "article" | "profile";
   image?: string;
   noindex?: boolean;
+  /** ISO date when the article was first published (for type="article") */
+  publishedTime?: string;
+  /** ISO date when the article was last modified (for type="article") */
+  modifiedTime?: string;
+  /** Article tags (for type="article") */
+  tags?: string[];
 }
 
 const DEFAULT_IMAGE = `${SITE_URL}/imgs/profile.jpg`;
@@ -51,6 +57,9 @@ export default function SEO({
   type = "website",
   image = DEFAULT_IMAGE,
   noindex = false,
+  publishedTime,
+  modifiedTime,
+  tags,
 }: SEOProps) {
   const url = `${SITE_URL}${path}`;
   const fullTitle = `${title} | Erik Novak`;
@@ -70,6 +79,16 @@ export default function SEO({
       <meta property="og:type" content={type} />
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content="Erik Novak" />
+      {type === "article" && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {type === "article" && modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )}
+      {type === "article" &&
+        tags?.map((tag) => (
+          <meta key={tag} property="article:tag" content={tag} />
+        ))}
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />

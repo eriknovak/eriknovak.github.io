@@ -46,6 +46,9 @@ export default function BlogPostPage({ post, prev, next }: PageProps) {
         description={post.description}
         path={`/blog/${post.year}/${post.slug}/`}
         type="article"
+        publishedTime={post.date}
+        modifiedTime={post.updated}
+        tags={post.tags}
       />
       <BlogPost meta={post}>
         <MDXRemote {...post.mdxSource} components={mdxComponents} />
