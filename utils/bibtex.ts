@@ -15,8 +15,15 @@ export function generateBibtex(pub: PublicationProps): string {
     .replace(/[^a-z]/g, "");
   const citationKey = `${lastName}${pub.year}${titleWords}`;
 
-  // Determine entry type
-  const entryType = pub.type === "journal" ? "article" : "inproceedings";
+  // Determine entry type (type may be capitalized on the publications page
+  // or lowercase on the home page, so normalize before comparing)
+  const normalizedType = (pub.type || "").toLowerCase();
+  const entryType =
+    normalizedType === "journal"
+      ? "article"
+      : normalizedType === "arxiv" || normalizedType === "dataset"
+        ? "misc"
+        : "inproceedings";
 
   // Build BibTeX fields
   const fields: string[] = [];
@@ -25,6 +32,14 @@ export function generateBibtex(pub: PublicationProps): string {
 
   if (entryType === "article") {
     fields.push(`  journal = {${pub.reference}}`);
+  } else if (entryType === "misc") {
+    fields.push(
+      `  howpublished = {${
+        normalizedType === "arxiv"
+          ? `arXiv preprint ${pub.reference}`
+          : pub.reference
+      }}`,
+    );
   } else {
     fields.push(`  booktitle = {${pub.reference}}`);
   }

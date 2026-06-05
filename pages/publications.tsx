@@ -5,7 +5,9 @@ import cn from "classnames";
 import Publication from "../components/Publication";
 import SEO from "../components/SEO";
 
+import ARXIV_PAPERS from "../assets/publications/arxiv_papers";
 import CONFERENCE_PAPERS from "../assets/publications/conference_papers";
+import DATASETS from "../assets/publications/datasets";
 import JOURNAL_PAPERS from "../assets/publications/journal_papers";
 import { PublicationProps } from "../Interfaces";
 
@@ -13,17 +15,25 @@ import { sortByDate } from "../utils/sort";
 
 import styles from "./publications.module.scss";
 
-type FilterValue = "all" | "Journal" | "Conference";
+type FilterValue = "all" | "Journal" | "Conference" | "arXiv" | "Datasets";
 
 const ALL_PAPERS: PublicationProps[] = [
   ...JOURNAL_PAPERS.map((paper) => ({ ...paper, type: "Journal" })),
   ...CONFERENCE_PAPERS.map((paper) => ({ ...paper, type: "Conference" })),
+  ...ARXIV_PAPERS.map((paper) => ({ ...paper, type: "arXiv" })),
 ].sort((a, b) => sortByDate(a, b, "year"));
+
+const DATASET_ITEMS: PublicationProps[] = DATASETS.map((d) => ({
+  ...d,
+  type: "Dataset",
+})).sort((a, b) => sortByDate(a, b, "year"));
 
 const COUNTS = {
   all: ALL_PAPERS.length,
   Journal: ALL_PAPERS.filter((p) => p.type === "Journal").length,
   Conference: ALL_PAPERS.filter((p) => p.type === "Conference").length,
+  arXiv: ALL_PAPERS.filter((p) => p.type === "arXiv").length,
+  Datasets: DATASET_ITEMS.length,
 };
 
 export default function Publications() {
@@ -38,13 +48,11 @@ export default function Publications() {
   const tt = (key: string, fallback: string) =>
     mounted && ready ? t(key) : fallback;
 
-  const filtered = useMemo(
-    () =>
-      filter === "all"
-        ? ALL_PAPERS
-        : ALL_PAPERS.filter((p) => p.type === filter),
-    [filter],
-  );
+  const filtered = useMemo(() => {
+    if (filter === "all") return ALL_PAPERS;
+    if (filter === "Datasets") return DATASET_ITEMS;
+    return ALL_PAPERS.filter((p) => p.type === filter);
+  }, [filter]);
 
   const byYear = useMemo(() => {
     return filtered.reduce<Record<string, PublicationProps[]>>((acc, p) => {
@@ -111,6 +119,16 @@ export default function Publications() {
           value="Conference"
           label={tt("filterConf", "Conference")}
           count={COUNTS.Conference}
+        />
+        <FilterChip
+          value="arXiv"
+          label={tt("filterArxiv", "arXiv")}
+          count={COUNTS.arXiv}
+        />
+        <FilterChip
+          value="Datasets"
+          label={tt("filterDatasets", "Datasets")}
+          count={COUNTS.Datasets}
         />
       </div>
 

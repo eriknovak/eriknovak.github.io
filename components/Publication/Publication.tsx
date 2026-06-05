@@ -127,7 +127,11 @@ export default function Publication(props: Props) {
               ? tt("filterJournal", "Journal")
               : type === "Conference"
                 ? tt("filterConf", "Conference")
-                : type}
+                : type === "arXiv"
+                  ? tt("filterArxiv", "arXiv")
+                  : type === "Dataset"
+                    ? tt("typeDataset", "Dataset")
+                    : type}
           </div>
         )}
         <div

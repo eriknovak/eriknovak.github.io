@@ -74,6 +74,17 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_4772.pdf",
   },
   {
+    authors: "F. Koprivec, G. Kržmanc, M. Škrjanc, K. Kenda, E. Novak",
+    title: "Screening Tool for Anti-money Laundering Supervision",
+    url: "https://link.springer.com/chapter/10.1007/978-3-030-94590-9_13",
+    reference:
+      "Big Data and Artificial Intelligence in Digital Finance (book chapter), Springer",
+    location: null,
+    year: 2022,
+    keywords: ["anti-money laundering", "fintech", "anomaly detection"],
+    doi: "10.1007/978-3-030-94590-9_13",
+  },
+  {
     authors: "E. Novak",
     title: "News Stream Clustering using Multilingual Language Models",
     url: "https://ailab.ijs.si/dunja/SiKDD2021/Papers/Novak.pdf",
@@ -154,6 +165,17 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     year: 2016,
     keywords: ["data visualization", "video lectures", "statistical analysis"],
     pdf: "http://ailab.ijs.si/dunja/SiKDD2016/Papers/Novak_VLN.pdf",
+  },
+  {
+    authors:
+      "B. Fortuna, J. Rupnik, J. Brank, C. Fortuna, V. Jovanoski, M. Karlovčec, B. Kažič, K. Kenda, G. Leban, A. Muhič, E. Novak, J. Novljan, M. Papler, L. Rei, B. Sovdat, L. Stopar, M. Grobelnik, D. Mladenić",
+    title:
+      "QMiner: Data Analytics Platform for Processing Streams of Structured and Unstructured Data",
+    url: "https://www.semanticscholar.org/paper/bf024b09b494cc9d8d59a2dff8975bf8eec9aac5",
+    reference: "Workshop on Software Engineering for Machine Learning, NeurIPS",
+    location: null,
+    year: 2014,
+    keywords: ["data analytics", "stream processing", "machine learning"],
   },
 ];
 
