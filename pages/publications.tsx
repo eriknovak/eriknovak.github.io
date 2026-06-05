@@ -28,8 +28,12 @@ const DATASET_ITEMS: PublicationProps[] = DATASETS.map((d) => ({
   type: "Dataset",
 })).sort((a, b) => sortByDate(a, b, "year"));
 
+const EVERYTHING: PublicationProps[] = [...ALL_PAPERS, ...DATASET_ITEMS].sort(
+  (a, b) => sortByDate(a, b, "year"),
+);
+
 const COUNTS = {
-  all: ALL_PAPERS.length,
+  all: EVERYTHING.length,
   Journal: ALL_PAPERS.filter((p) => p.type === "Journal").length,
   Conference: ALL_PAPERS.filter((p) => p.type === "Conference").length,
   arXiv: ALL_PAPERS.filter((p) => p.type === "arXiv").length,
@@ -49,7 +53,7 @@ export default function Publications() {
     mounted && ready ? t(key) : fallback;
 
   const filtered = useMemo(() => {
-    if (filter === "all") return ALL_PAPERS;
+    if (filter === "all") return EVERYTHING;
     if (filter === "Datasets") return DATASET_ITEMS;
     return ALL_PAPERS.filter((p) => p.type === filter);
   }, [filter]);
