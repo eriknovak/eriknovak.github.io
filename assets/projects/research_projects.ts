@@ -48,6 +48,12 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
         owner: "E3-JSI",
         repo: "medtermex",
       },
+      {
+        type: "github",
+        label: "PREPARE Extraction Tool",
+        owner: "E3-JSI",
+        repo: "PREPARE-Extraction-Tool",
+      },
     ],
   },
   {

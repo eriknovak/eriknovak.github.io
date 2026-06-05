@@ -18,6 +18,7 @@ import ACADEMIC_PROFILE from "../assets/profile/academic";
 import RESEARCH_PROJECTS from "../assets/projects/research_projects";
 import JOURNAL_PAPERS from "../assets/publications/journal_papers";
 import CONFERENCE_PAPERS from "../assets/publications/conference_papers";
+import ARXIV_PAPERS from "../assets/publications/arxiv_papers";
 
 import { sortByDate } from "../utils/sort";
 import styles from "./index.module.scss";
@@ -29,6 +30,7 @@ const CURRENT_PROJECTS = RESEARCH_PROJECTS.filter(
 const LATEST_PUBLICATIONS = [
   ...JOURNAL_PAPERS.map((paper) => ({ ...paper, type: "journal" })),
   ...CONFERENCE_PAPERS.map((paper) => ({ ...paper, type: "conference" })),
+  ...ARXIV_PAPERS.map((paper) => ({ ...paper, type: "arXiv" })),
 ]
   .sort((a, b) => sortByDate(a, b, "year"))
   .slice(0, 3);
