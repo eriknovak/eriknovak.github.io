@@ -1,30 +1,138 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Erik Novak — Personal Homepage
 
-## Getting Started
+Personal academic homepage for Erik Novak, a researcher in Artificial Intelligence.
+It presents a profile/bio, a list of publications (journal, conference, arXiv) and
+datasets, research projects, and a Tufte-styled blog.
 
-First, run the development server:
+Built with **Next.js** (Pages Router), **TypeScript**, **Tailwind CSS**, and **SCSS**.
+Content lives in plain TypeScript data files — there is no backend or CMS, so most
+updates are a matter of editing a list in `assets/`.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm install      # install dependencies
+npm run dev      # start the dev server at http://localhost:3000
+npm run build    # static production build (outputs to ./frontend)
+npm run start    # serve the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site is statically exported (`output: 'export'`). A `BASE_PATH` environment
+variable is supported for deployment under a subdirectory.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Project structure
 
-## Learn More
+```
+assets/                 # Site content as TypeScript data (edit these)
+  profile/              #   bio text, academic links, programming skills
+  publications/         #   journal / conference / arXiv papers + datasets
+  projects/             #   research projects
+content/blog/           # Blog posts as MDX (+ references.bib) (edit these)
+public/                 # Static files: images, fonts, and i18n locale JSON
+  locales/{en,sl}/      #   UI translation strings (edit when adding labels)
+pages/                  # Next.js routes (mostly layout — edit with care)
+components/             # Reusable React components (leave alone unless changing UI)
+utils/                  # Helpers: bibtex, sorting, blog/MDX, i18n, sitemap
+styles/                 # Global SCSS + Tailwind layer
+Interfaces.ts           # TypeScript types for the content data
+tailwind.config.js      # Theme (colors, fonts)
+next.config.js          # Build / static-export config
+frontend/               # GENERATED build output — never edit
+```
 
-To learn more about Next.js, take a look at the following resources:
+## What to edit
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Almost all routine content updates happen in `assets/` (and `content/blog/` for
+posts). These are typed against `Interfaces.ts`, so run `npx tsc --noEmit` after
+editing to catch mistakes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Publications
 
-## Deploy on Vercel
+The publications page groups entries by source. Each group is its own file and an
+array of `PublicationProps` (see `Interfaces.ts`):
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| File | Shows up under |
+|------|----------------|
+| `assets/publications/journal_papers.ts` | **Journal** filter |
+| `assets/publications/conference_papers.ts` | **Conference** filter |
+| `assets/publications/arxiv_papers.ts` | **arXiv** filter |
+| `assets/publications/datasets.ts` | **Datasets** filter |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To add a paper, copy an existing entry and fill in the fields:
+
+```ts
+{
+  authors: "E. Novak, D. Mladenić, M. Grobelnik",   // "F. Surname" initials, comma-separated
+  title: "Paper Title",
+  url: "https://...",                                 // links the title
+  reference: "Journal or Proceedings name",           // shown in italics on the card
+  location: "Ljubljana",                              // or null
+  year: 2025,
+  doi: "10.0000/xxxxx",                               // optional — renders a DOI chip
+  pdf: "https://.../paper.pdf",                        // optional — renders a PDF chip
+  keywords: ["nlp", "llm"],                            // optional — used in BibTeX export
+},
+```
+
+Entries are sorted by year automatically; order within a file does not matter.
+The BibTeX "copy" button is generated from these fields (`utils/bibtex.ts`).
+
+### Projects
+
+`assets/projects/research_projects.ts` — an array of `ProjectProps`. `links` are
+external buttons (homepage, platform); `resources` are typically GitHub repos:
+
+```ts
+{
+  type: "github",
+  label: "PREPARE Extraction Tool",   // button text
+  owner: "E3-JSI",                    // GitHub org/user
+  repo: "PREPARE-Extraction-Tool",    // repo name
+},
+```
+
+Set `endDate: "Present"` for active projects (these also surface on the home page).
+
+### Profile
+
+- `assets/profile/profile.tsx` — name, subtitle, and the bio paragraphs (JSX).
+- `assets/profile/academic.ts` — the academic/contact links (Scholar, GitHub, email, …).
+
+### Blog
+
+Posts are MDX in `content/blog/`, named `YYYY-MM-DD-slug.mdx`, with frontmatter
+(`title`, `date`, `description`, `tags`, `draft`, …). Drafts appear in `npm run dev`
+but are excluded from `npm run build`. Citations resolve against
+`content/blog/references.bib`. See `CLAUDE.md` for the full frontmatter reference
+and the list of available in-post MDX components.
+
+### UI text / translations
+
+User-facing labels are translated. When you add a new label (e.g. a new filter
+chip), add the key to **both** `public/locales/en/*.json` and
+`public/locales/sl/*.json` for the relevant namespace (`publications`, `projects`,
+`home`, `blog`, `common`).
+
+## What to generally leave alone
+
+These are framework, build, or wiring concerns — only touch them when you are
+deliberately changing how the site works, not when updating content:
+
+- **`frontend/`, `.next/`, `node_modules/`** — generated; never edit or commit by hand.
+- **`pages/`** — route layouts. Adding a publication/project does **not** require
+  changes here; editing is only needed for new pages or layout changes. If you add a
+  whole new publication *group*, the wiring lives in `pages/publications.tsx`.
+- **`components/`** — reusable UI (cards, header, footer, theme toggle). Change only
+  for visual/behavioral tweaks.
+- **`utils/`** — BibTeX generation, sorting, MDX/blog pipeline, i18n, sitemap/RSS.
+- **`Interfaces.ts`** — change only when a content field needs to be added/changed.
+- **`tailwind.config.js`, `styles/globals.scss`** — theme and design tokens
+  (colors, fonts, dark/light variables).
+- **`next.config.js`, `tsconfig.json`, `postcss.config.js`** — build configuration.
+- **`public/sitemap.xml`, `public/blog/rss.xml`** — generated during the build.
+
+## Notes
+
+- After editing any data file, run `npx tsc --noEmit` to type-check.
+- The MDX plugin chain (`utils/blog/mdx.ts`) mixes ESM-only plugins; see `CLAUDE.md`
+  for the gotchas if a blog build fails.
