@@ -2,6 +2,23 @@ import { PublicationProps } from "../../Interfaces";
 
 const CONFERENCE_PAPERS: PublicationProps[] = [
   {
+    authors:
+      "E. Calcina, E. Novak, L. Pepa, M. G. Ceravolo, the PREPARE Project Group",
+    title:
+      "An Iterative Annotation Pipeline for Building Clinical Datasets and Training Information Extraction Models: The PREPARE Project",
+    url: "https://www.ohdsi-europe.org/images/symposium-2026/posters/34_abstract.pdf",
+    reference: "7th European OHDSI Symposium (poster)",
+    location: "Rotterdam",
+    year: 2026,
+    keywords: [
+      "clinical NLP",
+      "information extraction",
+      "annotation",
+      "PREPARE",
+    ],
+    pdf: "https://www.ohdsi-europe.org/images/symposium-2026/posters/34_abstract.pdf",
+  },
+  {
     authors: "E. Calcina, E. Novak, D. Mladenić",
     title:
       "Semantic Prompting for Large Language Models in Biomedical Named Entity Recognition",
@@ -11,6 +28,17 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     year: 2025,
     keywords: ["NER", "LLM", "biomedical", "NLP"],
     pdf: "https://aile3.ijs.si/dunja/SiKDD2025/Papers/IS2024_-_SIKDD_2025_paper_3.pdf",
+  },
+  {
+    authors:
+      "E. Calcina, T. Meterc, N. Shpanko, L. Spindari, E. Lindner, L. Hoogendam, H. Slijper, R. Selles, E. Novak",
+    title:
+      "An Iterative LLM-based Pipeline for Extracting Clinical Data from Medical Records",
+    url: "https://www.ohdsi-europe.org/events-past-events-symposium-2025#acc-posters",
+    reference: "OHDSI Europe Symposium (poster)",
+    location: "Hasselt",
+    year: 2025,
+    keywords: ["clinical NLP", "LLM", "information extraction", "PREPARE"],
   },
   {
     authors: "L. Dolinar, E. Calcina, E. Novak",

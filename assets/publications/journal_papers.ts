@@ -2,6 +2,16 @@ import { PublicationProps } from "../../Interfaces";
 
 const JOURNAL_PAPERS: PublicationProps[] = [
   {
+    authors: "E. Calcina, E. Novak, D. Mladenić, and PREPARE Project Group",
+    title:
+      "Extracting Biomedical Entities from Clinical Records: A Comparative Study of Large Language Model Approaches",
+    url: "https://www.tandfonline.com/doi/full/10.1080/08839514.2026.2700905",
+    reference: "Applied Artificial Intelligence, 40(1)",
+    location: null,
+    year: 2026,
+    doi: "10.1080/08839514.2026.2700905",
+  },
+  {
     authors: "L. Dolinar, E. Calcina, E. Novak",
     title:
       "Evaluating Open-Source Large Language Models for Synthetic Non-English Medical Data Generation Using Prompt-Based Techniques",
