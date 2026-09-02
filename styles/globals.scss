@@ -43,22 +43,24 @@
   }
 
   :root[data-theme="light"] {
-    --ed-bg: #faf6ec;
-    --ed-fg: #0e0e0e;
-    --ed-text-secondary: #333333;
-    --ed-muted: #777777;
-    --ed-rule: #e8e6e0;
-    --ed-card: #f5f1e6;
-    --ed-input: #faf6ec;
-    --ed-accent: #39384d;
+    // Cool porcelain counterpart of the navy dark theme: same hue family,
+    // inverted ground. The accent is the light-mode sibling of #93a9de.
+    --ed-bg: #f6f7fa;
+    --ed-fg: #12151c;
+    --ed-text-secondary: #3a4150;
+    --ed-muted: #626b7d;
+    --ed-rule: #dde1e9;
+    --ed-card: #eef0f5;
+    --ed-input: #e8ebf2;
+    --ed-accent: #3e5ba9;
 
-    --color-background-base: 250, 246, 236;
-    --color-background-highlight: 245, 241, 230;
-    --color-text-base: 14, 14, 14;
-    --color-text-highlight: 119, 119, 119;
-    --color-text-highlight-hover: 51, 51, 51;
-    --color-text-link: 57, 56, 77;
-    --color-text-link-hover: 14, 14, 14;
+    --color-background-base: 246, 247, 250; // --ed-bg
+    --color-background-highlight: 238, 240, 245; // --ed-card
+    --color-text-base: 18, 21, 28; // --ed-fg
+    --color-text-highlight: 98, 107, 125; // --ed-muted
+    --color-text-highlight-hover: 58, 65, 80; // --ed-text-secondary
+    --color-text-link: 62, 91, 169; // --ed-accent
+    --color-text-link-hover: 18, 21, 28; // --ed-fg
   }
 
   @font-face {
