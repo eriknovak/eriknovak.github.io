@@ -8,14 +8,14 @@
     // directly by the new components; the legacy --color-* triples below
     // are rewired to the same palette so any unmigrated Tailwind classes
     // (text-base / bg-base / text-highlight / text-link) keep rendering.
-    --ed-bg: #161a22;
-    --ed-fg: #dde0e8;
-    --ed-text-secondary: #c8c8c5;
-    --ed-muted: #7b8190;
-    --ed-rule: #262b35;
-    --ed-card: #1c212b;
-    --ed-input: #222834;
-    --ed-accent: #39384d;
+    --ed-bg: #141821;
+    --ed-fg: #e6eaf2;
+    --ed-text-secondary: #c6ccda;
+    --ed-muted: #97a0b2;
+    --ed-rule: #2a3140;
+    --ed-card: #1b212c;
+    --ed-input: #222a38;
+    --ed-accent: #93a9de;
 
     // Single-font pairing — Atkinson everywhere (low-vision friendly).
     // The aliases are kept so a future refactor can re-introduce a serif
@@ -27,13 +27,13 @@
 
     // Legacy RGB-triple tokens. Mapped to the new palette so opacity-aware
     // Tailwind utilities (rgb(var(--token), 0.5)) continue to work.
-    --color-background-base: 22, 26, 34; // --ed-bg
-    --color-background-highlight: 28, 33, 43; // --ed-card
-    --color-text-base: 221, 224, 232; // --ed-fg
-    --color-text-highlight: 123, 129, 144; // --ed-muted
-    --color-text-highlight-hover: 200, 200, 197;
-    --color-text-link: 57, 56, 77; // --ed-accent (kept low-key)
-    --color-text-link-hover: 200, 200, 197;
+    --color-background-base: 20, 24, 33; // --ed-bg
+    --color-background-highlight: 27, 33, 44; // --ed-card
+    --color-text-base: 230, 234, 242; // --ed-fg
+    --color-text-highlight: 151, 160, 178; // --ed-muted
+    --color-text-highlight-hover: 198, 204, 218; // --ed-text-secondary
+    --color-text-link: 147, 169, 222; // --ed-accent
+    --color-text-link-hover: 230, 234, 242; // --ed-fg
 
     // Scrollbar
     --width-scrollbar-sm: 6px;
@@ -43,22 +43,24 @@
   }
 
   :root[data-theme="light"] {
-    --ed-bg: #faf6ec;
-    --ed-fg: #0e0e0e;
-    --ed-text-secondary: #333333;
-    --ed-muted: #777777;
-    --ed-rule: #e8e6e0;
-    --ed-card: #f5f1e6;
-    --ed-input: #faf6ec;
-    --ed-accent: #39384d;
+    // Cool porcelain counterpart of the navy dark theme: same hue family,
+    // inverted ground. The accent is the light-mode sibling of #93a9de.
+    --ed-bg: #f6f7fa;
+    --ed-fg: #12151c;
+    --ed-text-secondary: #3a4150;
+    --ed-muted: #626b7d;
+    --ed-rule: #dde1e9;
+    --ed-card: #eef0f5;
+    --ed-input: #e8ebf2;
+    --ed-accent: #3e5ba9;
 
-    --color-background-base: 250, 246, 236;
-    --color-background-highlight: 245, 241, 230;
-    --color-text-base: 14, 14, 14;
-    --color-text-highlight: 119, 119, 119;
-    --color-text-highlight-hover: 51, 51, 51;
-    --color-text-link: 57, 56, 77;
-    --color-text-link-hover: 14, 14, 14;
+    --color-background-base: 246, 247, 250; // --ed-bg
+    --color-background-highlight: 238, 240, 245; // --ed-card
+    --color-text-base: 18, 21, 28; // --ed-fg
+    --color-text-highlight: 98, 107, 125; // --ed-muted
+    --color-text-highlight-hover: 58, 65, 80; // --ed-text-secondary
+    --color-text-link: 62, 91, 169; // --ed-accent
+    --color-text-link-hover: 18, 21, 28; // --ed-fg
   }
 
   @font-face {
