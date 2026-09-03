@@ -6,6 +6,52 @@
   border-bottom: 1px solid var(--ed-rule);
 }
 
+/* Full view (option D): logo plate | name/dates/badge | description. */
+.withLogo {
+  grid-template-columns: 64px 180px 1fr;
+  gap: 24px;
+}
+
+.logoTile {
+  width: 64px;
+  height: 64px;
+  background: var(--ed-plate);
+  border: 1px solid var(--ed-rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 8px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+.monogram {
+  font-family: var(--ed-serif);
+  font-weight: 700;
+  font-size: 21px;
+  /* Fixed hue: the tile plate is white in both themes. */
+  color: #3e5ba9;
+  letter-spacing: -0.5px;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--ed-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+  color: var(--ed-bg);
+}
+
 .past {
   opacity: 0.92;
 }
@@ -22,6 +68,22 @@
     grid-template-columns: 1fr;
     gap: 16px;
     padding: 24px 0;
+  }
+
+  .withLogo {
+    grid-template-columns: 52px 1fr;
+    gap: 16px;
+
+    /* Description drops below the logo + name columns. */
+    > div:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .logoTile {
+    width: 52px;
+    height: 52px;
+    padding: 6px;
   }
 
   .linkRow {

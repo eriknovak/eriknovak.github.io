@@ -7,6 +7,11 @@ export interface PublicationProps {
   id?: string;
   /** Resolved at build time; path to the first-page image if one exists. */
   thumbnail?: string;
+  /**
+   * Featured paper: rendered with a larger first-page image, larger title,
+   * and the abstract. Mark 3–5 entries at most so the contrast keeps meaning.
+   */
+  selected?: boolean;
   authors: string;
   title: string;
   url: string;
@@ -41,6 +46,17 @@ export interface ProjectLink {
 }
 
 export interface ProjectProps {
+  /**
+   * Stable identifier. A logo image placed at
+   * public/imgs/projects/<id>.png (or .svg) is picked up automatically at
+   * build time and shown on a white plate; without one, a typographic
+   * monogram is rendered instead.
+   */
+  id?: string;
+  /** Resolved at build time; path to the logo image if one exists. */
+  logo?: string;
+  /** Override for the fallback monogram (defaults to first two characters of the title). */
+  monogram?: string;
   title: string;
   type: string;
   startDate: string;

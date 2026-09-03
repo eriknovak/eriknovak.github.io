@@ -58,6 +58,16 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   border-bottom: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.filterDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
 }
 
 .filterChipActive {
@@ -65,34 +75,35 @@
   border-bottom-color: currentColor;
 }
 
+/* Boxless ledger (option C): the year hangs in the left margin. */
 .yearGroup {
-  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 0 30px;
+  margin-bottom: 44px;
 }
 
-.yearHeader {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 24px;
-  align-items: baseline;
-  margin-bottom: 16px;
+.yearCol {
+  padding-top: 8px;
 }
 
 .yearLabel {
   font-family: var(--ed-serif);
-  font-size: 36px;
-  font-weight: 400;
+  font-size: 32px;
+  font-weight: 700;
   color: var(--ed-muted);
   font-variant-numeric: tabular-nums;
   letter-spacing: -1px;
+  line-height: 1;
 }
 
 .yearMeta {
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--ed-muted);
   font-family: var(--ed-sans);
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding-top: 8px;
+  margin-top: 6px;
 }
 
 @media (max-width: 720px) {
@@ -118,13 +129,26 @@
     margin-bottom: 24px;
   }
 
-  .yearHeader {
-    grid-template-columns: 60px 1fr;
-    gap: 16px;
+  .yearGroup {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+
+  .yearCol {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    border-bottom: 2px solid var(--ed-rule);
+    padding-bottom: 8px;
   }
 
   .yearLabel {
-    font-size: 28px;
+    font-size: 26px;
+  }
+
+  .yearMeta {
+    margin-top: 0;
   }
 }
 

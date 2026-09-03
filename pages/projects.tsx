@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -25,7 +27,27 @@ const SectionTitle = ({ title, meta }: { title: string; meta: string }) => (
   </div>
 );
 
-export default function Projects() {
+/**
+ * Project logos live in public/imgs/projects/<id>.png (or .svg). Collect the
+ * files that exist at build time; projects without one fall back to a
+ * typographic monogram.
+ */
+export async function getStaticProps() {
+  const dir = path.join(process.cwd(), "public", "imgs", "projects");
+  let logoFiles: string[] = [];
+  try {
+    logoFiles = fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith(".png") || f.endsWith(".svg"));
+  } catch {
+    // Directory may not exist yet; render monograms only.
+  }
+  return { props: { logoFiles } };
+}
+
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+export default function Projects({ logoFiles }: { logoFiles: string[] }) {
   const { t, ready } = useTranslation("projects");
   const [mounted, setMounted] = useState(false);
 
@@ -35,6 +57,11 @@ export default function Projects() {
 
   const tt = (key: string, fallback: string) =>
     mounted && ready ? t(key) : fallback;
+
+  const withLogo = (p: ProjectProps): ProjectProps => {
+    const file = p.id && logoFiles.find((f) => f.replace(/\.\w+$/, "") === p.id);
+    return file ? { ...p, logo: `${BASE_PATH}/imgs/projects/${file}` } : p;
+  };
 
   return (
     <div className={styles.page}>
@@ -62,7 +89,7 @@ export default function Projects() {
         meta={`${tt("activeMeta", "Currently running")} · ${ACTIVE_PROJECTS.length}`}
       />
       {ACTIVE_PROJECTS.map((item: ProjectProps) => (
-        <Project key={item.title} {...item} />
+        <Project key={item.title} {...withLogo(item)} />
       ))}
 
       <SectionTitle
@@ -70,7 +97,7 @@ export default function Projects() {
         meta={`${tt("pastMeta", "Completed")} · ${PAST_PROJECTS.length}`}
       />
       {PAST_PROJECTS.map((item: ProjectProps) => (
-        <Project key={item.title} {...item} past />
+        <Project key={item.title} {...withLogo(item)} past />
       ))}
     </div>
   );

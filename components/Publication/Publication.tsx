@@ -1,39 +1,23 @@
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowUpRightFromSquare,
-  faCheck,
-  faQuoteRight,
-  faLink,
-  faFilePdf,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import cn from "classnames";
 import { PublicationProps } from "../../Interfaces";
 import { generateBibtex, copyToClipboard } from "../../utils/bibtex";
 import styles from "./Publication.module.scss";
 
 interface Props extends PublicationProps {
-  /** Home view: title + inline meta line, no abstract or chips. */
+  /** Home view: title + inline meta line, no abstract or links. */
   minimal?: boolean;
 }
 
-const chipStyle: CSSProperties = {
-  fontFamily: "var(--ed-sans)",
-  fontSize: 13,
-  color: "var(--ed-fg)",
-  textDecoration: "none",
-  border: "1px solid var(--ed-rule)",
-  padding: "4px 10px",
-  borderRadius: 2,
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  gap: 8,
-  letterSpacing: "0.2px",
-  background: "var(--ed-input)",
-  cursor: "pointer",
-  textAlign: "left",
+/** Publication-type colour coding (option A); keys are lowercase. */
+const TYPE_COLORS: Record<string, string> = {
+  journal: "var(--ed-type-journal)",
+  conference: "var(--ed-type-conference)",
+  arxiv: "var(--ed-type-arxiv)",
+  dataset: "var(--ed-type-dataset)",
 };
 
 export default function Publication(props: Props) {
@@ -57,6 +41,7 @@ export default function Publication(props: Props) {
     pdf,
     abstract,
     thumbnail,
+    selected = false,
     minimal = false,
   } = props;
 
@@ -111,13 +96,31 @@ export default function Publication(props: Props) {
     );
   }
 
+  const typeColor = type ? TYPE_COLORS[type.toLowerCase()] : undefined;
+  const typeLabel = !type
+    ? null
+    : type === "Journal"
+      ? tt("filterJournal", "Journal")
+      : type === "Conference"
+        ? tt("filterConf", "Conference")
+        : type === "arXiv"
+          ? tt("filterArxiv", "arXiv")
+          : type === "Dataset"
+            ? tt("typeDataset", "Dataset")
+            : type;
+
   const paperHref = pdf || url;
   const firstPage = thumbnail && (
     <img src={thumbnail} alt={`First page of “${title}”`} loading="lazy" />
   );
 
   return (
-    <div className={cn(styles.card, { [styles.cardWithThumb]: thumbnail })}>
+    <div
+      className={cn(styles.entry, {
+        [styles.entrySelected]: selected,
+        [styles.entryWithThumb]: thumbnail,
+      })}
+    >
       {thumbnail &&
         (paperHref ? (
           <a
@@ -133,37 +136,14 @@ export default function Publication(props: Props) {
           <span className={styles.thumb}>{firstPage}</span>
         ))}
       <div>
-        {type && (
-          <div
-            style={{
-              fontFamily: "var(--ed-sans)",
-              fontSize: 10,
-              color: "var(--ed-muted)",
-              letterSpacing: "1.5px",
-              textTransform: "uppercase",
-              marginBottom: 8,
-            }}
-          >
-            {type === "Journal"
-              ? tt("filterJournal", "Journal")
-              : type === "Conference"
-                ? tt("filterConf", "Conference")
-                : type === "arXiv"
-                  ? tt("filterArxiv", "arXiv")
-                  : type === "Dataset"
-                    ? tt("typeDataset", "Dataset")
-                    : type}
+        {typeLabel && (
+          <div className={styles.typeKicker} style={{ color: typeColor }}>
+            {selected && <span className={styles.selectedDash} aria-hidden />}
+            {selected && <span>{tt("selected", "Selected")} · </span>}
+            <span>{typeLabel}</span>
           </div>
         )}
-        <div
-          style={{
-            fontFamily: "var(--ed-serif)",
-            fontSize: 18,
-            fontWeight: 500,
-            lineHeight: 1.35,
-            marginBottom: 8,
-          }}
-        >
+        <div className={styles.title}>
           {url ? (
             <a
               href={url}
@@ -177,102 +157,59 @@ export default function Publication(props: Props) {
             title
           )}
         </div>
-        <div
-          style={{
-            fontSize: 14,
-            color: "var(--ed-muted)",
-            lineHeight: 1.5,
-          }}
-        >
+        <div className={styles.meta}>
           {authors} · <em style={{ fontStyle: "italic" }}>{reference}</em>
           {location ? `, ${location}` : ""} · {year}
-        </div>
-        {abstract && (
-          <div
-            style={{
-              fontSize: 14,
-              color: "var(--ed-text-secondary)",
-              lineHeight: 1.55,
-              marginTop: 10,
-              paddingTop: 10,
-              borderTop: "1px dashed var(--ed-rule)",
-              fontStyle: "italic",
-            }}
-          >
-            {abstract}
-          </div>
-        )}
-      </div>
-      <div className={styles.actions}>
-        <button
-          type="button"
-          onClick={handleCopyBibtex}
-          style={chipStyle}
-          title={tt(
-            copied ? "copied" : "copyBibtex",
-            copied ? "Copied!" : "Copy BibTeX",
+          {doi && (
+            <>
+              {" · "}
+              <a
+                href={`https://doi.org/${doi}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.action}
+                title={tt("viewDoi", "View DOI")}
+              >
+                DOI
+              </a>
+            </>
           )}
-        >
-          <span
-            style={{ display: "inline-flex", alignItems: "center", gap: 6 }}
+          {pdf && (
+            <>
+              {" · "}
+              <a
+                href={pdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.action}
+                title={tt("downloadPdf", "Download PDF")}
+              >
+                {tt("pdf", "PDF")}
+              </a>
+            </>
+          )}
+          {" · "}
+          <button
+            type="button"
+            onClick={handleCopyBibtex}
+            className={styles.action}
+            title={tt(
+              copied ? "copied" : "copyBibtex",
+              copied ? "Copied!" : "Copy BibTeX",
+            )}
           >
-            <FontAwesomeIcon
-              icon={copied ? faCheck : faQuoteRight}
-              style={{ color: "var(--ed-muted)", fontSize: 11 }}
-              fixedWidth
-            />
-            <span>
-              {copied ? tt("copiedShort", "Copied") : tt("bibtex", "BibTeX")}
-            </span>
-          </span>
-        </button>
-        {doi && (
-          <a
-            href={`https://doi.org/${doi}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={chipStyle}
-            title={tt("viewDoi", "View DOI")}
-          >
-            <span
-              style={{ display: "inline-flex", alignItems: "center", gap: 6 }}
-            >
-              <FontAwesomeIcon
-                icon={faLink}
-                style={{ color: "var(--ed-muted)", fontSize: 11 }}
-                fixedWidth
-              />
-              <span>DOI</span>
-            </span>
-            <FontAwesomeIcon
-              icon={faArrowUpRightFromSquare}
-              style={{ color: "var(--ed-muted)", fontSize: 9 }}
-            />
-          </a>
-        )}
-        {pdf && (
-          <a
-            href={pdf}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={chipStyle}
-            title={tt("downloadPdf", "Download PDF")}
-          >
-            <span
-              style={{ display: "inline-flex", alignItems: "center", gap: 6 }}
-            >
-              <FontAwesomeIcon
-                icon={faFilePdf}
-                style={{ color: "var(--ed-muted)", fontSize: 11 }}
-                fixedWidth
-              />
-              <span>{tt("pdf", "PDF")}</span>
-            </span>
-            <FontAwesomeIcon
-              icon={faArrowUpRightFromSquare}
-              style={{ color: "var(--ed-muted)", fontSize: 9 }}
-            />
-          </a>
+            {copied ? (
+              <>
+                <FontAwesomeIcon icon={faCheck} style={{ fontSize: 10 }} />{" "}
+                {tt("copiedShort", "Copied")}
+              </>
+            ) : (
+              tt("bibtex", "BibTeX")
+            )}
+          </button>
+        </div>
+        {selected && abstract && (
+          <div className={styles.abstract}>{abstract}</div>
         )}
       </div>
     </div>
