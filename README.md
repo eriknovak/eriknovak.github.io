@@ -77,6 +77,39 @@ To add a paper, copy an existing entry and fill in the fields:
 Entries are sorted by year automatically; order within a file does not matter.
 The BibTeX "copy" button is generated from these fields (`utils/bibtex.ts`).
 
+### Publication thumbnails (first-page PNGs)
+
+Every paper entry has a stable `id` (e.g. `news-stream-clustering-2021`). If a
+PNG exists at `public/imgs/publications/<id>.png`, the publications page picks
+it up **automatically at build time** and renders the paper's first page in the
+card — adding or regenerating an image never requires a code change.
+
+Rendering requires poppler's `pdftoppm`:
+
+```bash
+sudo apt-get install poppler-utils   # Debian/Ubuntu
+brew install poppler                 # macOS
+```
+
+**Automatic** — downloads every openly available PDF and renders page 1
+(skips images that already exist; add `--force` to regenerate):
+
+```bash
+npm run thumbnails
+```
+
+**Manual** — for a single entry, or for papers whose PDF is not openly
+downloadable (paywalled journals, unpublished posters): download the PDF
+yourself, then pass the entry's `id` and the file (a URL also works):
+
+```bash
+node scripts/generate-publication-thumbnails.mjs tarnet-2024 ~/Downloads/tarnet.pdf
+```
+
+Commit the generated PNGs. The id → PDF-URL list used by the automatic mode
+lives at the top of `scripts/generate-publication-thumbnails.mjs`; when adding
+a new paper, add its `id` there too (or just use the manual form once).
+
 ### Projects
 
 `assets/projects/research_projects.ts` — an array of `ProjectProps`. `links` are
