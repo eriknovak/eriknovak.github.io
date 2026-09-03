@@ -1,4 +1,12 @@
 export interface PublicationProps {
+  /**
+   * Stable identifier for the publication. A first-page image placed at
+   * public/imgs/publications/<id>.png is picked up automatically at build
+   * time (see scripts/generate-publication-thumbnails.mjs).
+   */
+  id?: string;
+  /** Resolved at build time; path to the first-page image if one exists. */
+  thumbnail?: string;
   authors: string;
   title: string;
   url: string;

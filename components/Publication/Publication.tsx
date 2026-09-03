@@ -8,6 +8,7 @@ import {
   faLink,
   faFilePdf,
 } from "@fortawesome/free-solid-svg-icons";
+import cn from "classnames";
 import { PublicationProps } from "../../Interfaces";
 import { generateBibtex, copyToClipboard } from "../../utils/bibtex";
 import styles from "./Publication.module.scss";
@@ -55,6 +56,7 @@ export default function Publication(props: Props) {
     doi,
     pdf,
     abstract,
+    thumbnail,
     minimal = false,
   } = props;
 
@@ -109,8 +111,27 @@ export default function Publication(props: Props) {
     );
   }
 
+  const paperHref = pdf || url;
+  const firstPage = thumbnail && (
+    <img src={thumbnail} alt={`First page of “${title}”`} loading="lazy" />
+  );
+
   return (
-    <div className={styles.card}>
+    <div className={cn(styles.card, { [styles.cardWithThumb]: thumbnail })}>
+      {thumbnail &&
+        (paperHref ? (
+          <a
+            href={paperHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.thumb}
+            title={tt("openPaper", "Open paper")}
+          >
+            {firstPage}
+          </a>
+        ) : (
+          <span className={styles.thumb}>{firstPage}</span>
+        ))}
       <div>
         {type && (
           <div
