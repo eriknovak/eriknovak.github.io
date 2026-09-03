@@ -2,6 +2,8 @@ import { ProjectProps } from "../../Interfaces";
 
 const RESEARCH_PROJECTS: ProjectProps[] = [
   {
+    id: "slm4ie",
+    monogram: "S4",
     title: "SLM4IE",
     type: "ARIS Postdoctoral",
     startDate: "Mar 2026",
@@ -20,6 +22,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     resources: [],
   },
   {
+    id: "prepare",
     title: "PREPARE",
     type: "Horizon Europe",
     startDate: "Jun 2023",
@@ -57,6 +60,8 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     ],
   },
   {
+    id: "european-statistics-awards",
+    monogram: "ES",
     title: "European Statistics Awards",
     type: "Eurostat Contract",
     startDate: "Jan 2022",
@@ -74,6 +79,8 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     ],
   },
   {
+    id: "semteh",
+    monogram: "Se",
     title: "SEMTEH",
     type: "Slovenian Ministry for Culture",
     startDate: "Mar 2023",
@@ -83,6 +90,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     ],
   },
   {
+    id: "rsdo",
     title: "RSDO",
     type: "Development of Slovene in a Digital Environment",
     startDate: "May 2020",
@@ -114,6 +122,8 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     ],
   },
   {
+    id: "humane-ai-network",
+    monogram: "HA",
     title: "Humane AI Network",
     type: "Horizon 2020",
     startDate: "Sept 2020",
@@ -130,6 +140,8 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     ],
   },
   {
+    id: "curlicat",
+    monogram: "Cu",
     title: "CURLICAT",
     type: "CEF Telecomm Programme",
     startDate: "Jun 2020",
@@ -146,6 +158,8 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     ],
   },
   {
+    id: "infinitech",
+    monogram: "In",
     title: "Infinitech",
     type: "Horizon 2020",
     startDate: "Oct 2019",
@@ -162,6 +176,8 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     ],
   },
   {
+    id: "envirolens",
+    monogram: "En",
     title: "EnviroLENS",
     type: "Horizon 2020",
     startDate: "Dec 2018",
@@ -187,6 +203,8 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     ],
   },
   {
+    id: "x5gon",
+    monogram: "X5",
     title: "X5GON",
     type: "Horizon 2020",
     startDate: "Sep 2017",
@@ -220,6 +238,8 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     ],
   },
   {
+    id: "edsa",
+    monogram: "ED",
     title: "European Data Science Academy",
     type: "Horizon 2020",
     startDate: "Sep 2015",
@@ -236,6 +256,8 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     ],
   },
   {
+    id: "qminer",
+    monogram: "QM",
     title: "QMiner",
     type: "Open Source Project",
     startDate: "Feb 2015",

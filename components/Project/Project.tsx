@@ -66,6 +66,16 @@ const LinkIcon = ({ type }: { type: EditorialLinkType }) => (
 
 const ORDER: EditorialLinkType[] = ["site", "code", "resource"];
 
+/** Programme badge colour (option D), keyed on the project's `type` text. */
+function badgeColor(programme: string): string {
+  const p = programme.toLowerCase();
+  if (p.includes("horizon")) return "var(--ed-type-journal)";
+  if (p.includes("aris")) return "var(--ed-type-conference)";
+  if (p.includes("eurostat")) return "var(--ed-type-arxiv)";
+  if (p.includes("cef")) return "var(--ed-type-dataset)";
+  return "var(--ed-muted)";
+}
+
 export default function Project(props: Props) {
   const { t, ready } = useTranslation("projects");
   const [mounted, setMounted] = useState(false);
@@ -82,6 +92,8 @@ export default function Project(props: Props) {
     links,
     resources,
     type,
+    logo,
+    monogram,
     minimal = false,
     past = false,
   } = props;
@@ -110,12 +122,26 @@ export default function Project(props: Props) {
   const typeLabel = type ?? "";
   const body = description?.[0] ?? "";
 
+  const fallbackMonogram = monogram ?? title.slice(0, 2);
+
   return (
     <div
       className={cn("project-card", styles.container, {
         [styles.past]: past,
+        [styles.withLogo]: !minimal,
       })}
     >
+      {!minimal && (
+        <div className={styles.logoTile}>
+          {logo ? (
+            <img src={logo} alt={`${title} logo`} loading="lazy" />
+          ) : (
+            <span className={styles.monogram} aria-hidden>
+              {fallbackMonogram}
+            </span>
+          )}
+        </div>
+      )}
       <div>
         <div
           style={{
@@ -141,20 +167,28 @@ export default function Project(props: Props) {
         >
           {dateLabel}
         </div>
-        {typeLabel && (
-          <div
-            style={{
-              fontFamily: "var(--ed-sans)",
-              fontSize: 10,
-              color: "var(--ed-muted)",
-              letterSpacing: "1px",
-              textTransform: "uppercase",
-              lineHeight: 1.6,
-            }}
-          >
-            {typeLabel}
-          </div>
-        )}
+        {typeLabel &&
+          (minimal ? (
+            <div
+              style={{
+                fontFamily: "var(--ed-sans)",
+                fontSize: 10,
+                color: "var(--ed-muted)",
+                letterSpacing: "1px",
+                textTransform: "uppercase",
+                lineHeight: 1.6,
+              }}
+            >
+              {typeLabel}
+            </div>
+          ) : (
+            <span
+              className={styles.badge}
+              style={{ background: badgeColor(typeLabel) }}
+            >
+              {typeLabel}
+            </span>
+          ))}
       </div>
       <div>
         {minimal ? (

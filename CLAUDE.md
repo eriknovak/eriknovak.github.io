@@ -35,6 +35,16 @@ Content is defined as TypeScript objects in `assets/`:
 
 Pages import these data files and render them using components. No backend or CMS.
 
+### Publication thumbnails
+
+Each publication entry has a stable `id`. A first-page image at
+`public/imgs/publications/<id>.png` is picked up automatically at build time
+(via `getStaticProps` in `pages/publications.tsx`) and rendered in the
+publication card. Generate images with `npm run thumbnails` (requires
+poppler's `pdftoppm`); for paywalled papers or unpublished posters run
+`node scripts/generate-publication-thumbnails.mjs <id> <path-to.pdf>` with a
+manually downloaded PDF.
+
 ### Component Pattern
 
 Components use barrel exports:

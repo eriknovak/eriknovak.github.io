@@ -2,6 +2,7 @@ import { PublicationProps } from "../../Interfaces";
 
 const CONFERENCE_PAPERS: PublicationProps[] = [
   {
+    id: "ohdsi-prepare-poster-2026",
     authors:
       "E. Calcina, E. Novak, L. Pepa, M. G. Ceravolo, the PREPARE Project Group",
     title:
@@ -19,6 +20,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "https://www.ohdsi-europe.org/images/symposium-2026/posters/34_abstract.pdf",
   },
   {
+    id: "semantic-prompting-ner-2025",
     authors: "E. Calcina, E. Novak, D. Mladenić",
     title:
       "Semantic Prompting for Large Language Models in Biomedical Named Entity Recognition",
@@ -30,6 +32,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "https://aile3.ijs.si/dunja/SiKDD2025/Papers/IS2024_-_SIKDD_2025_paper_3.pdf",
   },
   {
+    id: "ohdsi-llm-pipeline-poster-2025",
     authors:
       "E. Calcina, T. Meterc, N. Shpanko, L. Spindari, E. Lindner, L. Hoogendam, H. Slijper, R. Selles, E. Novak",
     title:
@@ -41,6 +44,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     keywords: ["clinical NLP", "LLM", "information extraction", "PREPARE"],
   },
   {
+    id: "synthetic-medical-data-2024",
     authors: "L. Dolinar, E. Calcina, E. Novak",
     title: "Generating Non-English Synthetic Medical Data Sets",
     url: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_4.pdf",
@@ -51,6 +55,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_4.pdf",
   },
   {
+    id: "local-world-models-2024",
     authors: "M. D. Longar, E. Novak, M. Grobelnik",
     title: "Creating Local World Models using LLMs",
     url: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_22.pdf",
@@ -61,6 +66,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_22.pdf",
   },
   {
+    id: "kg-extraction-llm-2024",
     authors: "K. Gillani, K. Kenda, E. Novak, D. Mladenić",
     title: "Knowledge graph Extraction from Textual data using LLM",
     url: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_15.pdf",
@@ -71,6 +77,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_15.pdf",
   },
   {
+    id: "slomet-2022",
     authors: "A. Mladenić Grobelnik, E. Novak, D. Mladenić, M. Grobelnik",
     title: "SLOmet - Slovenian Commonsense Description",
     url: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_5674.pdf",
@@ -81,6 +88,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_5674.pdf",
   },
   {
+    id: "song-artists-similarity-2022",
     authors: "E. Calcina, E. Novak",
     title: "Measuring the Similarity of Song Artists using Topic Modelling",
     url: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_5269.pdf",
@@ -91,6 +99,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_5269.pdf",
   },
   {
+    id: "film-text-generation-2022",
     authors: "S. Korenič Tratnik, E. Novak",
     title:
       "Automatically Generating Text from Film Material - A Comparison of Three Models",
@@ -102,6 +111,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_4772.pdf",
   },
   {
+    id: "aml-screening-2022",
     authors: "F. Koprivec, G. Kržmanc, M. Škrjanc, K. Kenda, E. Novak",
     title: "Screening Tool for Anti-money Laundering Supervision",
     url: "https://link.springer.com/chapter/10.1007/978-3-030-94590-9_13",
@@ -113,6 +123,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     doi: "10.1007/978-3-030-94590-9_13",
   },
   {
+    id: "news-stream-clustering-2021",
     authors: "E. Novak",
     title: "News Stream Clustering using Multilingual Language Models",
     url: "https://ailab.ijs.si/dunja/SiKDD2021/Papers/Novak.pdf",
@@ -123,6 +134,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "https://ailab.ijs.si/dunja/SiKDD2021/Papers/Novak.pdf",
   },
   {
+    id: "oer-learning-pathways-2020",
     authors: "A. Saliha Sunar, E. Novak, J. Urbančič, D. Mladenić",
     title: "Users' Learning Pathways on Cross-site Open Educational Resources",
     url: "https://www.scitepress.org/Link.aspx?doi=10.5220/0009391600840095",
@@ -134,6 +146,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     doi: "10.5220/0009391600840095",
   },
   {
+    id: "legal-semantic-enrichment-2019",
     authors: "M. B. Massri, S. Brezec, E. Novak, K. Kenda",
     title: "Semantic Enrichment and Analysis of Legal Domain Documents",
     url: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Besher_Final.pdf",
@@ -144,6 +157,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Besher_Final.pdf",
   },
   {
+    id: "legal-doc-embeddings-2019",
     authors: "S. Kralj, Ž. Urbančič, E. Novak, K. Kenda",
     title: "Document Embedding Models on Environmental Legal Documents",
     url: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Kralj_Urbancic_Final.pdf",
@@ -154,6 +168,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Kralj_Urbancic_Final.pdf",
   },
   {
+    id: "oer-preferences-2019",
     authors: "A. Saliha Sunar, E. Novak, J. Urbančič, D. Mladenić",
     title:
       "Preferences of Users on Cross-Site OER Recommendations: Stay or Leave?",
@@ -165,6 +180,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Sunar_Final.pdf",
   },
   {
+    id: "multimodal-data-nlp-2018",
     authors: "E. Novak, J. Urbančič, M. Jenko",
     title: "Preparing Multi-Modal Data for Natural Language Processing",
     url: "http://ailab.ijs.si/dunja/SiKDD2018/Papers/NovakErik.pdf",
@@ -175,6 +191,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "http://ailab.ijs.si/dunja/SiKDD2018/Papers/NovakErik.pdf",
   },
   {
+    id: "skill-demand-supply-2017",
     authors: "E. Novak, I. Novalija",
     title: "Connecting Professional Skill Demand with Supply",
     url: "http://ailab.ijs.si/dunja/SiKDD2017/Papers/Novak_Skill.pdf",
@@ -185,6 +202,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "http://ailab.ijs.si/dunja/SiKDD2017/Papers/Novak_Skill.pdf",
   },
   {
+    id: "videolectures-analysis-2016",
     authors: "E. Novak, I. Novalija",
     title: "Visual and Statistical Analysis of VideoLectures.NET",
     url: "http://ailab.ijs.si/dunja/SiKDD2016/Papers/Novak_VLN.pdf",
@@ -195,6 +213,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     pdf: "http://ailab.ijs.si/dunja/SiKDD2016/Papers/Novak_VLN.pdf",
   },
   {
+    id: "qminer-2014",
     authors:
       "B. Fortuna, J. Rupnik, J. Brank, C. Fortuna, V. Jovanoski, M. Karlovčec, B. Kažič, K. Kenda, G. Leban, A. Muhič, E. Novak, J. Novljan, M. Papler, L. Rei, B. Sovdat, L. Stopar, M. Grobelnik, D. Mladenić",
     title:

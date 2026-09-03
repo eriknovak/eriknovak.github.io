@@ -2,6 +2,7 @@ import { PublicationProps } from "../../Interfaces";
 
 const ARXIV_PAPERS: PublicationProps[] = [
   {
+    id: "olympics-news-dataset-2025",
     authors: "E. Novak, E. Calcina, D. Mladenić, M. Grobelnik",
     title: "The 2021 Tokyo Olympics Multilingual News Article Dataset",
     url: "https://arxiv.org/abs/2502.06648",
@@ -11,6 +12,7 @@ const ARXIV_PAPERS: PublicationProps[] = [
     keywords: ["news dataset", "multilingual", "event analysis", "NLP"],
   },
   {
+    id: "ai-learning-companion-2021",
     authors: "M. Perez-Ortiz, E. Novak, S. Bulathwela, J. Shawe-Taylor",
     title:
       "An AI-based Learning Companion Promoting Lifelong Learning Opportunities for All",
@@ -21,6 +23,7 @@ const ARXIV_PAPERS: PublicationProps[] = [
     keywords: ["education", "lifelong learning", "AI", "personalization"],
   },
   {
+    id: "peek-dataset-2021",
     authors:
       "S. Bulathwela, M. Perez-Ortiz, E. Novak, E. Yilmaz, J. Shawe-Taylor",
     title:

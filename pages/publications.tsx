@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import cn from "classnames";
@@ -40,7 +42,32 @@ const COUNTS = {
   Datasets: DATASET_ITEMS.length,
 };
 
-export default function Publications() {
+/**
+ * First-page images live in public/imgs/publications/<id>.png (generated via
+ * scripts/generate-publication-thumbnails.mjs). Collect the ids that have one
+ * at build time so cards only render thumbnails that actually exist.
+ */
+export async function getStaticProps() {
+  const dir = path.join(process.cwd(), "public", "imgs", "publications");
+  let thumbnailIds: string[] = [];
+  try {
+    thumbnailIds = fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith(".png"))
+      .map((f) => f.replace(/\.png$/, ""));
+  } catch {
+    // Directory may not exist yet; render without thumbnails.
+  }
+  return { props: { thumbnailIds } };
+}
+
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+export default function Publications({
+  thumbnailIds,
+}: {
+  thumbnailIds: string[];
+}) {
   const { t, ready } = useTranslation("publications");
   const [mounted, setMounted] = useState(false);
   const [filter, setFilter] = useState<FilterValue>("all");
@@ -53,17 +80,33 @@ export default function Publications() {
     mounted && ready ? t(key) : fallback;
 
   const filtered = useMemo(() => {
-    if (filter === "all") return EVERYTHING;
-    if (filter === "Datasets") return DATASET_ITEMS;
-    return ALL_PAPERS.filter((p) => p.type === filter);
-  }, [filter]);
+    const list =
+      filter === "all"
+        ? EVERYTHING
+        : filter === "Datasets"
+          ? DATASET_ITEMS
+          : ALL_PAPERS.filter((p) => p.type === filter);
+    return list.map((p) =>
+      p.id && thumbnailIds.includes(p.id)
+        ? { ...p, thumbnail: `${BASE_PATH}/imgs/publications/${p.id}.png` }
+        : p,
+    );
+  }, [filter, thumbnailIds]);
 
   const byYear = useMemo(() => {
-    return filtered.reduce<Record<string, PublicationProps[]>>((acc, p) => {
-      const key = String(p.year);
-      (acc[key] = acc[key] || []).push(p);
-      return acc;
-    }, {});
+    const groups = filtered.reduce<Record<string, PublicationProps[]>>(
+      (acc, p) => {
+        const key = String(p.year);
+        (acc[key] = acc[key] || []).push(p);
+        return acc;
+      },
+      {},
+    );
+    // Featured (selected) papers lead their year group.
+    for (const list of Object.values(groups)) {
+      list.sort((a, b) => Number(!!b.selected) - Number(!!a.selected));
+    }
+    return groups;
   }, [filtered]);
   const years = Object.keys(byYear).sort((a, b) => Number(b) - Number(a));
 
@@ -71,10 +114,13 @@ export default function Publications() {
     value,
     label,
     count,
+    dot,
   }: {
     value: FilterValue;
     label: string;
     count: number;
+    /** Type-coding colour (option A); omitted for "All". */
+    dot?: string;
   }) => {
     const active = filter === value;
     return (
@@ -85,6 +131,9 @@ export default function Publications() {
           [styles.filterChipActive]: active,
         })}
       >
+        {dot && (
+          <span className={styles.filterDot} style={{ background: dot }} />
+        )}
         {label} ({count})
       </button>
     );
@@ -118,27 +167,31 @@ export default function Publications() {
           value="Journal"
           label={tt("filterJournal", "Journal")}
           count={COUNTS.Journal}
+          dot="var(--ed-type-journal)"
         />
         <FilterChip
           value="Conference"
           label={tt("filterConf", "Conference")}
           count={COUNTS.Conference}
+          dot="var(--ed-type-conference)"
         />
         <FilterChip
           value="arXiv"
           label={tt("filterArxiv", "arXiv")}
           count={COUNTS.arXiv}
+          dot="var(--ed-type-arxiv)"
         />
         <FilterChip
           value="Datasets"
           label={tt("filterDatasets", "Datasets")}
           count={COUNTS.Datasets}
+          dot="var(--ed-type-dataset)"
         />
       </div>
 
       {years.map((y) => (
         <div key={y} className={styles.yearGroup}>
-          <div className={styles.yearHeader}>
+          <div className={styles.yearCol}>
             <div className={styles.yearLabel}>{y}</div>
             <div className={styles.yearMeta}>
               {byYear[y].length}{" "}
@@ -147,9 +200,11 @@ export default function Publications() {
                 : tt("yearMetaMany", "papers")}
             </div>
           </div>
-          {byYear[y].map((p, i) => (
-            <Publication key={`${y}-${i}`} {...p} />
-          ))}
+          <div>
+            {byYear[y].map((p, i) => (
+              <Publication key={`${y}-${i}`} {...p} />
+            ))}
+          </div>
         </div>
       ))}
     </div>

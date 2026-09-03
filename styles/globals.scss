@@ -17,6 +17,13 @@
     --ed-input: #222a38;
     --ed-accent: #93a9de;
 
+    // Publication-type coding (option A) + white plate for logos/thumbnails.
+    --ed-type-journal: #93a9de;
+    --ed-type-conference: #6fbf99;
+    --ed-type-arxiv: #e09a72;
+    --ed-type-dataset: #b39ddb;
+    --ed-plate: #ffffff;
+
     // Single-font pairing — Atkinson everywhere (low-vision friendly).
     // The aliases are kept so a future refactor can re-introduce a serif
     // pairing in one place.
@@ -53,6 +60,12 @@
     --ed-card: #eef0f5;
     --ed-input: #e8ebf2;
     --ed-accent: #3e5ba9;
+
+    --ed-type-journal: #3e5ba9;
+    --ed-type-conference: #2e7d58;
+    --ed-type-arxiv: #b0542a;
+    --ed-type-dataset: #7a5aa8;
+    --ed-plate: #ffffff;
 
     --color-background-base: 246, 247, 250; // --ed-bg
     --color-background-highlight: 238, 240, 245; // --ed-card
