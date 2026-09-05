@@ -42,3 +42,6 @@ frontend
 next-env.d.ts
 /public/sitemap.xml
 /public/blog/rss.xml
+
+# local paper PDFs used for thumbnails
+private/

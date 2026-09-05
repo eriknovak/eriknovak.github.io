@@ -46,16 +46,19 @@ const SOURCES = {
   "synthetic-medical-data-eval-2025":
     "https://www.informatica.si/index.php/informatica/article/view/7763/4618",
   "kleefstra-cohort-2024":
-    "https://www.sciencedirect.com/science/article/pii/S1769721224000661/pdfft?download=true",
+    "https://pure.eur.nl/ws/files/168129150/1-s2.0-S1769721224000661-main.pdf",
+  "tarnet-2024": "https://doi.org/10.47745/ausi-2024-0001",
   "text-generation-eval-2024":
     "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=10591977",
-  "streaming-data-fusion-2019": "https://www.mdpi.com/1424-8220/19/8/1955/pdf",
-  // tarnet-2024 and crosslingual-relevance-2022 have no open PDF endpoint —
-  // use the manual form with a downloaded copy.
+  "streaming-data-fusion-2019": "https://europepmc.org/articles/PMC6514969?pdf=render",
+  // clinical-ner-llms-2026 (T&F) and crosslingual-relevance-2022 (Elsevier)
+  // sit behind bot checks — use the manual form with a downloaded copy.
 
   // Conference papers
   "ohdsi-prepare-poster-2026":
     "https://www.ohdsi-europe.org/images/symposium-2026/posters/34_abstract.pdf",
+  "ohdsi-llm-pipeline-poster-2025":
+    "https://drive.google.com/uc?export=download&id=1wxwuozyh-mYFTWSJFvVXwC0HihzSdPeK",
   "semantic-prompting-ner-2025":
     "https://aile3.ijs.si/dunja/SiKDD2025/Papers/IS2024_-_SIKDD_2025_paper_3.pdf",
   "synthetic-medical-data-2024":
@@ -70,10 +73,10 @@ const SOURCES = {
     "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_5269.pdf",
   "film-text-generation-2022":
     "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_4772.pdf",
-  "aml-screening-2022":
-    "https://link.springer.com/content/pdf/10.1007/978-3-030-94590-9_13.pdf",
   "news-stream-clustering-2021":
     "https://ailab.ijs.si/dunja/SiKDD2021/Papers/Novak.pdf",
+  "oer-learning-pathways-2020":
+    "https://www.scitepress.org/Papers/2020/93916/93916.pdf",
   "legal-semantic-enrichment-2019":
     "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Besher_Final.pdf",
   "legal-doc-embeddings-2019":
@@ -86,8 +89,8 @@ const SOURCES = {
     "http://ailab.ijs.si/dunja/SiKDD2017/Papers/Novak_Skill.pdf",
   "videolectures-analysis-2016":
     "http://ailab.ijs.si/dunja/SiKDD2016/Papers/Novak_VLN.pdf",
-  // ohdsi-llm-pipeline-poster-2025, oer-learning-pathways-2020 and
-  // qminer-2014 have no direct PDF — use the manual form.
+  // aml-screening-2022 (Springer bot check) and qminer-2014 (no online PDF)
+  // need the manual form with a local copy.
 
   // arXiv preprints
   "olympics-news-dataset-2025": "https://arxiv.org/pdf/2502.06648",
