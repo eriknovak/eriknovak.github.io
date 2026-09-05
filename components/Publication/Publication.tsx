@@ -32,6 +32,8 @@ export default function Publication(props: Props) {
     authors,
     title,
     reference,
+    volume,
+    number,
     location,
     year,
     url,
@@ -118,6 +120,7 @@ export default function Publication(props: Props) {
         </div>
         <div className={styles.meta}>
           {authors} · <em style={{ fontStyle: "italic" }}>{reference}</em>
+          {volume ? `, ${volume}${number ? `(${number})` : ""}` : ""}
           {location ? `, ${location}` : ""} · {year}
           {doi && (
             <>

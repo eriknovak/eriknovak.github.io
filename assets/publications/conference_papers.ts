@@ -25,7 +25,8 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     title:
       "Semantic Prompting for Large Language Models in Biomedical Named Entity Recognition",
     url: "https://aile3.ijs.si/dunja/SiKDD2025/Papers/IS2024_-_SIKDD_2025_paper_3.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2025)",
     location: "Ljubljana",
     year: 2025,
     keywords: ["NER", "LLM", "biomedical", "NLP"],
@@ -48,9 +49,11 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     authors: "L. Dolinar, E. Calcina, E. Novak",
     title: "Generating Non-English Synthetic Medical Data Sets",
     url: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_4.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2024)",
     location: "Ljubljana",
     year: 2024,
+    doi: "10.70314/is.2024.sikdd.4",
     keywords: ["synthetic data", "medical data", "NLP"],
     pdf: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_4.pdf",
   },
@@ -59,9 +62,11 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     authors: "M. D. Longar, E. Novak, M. Grobelnik",
     title: "Creating Local World Models using LLMs",
     url: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_22.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2024)",
     location: "Ljubljana",
     year: 2024,
+    doi: "10.70314/is.2024.sikdd.22",
     keywords: ["LLM", "world models", "knowledge representation"],
     pdf: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_22.pdf",
   },
@@ -70,9 +75,11 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     authors: "K. Gillani, K. Kenda, E. Novak, D. Mladenić",
     title: "Knowledge graph Extraction from Textual data using LLM",
     url: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_15.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2024)",
     location: "Ljubljana",
     year: 2024,
+    doi: "10.70314/is.2024.sikdd.15",
     keywords: ["knowledge graphs", "LLM", "information extraction", "NLP"],
     pdf: "https://aile3.ijs.si/dunja/SiKDD2024/Papers/IS2024_-_SIKDD_2024_paper_15.pdf",
   },
@@ -81,7 +88,8 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     authors: "A. Mladenić Grobelnik, E. Novak, D. Mladenić, M. Grobelnik",
     title: "SLOmet - Slovenian Commonsense Description",
     url: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_5674.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2022)",
     location: "Ljubljana",
     year: 2022,
     keywords: ["commonsense", "knowledge base", "Slovenian", "NLP"],
@@ -92,7 +100,8 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     authors: "E. Calcina, E. Novak",
     title: "Measuring the Similarity of Song Artists using Topic Modelling",
     url: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_5269.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2022)",
     location: "Ljubljana",
     year: 2022,
     keywords: ["topic modeling", "music", "similarity", "NLP"],
@@ -104,7 +113,8 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     title:
       "Automatically Generating Text from Film Material - A Comparison of Three Models",
     url: "https://ailab.ijs.si/dunja/SiKDD2022/Papers/SiKDD2022_paper_4772.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2022)",
     location: "Ljubljana",
     year: 2022,
     keywords: ["text generation", "video captioning", "multimodal", "NLP"],
@@ -115,19 +125,22 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     authors: "F. Koprivec, G. Kržmanc, M. Škrjanc, K. Kenda, E. Novak",
     title: "Screening Tool for Anti-money Laundering Supervision",
     url: "https://link.springer.com/chapter/10.1007/978-3-030-94590-9_13",
-    reference:
-      "Big Data and Artificial Intelligence in Digital Finance (book chapter), Springer",
+    reference: "Big Data and Artificial Intelligence in Digital Finance",
     location: null,
     year: 2022,
     keywords: ["anti-money laundering", "fintech", "anomaly detection"],
     doi: "10.1007/978-3-030-94590-9_13",
+    pages: "233-251",
+    publisher: "Springer",
+    chapter: true,
   },
   {
     id: "news-stream-clustering-2021",
     authors: "E. Novak",
     title: "News Stream Clustering using Multilingual Language Models",
     url: "https://ailab.ijs.si/dunja/SiKDD2021/Papers/Novak.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2021)",
     location: "Ljubljana",
     year: 2021,
     keywords: ["news clustering", "multilingual", "language models", "NLP"],
@@ -135,7 +148,7 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
   },
   {
     id: "oer-learning-pathways-2020",
-    authors: "A. Saliha Sunar, E. Novak, J. Urbančič, D. Mladenić",
+    authors: "A. S. Sunar, E. Novak, D. Mladenić",
     title: "Users' Learning Pathways on Cross-site Open Educational Resources",
     url: "https://www.scitepress.org/Link.aspx?doi=10.5220/0009391600840095",
     reference:
@@ -144,13 +157,16 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     year: 2020,
     keywords: ["education", "learning analytics", "OER", "user behavior"],
     doi: "10.5220/0009391600840095",
+    pages: "84-95",
+    publisher: "SciTePress",
   },
   {
     id: "legal-semantic-enrichment-2019",
     authors: "M. B. Massri, S. Brezec, E. Novak, K. Kenda",
     title: "Semantic Enrichment and Analysis of Legal Domain Documents",
     url: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Besher_Final.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2019)",
     location: "Ljubljana",
     year: 2019,
     keywords: ["legal NLP", "semantic analysis", "document analysis", "NLP"],
@@ -161,7 +177,8 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     authors: "S. Kralj, Ž. Urbančič, E. Novak, K. Kenda",
     title: "Document Embedding Models on Environmental Legal Documents",
     url: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Kralj_Urbancic_Final.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2019)",
     location: "Ljubljana",
     year: 2019,
     keywords: ["document embeddings", "legal NLP", "environmental", "NLP"],
@@ -169,11 +186,12 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
   },
   {
     id: "oer-preferences-2019",
-    authors: "A. Saliha Sunar, E. Novak, J. Urbančič, D. Mladenić",
+    authors: "A. S. Sunar, E. Novak, J. Urbančič, D. Mladenić",
     title:
       "Preferences of Users on Cross-Site OER Recommendations: Stay or Leave?",
     url: "http://ailab.ijs.si/dunja/SiKDD2019/Papers/Sunar_Final.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2019)",
     location: "Ljubljana",
     year: 2019,
     keywords: ["recommender systems", "OER", "user preferences", "education"],
@@ -184,7 +202,8 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     authors: "E. Novak, J. Urbančič, M. Jenko",
     title: "Preparing Multi-Modal Data for Natural Language Processing",
     url: "http://ailab.ijs.si/dunja/SiKDD2018/Papers/NovakErik.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2018)",
     location: "Ljubljana",
     year: 2018,
     keywords: ["multimodal", "data preparation", "NLP"],
@@ -195,7 +214,8 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     authors: "E. Novak, I. Novalija",
     title: "Connecting Professional Skill Demand with Supply",
     url: "http://ailab.ijs.si/dunja/SiKDD2017/Papers/Novak_Skill.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2017)",
     location: "Ljubljana",
     year: 2017,
     keywords: ["skills", "labor market", "matching", "data analysis"],
@@ -206,7 +226,8 @@ const CONFERENCE_PAPERS: PublicationProps[] = [
     authors: "E. Novak, I. Novalija",
     title: "Visual and Statistical Analysis of VideoLectures.NET",
     url: "http://ailab.ijs.si/dunja/SiKDD2016/Papers/Novak_VLN.pdf",
-    reference: "Proceedings of the Slovenian KDD conference",
+    reference:
+      "Proceedings of the Slovenian Conference on Data Mining and Data Warehouses (SiKDD 2016)",
     location: "Ljubljana",
     year: 2016,
     keywords: ["data visualization", "video lectures", "statistical analysis"],

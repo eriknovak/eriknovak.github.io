@@ -9,6 +9,7 @@ const ARXIV_PAPERS: PublicationProps[] = [
     reference: "arXiv:2502.06648",
     location: null,
     year: 2025,
+    doi: "10.48550/arXiv.2502.06648",
     keywords: ["news dataset", "multilingual", "event analysis", "NLP"],
   },
   {
@@ -20,6 +21,7 @@ const ARXIV_PAPERS: PublicationProps[] = [
     reference: "arXiv:2112.01242",
     location: null,
     year: 2021,
+    doi: "10.48550/arXiv.2112.01242",
     keywords: ["education", "lifelong learning", "AI", "personalization"],
   },
   {
@@ -32,6 +34,7 @@ const ARXIV_PAPERS: PublicationProps[] = [
     reference: "arXiv:2109.03154",
     location: null,
     year: 2021,
+    doi: "10.48550/arXiv.2109.03154",
     keywords: ["learner engagement", "educational videos", "dataset", "NLP"],
   },
 ];

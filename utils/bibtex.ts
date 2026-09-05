@@ -1,78 +1,99 @@
 import { PublicationProps } from "../Interfaces";
 
+/** "E." or "Ž." — a single uppercase letter followed by a period. */
+const isInitial = (t: string) =>
+  t.length === 2 && t.endsWith(".") && t[0] !== t[0].toLowerCase();
+
+/** Lowercase ASCII letters only, for citation keys. */
+const keyPart = (s: string) =>
+  s
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z]/g, "");
+
+/** Splits "A, B, and C" into ["A", "B", "C"]. */
+function parseAuthors(authors: string): string[] {
+  return authors
+    .split(",")
+    .map((a) => a.trim().replace(/^and\s+/i, ""))
+    .filter(Boolean);
+}
+
+/** Family name of "E. Novak" or "T. Zdolšek Draksler"; whole name for groups. */
+function familyName(author: string): string {
+  const family = author.split(/\s+/).filter((t) => !isInitial(t));
+  return family.join(" ") || author;
+}
+
+/**
+ * "T. Zdolšek Draksler" → "Zdolšek Draksler, T." so BibTeX keeps multi-word
+ * family names intact; names without initials are treated as group authors
+ * and braced so they are not split.
+ */
+function formatAuthor(author: string): string {
+  const tokens = author.split(/\s+/);
+  const initials = tokens.filter((t) => isInitial(t));
+  if (initials.length === 0) {
+    return `{${author.replace(/^the\s+/i, "")}}`;
+  }
+  return `${familyName(author)}, ${initials.join(" ")}`;
+}
+
 /**
  * Generates a BibTeX entry from a publication.
  */
 export function generateBibtex(pub: PublicationProps): string {
-  // Generate citation key from first author's last name and year
-  const firstAuthor = pub.authors.split(",")[0].trim();
-  const lastName = firstAuthor.split(" ").pop()?.toLowerCase() || "unknown";
-  const titleWords = pub.title
-    .split(" ")
-    .slice(0, 2)
-    .join("")
-    .toLowerCase()
-    .replace(/[^a-z]/g, "");
-  const citationKey = `${lastName}${pub.year}${titleWords}`;
+  const authors = parseAuthors(pub.authors);
+  const titleWords = keyPart(pub.title.split(" ").slice(0, 2).join(""));
+  const citationKey = `${keyPart(familyName(authors[0] || "unknown"))}${pub.year}${titleWords}`;
 
-  // Determine entry type (type may be capitalized on the publications page
-  // or lowercase on the home page, so normalize before comparing)
-  const normalizedType = (pub.type || "").toLowerCase();
-  const entryType =
-    normalizedType === "journal"
+  // Type is capitalized on the publications page and may differ elsewhere.
+  const kind = (pub.type || "").toLowerCase();
+  const entryType = pub.chapter
+    ? "incollection"
+    : kind === "journal"
       ? "article"
-      : normalizedType === "arxiv" || normalizedType === "dataset"
+      : kind === "arxiv" || kind === "dataset"
         ? "misc"
         : "inproceedings";
 
-  // Build BibTeX fields
-  const fields: string[] = [];
-  fields.push(`  author = {${formatAuthorsForBibtex(pub.authors)}}`);
-  fields.push(`  title = {${pub.title}}`);
+  const fields: [string, string | undefined][] = [
+    ["author", authors.map(formatAuthor).join(" and ")],
+    ["title", pub.title],
+  ];
 
+  const arxivId =
+    kind === "arxiv" ? pub.reference.match(/arXiv:(\S+)/)?.[1] : undefined;
   if (entryType === "article") {
-    fields.push(`  journal = {${pub.reference}}`);
+    fields.push(["journal", pub.reference]);
   } else if (entryType === "misc") {
-    fields.push(
-      `  howpublished = {${
-        normalizedType === "arxiv"
-          ? `arXiv preprint ${pub.reference}`
-          : pub.reference
-      }}`,
-    );
+    if (arxivId) {
+      fields.push(["eprint", arxivId], ["archivePrefix", "arXiv"]);
+    } else {
+      fields.push(["howpublished", pub.reference]);
+    }
   } else {
-    fields.push(`  booktitle = {${pub.reference}}`);
+    fields.push(["booktitle", pub.reference]);
   }
 
-  fields.push(`  year = {${pub.year}}`);
+  fields.push(
+    ["volume", pub.volume],
+    ["number", pub.number],
+    ["pages", pub.pages?.replace(/(\d)\s*[-–]\s*(\d)/, "$1--$2")],
+    ["publisher", pub.publisher],
+    ["year", String(pub.year)],
+    ["address", pub.location || undefined],
+    ["doi", pub.doi],
+    ["url", pub.url],
+    ["keywords", pub.keywords?.length ? pub.keywords.join(", ") : undefined],
+  );
 
-  if (pub.location) {
-    fields.push(`  address = {${pub.location}}`);
-  }
-
-  if (pub.doi) {
-    fields.push(`  doi = {${pub.doi}}`);
-  }
-
-  if (pub.url) {
-    fields.push(`  url = {${pub.url}}`);
-  }
-
-  if (pub.keywords && pub.keywords.length > 0) {
-    fields.push(`  keywords = {${pub.keywords.join(", ")}}`);
-  }
-
-  return `@${entryType}{${citationKey},\n${fields.join(",\n")}\n}`;
-}
-
-/**
- * Formats authors string for BibTeX (converts "A, B, C" to "A and B and C").
- */
-function formatAuthorsForBibtex(authors: string): string {
-  return authors
-    .split(",")
-    .map((a) => a.trim())
-    .join(" and ");
+  const body = fields
+    .filter(([, v]) => v)
+    .map(([k, v]) => `  ${k} = {${v}}`)
+    .join(",\n");
+  return `@${entryType}{${citationKey},\n${body}\n}`;
 }
 
 /**

@@ -22,6 +22,14 @@ export interface PublicationProps {
   type?: string;
   keywords?: string[];
   doi?: string;
+  /** Volume, issue and page range (or article number); used in BibTeX. */
+  volume?: string;
+  number?: string;
+  pages?: string;
+  /** Publisher of a book chapter or proceedings volume. */
+  publisher?: string;
+  /** Book chapter: emitted as a BibTeX @incollection entry. */
+  chapter?: boolean;
   pdf?: string;
   /** Optional one-paragraph abstract rendered on the Publications page. */
   abstract?: string;
