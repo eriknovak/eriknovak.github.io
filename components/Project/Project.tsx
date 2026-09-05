@@ -92,8 +92,6 @@ export default function Project(props: Props) {
     links,
     resources,
     type,
-    logo,
-    monogram,
     minimal = false,
     past = false,
   } = props;
@@ -122,26 +120,12 @@ export default function Project(props: Props) {
   const typeLabel = type ?? "";
   const body = description?.[0] ?? "";
 
-  const fallbackMonogram = monogram ?? title.slice(0, 2);
-
   return (
     <div
       className={cn("project-card", styles.container, {
         [styles.past]: past,
-        [styles.withLogo]: !minimal,
       })}
     >
-      {!minimal && (
-        <div className={styles.logoTile}>
-          {logo ? (
-            <img src={logo} alt={`${title} logo`} loading="lazy" />
-          ) : (
-            <span className={styles.monogram} aria-hidden>
-              {fallbackMonogram}
-            </span>
-          )}
-        </div>
-      )}
       <div>
         <div
           style={{

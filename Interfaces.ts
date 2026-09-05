@@ -46,17 +46,6 @@ export interface ProjectLink {
 }
 
 export interface ProjectProps {
-  /**
-   * Stable identifier. A logo image placed at
-   * public/imgs/projects/<id>.png (or .svg) is picked up automatically at
-   * build time and shown on a white plate; without one, a typographic
-   * monogram is rendered instead.
-   */
-  id?: string;
-  /** Resolved at build time; path to the logo image if one exists. */
-  logo?: string;
-  /** Override for the fallback monogram (defaults to first two characters of the title). */
-  monogram?: string;
   title: string;
   type: string;
   startDate: string;
