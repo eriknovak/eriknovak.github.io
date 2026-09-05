@@ -18,5 +18,9 @@
   "downloadPdf": "Prenesi PDF",
   "pdf": "PDF",
   "openPaper": "Odpri članek",
-  "selected": "Izbrano"
+  "selected": "Izbrano",
+  "searchPlaceholder": "Išči po naslovu, avtorju, mestu objave ali povzetku",
+  "searchLabel": "Išči publikacije",
+  "searchClear": "Počisti iskanje",
+  "noResults": "Nobena publikacija ne ustreza"
 }

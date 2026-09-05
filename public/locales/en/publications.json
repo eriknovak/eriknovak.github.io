@@ -18,5 +18,9 @@
   "downloadPdf": "Download PDF",
   "pdf": "PDF",
   "openPaper": "Open paper",
-  "selected": "Selected"
+  "selected": "Selected",
+  "searchPlaceholder": "Search by title, author, venue or abstract",
+  "searchLabel": "Search publications",
+  "searchClear": "Clear search",
+  "noResults": "No publications match"
 }

@@ -34,13 +34,43 @@ const EVERYTHING: PublicationProps[] = [...ALL_PAPERS, ...DATASET_ITEMS].sort(
   (a, b) => sortByDate(a, b, "year"),
 );
 
-const COUNTS = {
-  all: EVERYTHING.length,
-  Journal: ALL_PAPERS.filter((p) => p.type === "Journal").length,
-  Conference: ALL_PAPERS.filter((p) => p.type === "Conference").length,
-  arXiv: ALL_PAPERS.filter((p) => p.type === "arXiv").length,
-  Datasets: DATASET_ITEMS.length,
+/** Spelled-out phrases folded to their acronym so either form finds the other. */
+const ACRONYMS: [RegExp, string][] = [
+  [/\blarge language models?\b/g, "llm"],
+  [/\bmachine learning\b/g, "ml"],
+  [/\bartificial intelligence\b/g, "ai"],
+  [/\bnatural language processing\b/g, "nlp"],
+  [/\bnamed entity recognition\b/g, "ner"],
+  [/\bknowledge graphs?\b/g, "kg"],
+  [/\bopen educational resources?\b/g, "oer"],
+  [/\binternet of things\b/g, "iot"],
+  [/\banti[- ]money laundering\b/g, "aml"],
+];
+
+const normalize = (value: string) => {
+  const folded = value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+  return ACRONYMS.reduce((v, [re, short]) => v.replace(re, short), folded);
 };
+
+const escapeRegExp = (value: string) =>
+  value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** Every query token must start a word in title, authors, venue or abstract. */
+function matchesQuery(p: PublicationProps, query: string) {
+  const tokens = normalize(query).split(/\s+/).filter(Boolean);
+  if (tokens.length === 0) return true;
+  const haystack = normalize(
+    [p.title, p.authors, p.reference, p.location, p.abstract]
+      .filter(Boolean)
+      .join(" "),
+  );
+  return tokens.every((token) =>
+    new RegExp(`(^|[^a-z0-9])${escapeRegExp(token)}`).test(haystack),
+  );
+}
 
 export function getStaticProps() {
   return { props: { thumbnailIds: getThumbnailIds() } };
@@ -54,6 +84,7 @@ export default function Publications({
   const { t, ready } = useTranslation("publications");
   const [mounted, setMounted] = useState(false);
   const [filter, setFilter] = useState<FilterValue>("all");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     setMounted(true);
@@ -62,15 +93,31 @@ export default function Publications({
   const tt = (key: string, fallback: string) =>
     mounted && ready ? t(key) : fallback;
 
+  const matching = useMemo(
+    () => EVERYTHING.filter((p) => matchesQuery(p, query)),
+    [query],
+  );
+
+  const counts = useMemo(
+    () => ({
+      all: matching.length,
+      Journal: matching.filter((p) => p.type === "Journal").length,
+      Conference: matching.filter((p) => p.type === "Conference").length,
+      arXiv: matching.filter((p) => p.type === "arXiv").length,
+      Datasets: matching.filter((p) => p.type === "Dataset").length,
+    }),
+    [matching],
+  );
+
   const filtered = useMemo(() => {
     const list =
       filter === "all"
-        ? EVERYTHING
+        ? matching
         : filter === "Datasets"
-          ? DATASET_ITEMS
-          : ALL_PAPERS.filter((p) => p.type === filter);
+          ? matching.filter((p) => p.type === "Dataset")
+          : matching.filter((p) => p.type === filter);
     return withThumbnails(list, thumbnailIds);
-  }, [filter, thumbnailIds]);
+  }, [filter, matching, thumbnailIds]);
 
   const byYear = useMemo(() => {
     const groups = filtered.reduce<Record<string, PublicationProps[]>>(
@@ -136,37 +183,80 @@ export default function Publications({
         </p>
       </div>
 
+      <div className={styles.searchBar}>
+        <svg
+          className={styles.searchIcon}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="7" />
+          <line x1="16.5" y1="16.5" x2="21" y2="21" />
+        </svg>
+        <input
+          type="search"
+          className={styles.searchInput}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder={tt(
+            "searchPlaceholder",
+            "Search by title, author, venue or abstract",
+          )}
+          aria-label={tt("searchLabel", "Search publications")}
+        />
+        {query && (
+          <button
+            type="button"
+            className={styles.searchClear}
+            onClick={() => setQuery("")}
+            aria-label={tt("searchClear", "Clear search")}
+          >
+            ×
+          </button>
+        )}
+      </div>
+
       <div className={styles.filterBar}>
         <FilterChip
           value="all"
           label={tt("filterAll", "All")}
-          count={COUNTS.all}
+          count={counts.all}
         />
         <FilterChip
           value="Journal"
           label={tt("filterJournal", "Journal")}
-          count={COUNTS.Journal}
+          count={counts.Journal}
           dot="var(--ed-type-journal)"
         />
         <FilterChip
           value="Conference"
           label={tt("filterConf", "Conference")}
-          count={COUNTS.Conference}
+          count={counts.Conference}
           dot="var(--ed-type-conference)"
         />
         <FilterChip
           value="arXiv"
           label={tt("filterArxiv", "arXiv")}
-          count={COUNTS.arXiv}
+          count={counts.arXiv}
           dot="var(--ed-type-arxiv)"
         />
         <FilterChip
           value="Datasets"
           label={tt("filterDatasets", "Datasets")}
-          count={COUNTS.Datasets}
+          count={counts.Datasets}
           dot="var(--ed-type-dataset)"
         />
       </div>
+
+      {years.length === 0 && (
+        <p className={styles.empty}>
+          {tt("noResults", "No publications match")} “{query}”.
+        </p>
+      )}
 
       {years.map((y) => (
         <div key={y} className={styles.yearGroup}>
