@@ -113,18 +113,6 @@ export default function Home({ thumbnailIds }: { thumbnailIds: string[] }) {
         type="profile"
       />
 
-      <div
-        style={{
-          fontSize: 12,
-          color: "var(--ed-muted)",
-          letterSpacing: "2px",
-          textTransform: "uppercase",
-          marginBottom: 32,
-        }}
-      >
-        {tt("kicker", "Researcher · Ljubljana")}
-      </div>
-
       <h1 className={styles.heroTitle}>{tt("h1a", "Erik Novak.")}</h1>
       <h1 className={cn(styles.heroTitle, styles.heroTitleItalic)}>
         {tt("h1b1", "AI research,")}
