@@ -71,5 +71,7 @@ export async function serializeMdx(
       format: "mdx",
     },
     parseFrontmatter: false,
+    // Posts are repo-authored, so JSX expression props (cols={[...]}) are safe.
+    blockJS: false,
   });
 }
