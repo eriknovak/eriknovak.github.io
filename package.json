@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "thumbnails": "node scripts/generate-publication-thumbnails.mjs"
+    "thumbnails": "node scripts/generate-publication-thumbnails.mjs",
+    "favicon": "node scripts/generate-favicon.mjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
