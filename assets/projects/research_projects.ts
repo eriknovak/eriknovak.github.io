@@ -20,6 +20,35 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     resources: [],
   },
   {
+    title: "datachart",
+    type: "Open Source Project",
+    startDate: "Jul 2023",
+    endDate: "Present",
+    description: [
+      "datachart is a Python package for creating data visualizations, built on top of matplotlib and designed to be simple to use and highly customizable. Charts for trends, comparisons, distributions, relationships, and flows are each created with a single function call from plain lists of dicts, and can be composed into panels with overlaid charts or nested grids. Predefined themes and a global configuration make it easy to change the look and feel of every chart at once.",
+    ],
+    links: [
+      {
+        type: "homepage",
+        label: "Documentation",
+        url: "https://eriknovak.github.io/datachart/",
+      },
+      {
+        type: "service",
+        label: "PyPI",
+        url: "https://pypi.org/project/datachart/",
+      },
+    ],
+    resources: [
+      {
+        type: "github",
+        label: "datachart",
+        owner: "eriknovak",
+        repo: "datachart",
+      },
+    ],
+  },
+  {
     title: "PREPARE",
     type: "Horizon Europe",
     cordis: "101080288",
