@@ -6,9 +6,6 @@
   "activeMeta": "Currently running",
   "pastProjects": "Past",
   "pastMeta": "Completed",
-  "linkLabels": {
-    "site": "WEBSITE",
-    "code": "CODE",
-    "resource": "RESOURCE"
-  }
+  "contribution": "Contribution",
+  "archived": "archived"
 }

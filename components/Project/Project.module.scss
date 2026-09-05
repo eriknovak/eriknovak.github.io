@@ -6,28 +6,123 @@
   border-bottom: 1px solid var(--ed-rule);
 }
 
-.badge {
-  display: inline-block;
+.title {
+  font-family: var(--ed-serif);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.programme {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   margin-top: 8px;
   font-family: var(--ed-sans);
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ed-muted);
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 2px 8px;
+  line-height: 1.5;
+}
+
+.dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  // Optical alignment with the cap height of the 11px label.
+  transform: translateY(-0.5px);
+}
+
+.cordis {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-family: var(--ed-sans);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ed-rule);
+  padding-bottom: 1px;
+
+  &:hover {
+    color: var(--ed-fg);
+    border-bottom-color: var(--ed-fg);
+  }
+}
+
+.archived {
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+  // Caps-only text sits high when centred; nudge onto the label baseline.
+  position: relative;
+  top: 1px;
+}
+
+.paragraph {
+  font-size: 14px;
+  line-height: 1.65;
+  margin: 0 0 12px;
+  color: var(--ed-text-secondary);
+}
+
+.contribution {
+  margin: 4px 0 12px;
+  padding: 2px 0 2px 16px;
+  border-left: 2px solid var(--ed-rule);
+
+  .paragraph {
+    margin: 0;
+  }
+}
+
+.contributionLabel {
+  font-family: var(--ed-sans);
+  font-size: 10px;
+  color: var(--ed-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.chip {
+  font-family: var(--ed-sans);
+  font-size: 13px;
+  color: var(--ed-fg);
+  text-decoration: none;
+  border: 1px solid var(--ed-rule);
+  padding: 4px 10px;
   border-radius: 2px;
-  color: var(--ed-bg);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.2px;
+  background: var(--ed-card);
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
 }
 
 .past {
-  opacity: 0.92;
-}
+  padding: 22px 0;
 
-.linkRow {
-  display: grid;
-  grid-template-columns: 124px 1fr;
-  gap: 16px;
-  align-items: center;
+  .title {
+    font-size: 18px;
+    font-weight: 500;
+  }
 }
 
 @media (max-width: 720px) {
@@ -35,11 +130,5 @@
     grid-template-columns: 1fr;
     gap: 16px;
     padding: 24px 0;
-  }
-
-  .linkRow {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    align-items: flex-start;
   }
 }

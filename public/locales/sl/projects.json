@@ -6,9 +6,6 @@
   "activeMeta": "V teku",
   "pastProjects": "Pretekli",
   "pastMeta": "Zaključeni",
-  "linkLabels": {
-    "site": "SPLETNA STRAN",
-    "code": "KODA",
-    "resource": "VIR"
-  }
+  "contribution": "Prispevek",
+  "archived": "arhiv"
 }

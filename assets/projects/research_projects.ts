@@ -22,12 +22,14 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
   {
     title: "PREPARE",
     type: "Horizon Europe",
+    cordis: "101080288",
     startDate: "Jun 2023",
     endDate: "Present",
     description: [
       "PREPARE is a Horizon Europe project aimed at improving the lives of people with chronic noncommunicable diseases by developing tools that enable patients and healthcare providers to select optimal therapy strategies. The project transforms rehabilitation through personalized care approaches, combining advances in clinical research, socio-behavioral science, data science, and AI methods to overcome challenges in patient stratification and outcome prediction.",
-      "Our contributions include developing text anonymization tools (Anonipy) and medical terminology extraction methods (Medtermex) to support privacy-preserving health data analysis. In addition, we developed an extraction tool to support medical term extraction and mapping to standardized medical vocabularies.",
     ],
+    contribution:
+      "Our contributions include developing text anonymization tools (Anonipy) and medical terminology extraction methods (Medtermex) to support privacy-preserving health data analysis. In addition, we developed an extraction tool to support medical term extraction and mapping to standardized medical vocabularies.",
     links: [
       {
         type: "homepage",
@@ -63,8 +65,9 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     endDate: "Dec 2025",
     description: [
       "The European Statistics Awards is a Eurostat initiative promoting statistical literacy and data-driven thinking among students and young researchers across Europe. The project developed and maintains a competition platform that hosts annual challenges where participants analyze official European statistics to address real-world questions.",
-      "Our contribution involves developing and maintaining the web platform that manages competition organization, team registrations, submissions, and evaluation workflows.",
     ],
+    contribution:
+      "Our contribution involves developing and maintaining the web platform that manages competition organization, team registrations, submissions, and evaluation workflows.",
     links: [
       {
         type: "homepage",
@@ -89,8 +92,9 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     endDate: "Feb 2023",
     description: [
       "RSDO developed modern language technologies for the Slovenian language, creating computational tools and services for research institutions, businesses, and the general public. The project delivered applications for speech recognition, machine transcription, machine translation, and terminology extraction, all released under open licenses through a public portal.",
-      "Our contributions included developing commonsense knowledge resources (SloATOMIC) and language models for Slovenian to ensure the language remains viable in the digital age.",
     ],
+    contribution:
+      "Our contributions included developing commonsense knowledge resources (SloATOMIC) and language models for Slovenian to ensure the language remains viable in the digital age.",
     links: [
       {
         type: "homepage",
@@ -116,6 +120,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
   {
     title: "Humane AI Network",
     type: "Horizon 2020",
+    cordis: "952026",
     startDate: "Sept 2020",
     endDate: "Aug 2024",
     description: [
@@ -141,13 +146,15 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
       {
         type: "homepage",
         label: "Project Homepage",
-        url: "https://curlicat.eu/",
+        url: "https://web.archive.org/web/20220930071356/https://curlicat.eu/",
+        archived: true,
       },
     ],
   },
   {
     title: "Infinitech",
     type: "Horizon 2020",
+    cordis: "856632",
     startDate: "Oct 2019",
     endDate: "Dec 2022",
     description: [
@@ -157,24 +164,28 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
       {
         type: "homepage",
         label: "Project Homepage",
-        url: "https://www.infinitech-h2020.eu/",
+        url: "https://web.archive.org/web/20240530131226/https://infinitech-h2020.eu/",
+        archived: true,
       },
     ],
   },
   {
     title: "EnviroLENS",
     type: "Horizon 2020",
+    cordis: "821918",
     startDate: "Dec 2018",
     endDate: "Jun 2021",
     description: [
       "EnviroLENS bridged the gap between European satellite capabilities provided by Copernicus and environmental law enforcement needs. The project delivered Earth observation-based services providing evidence on environmental incidents and legal violations to support judicial data-gathering processes and foster data-driven decision-making.",
-      "Our contribution included developing the eLENS Miner System for processing and analyzing environmental legal documents and connecting them to geo-locations.",
     ],
+    contribution:
+      "Our contribution included developing the eLENS Miner System for processing and analyzing environmental legal documents and connecting them to geo-locations.",
     links: [
       {
         type: "homepage",
         label: "Project Homepage",
-        url: "https://envirolens.eu/",
+        url: "https://web.archive.org/web/20251121040253/https://envirolens.eu/",
+        archived: true,
       },
     ],
     resources: [
@@ -189,6 +200,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
   {
     title: "X5GON",
     type: "Horizon 2020",
+    cordis: "761758",
     startDate: "Sep 2017",
     endDate: "Dec 2020",
     description: [
@@ -198,17 +210,20 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
       {
         type: "homepage",
         label: "Project Homepage",
-        url: "https://x5gon.org/",
+        url: "https://web.archive.org/web/20230608190143/https://www.x5gon.org/",
+        archived: true,
       },
       {
         type: "service",
         label: "X5GON Platform",
-        url: "https://platform.x5gon.org/",
+        url: "https://web.archive.org/web/20220121153941/https://platform.x5gon.org/",
+        archived: true,
       },
       {
         type: "service",
         label: "X5GON Discovery",
-        url: "https://discovery.x5gon.org/",
+        url: "https://web.archive.org/web/20211220075714/https://discovery.x5gon.org/",
+        archived: true,
       },
     ],
     resources: [
@@ -222,6 +237,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
   {
     title: "European Data Science Academy",
     type: "Horizon 2020",
+    cordis: "643937",
     startDate: "Sep 2015",
     endDate: "Jan 2018",
     description: [

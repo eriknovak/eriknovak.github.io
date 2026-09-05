@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowUpRightFromSquare,
   faGlobe,
   faCode,
   faFileLines,
+  faBoxArchive,
+  faBuildingColumns,
 } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import cn from "classnames";
@@ -66,8 +67,8 @@ const LinkIcon = ({ type }: { type: EditorialLinkType }) => (
 
 const ORDER: EditorialLinkType[] = ["site", "code", "resource"];
 
-/** Programme badge colour (option D), keyed on the project's `type` text. */
-function badgeColor(programme: string): string {
+/** Programme accent colour, keyed on the project's `type` text. */
+function programmeColor(programme: string): string {
   const p = programme.toLowerCase();
   if (p.includes("horizon")) return "var(--ed-type-journal)";
   if (p.includes("aris")) return "var(--ed-type-conference)";
@@ -88,7 +89,9 @@ export default function Project(props: Props) {
     title,
     startDate,
     endDate,
+    cordis,
     description,
+    contribution,
     links,
     resources,
     type,
@@ -108,13 +111,10 @@ export default function Project(props: Props) {
     { site: [], code: [], resource: [] },
   );
 
-  const labels = (key: EditorialLinkType): string => {
-    if (mounted && ready) {
-      const v = t(`linkLabels.${key}`);
-      if (v && v !== `linkLabels.${key}`) return v;
-    }
-    return { site: "WEBSITE", code: "CODE", resource: "RESOURCE" }[key];
-  };
+  const label = (key: string, fallback: string) =>
+    mounted && ready && t(key) !== key ? t(key) : fallback;
+  const contributionLabel = label("contribution", "Contribution");
+  const archivedLabel = label("archived", "archived");
 
   const dateLabel = `${startDate} — ${endDate === "Present" ? "Present" : endDate}`;
   const typeLabel = type ?? "";
@@ -127,18 +127,7 @@ export default function Project(props: Props) {
       })}
     >
       <div>
-        <div
-          style={{
-            fontFamily: "var(--ed-serif)",
-            fontSize: 22,
-            fontWeight: 600,
-            letterSpacing: "-0.3px",
-            marginBottom: 8,
-            lineHeight: 1.2,
-          }}
-        >
-          {title}
-        </div>
+        <div className={styles.title}>{title}</div>
         <div
           style={{
             fontFamily: "var(--ed-sans)",
@@ -151,28 +140,27 @@ export default function Project(props: Props) {
         >
           {dateLabel}
         </div>
-        {typeLabel &&
-          (minimal ? (
-            <div
-              style={{
-                fontFamily: "var(--ed-sans)",
-                fontSize: 10,
-                color: "var(--ed-muted)",
-                letterSpacing: "1px",
-                textTransform: "uppercase",
-                lineHeight: 1.6,
-              }}
-            >
-              {typeLabel}
-            </div>
-          ) : (
+        {typeLabel && (
+          <div className={styles.programme}>
             <span
-              className={styles.badge}
-              style={{ background: badgeColor(typeLabel) }}
-            >
-              {typeLabel}
-            </span>
-          ))}
+              className={styles.dot}
+              style={{ background: programmeColor(typeLabel) }}
+              aria-hidden
+            />
+            <span>{typeLabel}</span>
+          </div>
+        )}
+        {cordis && (
+          <a
+            className={styles.cordis}
+            href={`https://cordis.europa.eu/project/id/${cordis}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faBuildingColumns} fixedWidth aria-hidden />
+            <span>CORDIS</span>
+          </a>
+        )}
       </div>
       <div>
         {minimal ? (
@@ -188,83 +176,60 @@ export default function Project(props: Props) {
           </p>
         ) : (
           <>
-            {description?.map((para, idx) => (
-              <p
-                key={idx}
-                style={{
-                  fontSize: 14,
-                  lineHeight: 1.65,
-                  margin: idx === 0 ? "0 0 12px" : "0 0 12px",
-                  color: "var(--ed-text-secondary)",
-                }}
-              >
-                {para}
-              </p>
-            ))}
-            {ORDER.some((k) => grouped[k].length > 0) && (
+            {(past ? description?.slice(0, 1) : description)?.map(
+              (para, idx) => (
+                <p key={idx} className={styles.paragraph}>
+                  {para}
+                </p>
+              ),
+            )}
+            {contribution && (
               <div
-                style={{
-                  marginTop: 16,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 10,
-                }}
+                className={styles.contribution}
+                style={{ borderColor: programmeColor(typeLabel) }}
               >
-                {ORDER.filter((k) => grouped[k].length > 0).map((cat) => (
-                  <div key={cat} className={styles.linkRow}>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 6,
-                        fontFamily: "var(--ed-sans)",
-                        fontSize: 10,
-                        color: "var(--ed-muted)",
-                        letterSpacing: "1.5px",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      <LinkIcon type={cat} />
-                      <span>{labels(cat)}</span>
-                    </div>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                      {grouped[cat].map((link, i) => {
-                        const url = resolveUrl(link);
-                        return (
-                          <a
-                            key={`${cat}-${i}`}
-                            href={url ?? "#"}
-                            target={url ? "_blank" : undefined}
-                            rel={url ? "noopener noreferrer" : undefined}
-                            style={{
-                              fontFamily: "var(--ed-sans)",
-                              fontSize: 13,
-                              color: "var(--ed-fg)",
-                              textDecoration: "none",
-                              border: "1px solid var(--ed-rule)",
-                              padding: "4px 10px",
-                              borderRadius: 2,
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: 6,
-                              letterSpacing: "0.2px",
-                              background: "var(--ed-card)",
-                            }}
-                          >
-                            <span>{link.label}</span>
-                            <FontAwesomeIcon
-                              icon={faArrowUpRightFromSquare}
-                              style={{
-                                color: "var(--ed-muted)",
-                                fontSize: 9,
-                              }}
-                            />
-                          </a>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ))}
+                <div className={styles.contributionLabel}>
+                  {contributionLabel}
+                </div>
+                <p className={styles.paragraph}>{contribution}</p>
+              </div>
+            )}
+            {allLinks.length > 0 && (
+              <div className={styles.chipRow}>
+                {ORDER.flatMap((cat) =>
+                  grouped[cat].map((link, i) => {
+                    const url = resolveUrl(link);
+                    return (
+                      <a
+                        key={`${cat}-${i}`}
+                        href={url ?? "#"}
+                        target={url ? "_blank" : undefined}
+                        rel={url ? "noopener noreferrer" : undefined}
+                        className={styles.chip}
+                        title={
+                          link.archived ? "Wayback Machine copy" : undefined
+                        }
+                      >
+                        {link.archived ? (
+                          <FontAwesomeIcon
+                            icon={faBoxArchive}
+                            style={{ fontSize: 11 }}
+                            fixedWidth
+                            aria-hidden
+                          />
+                        ) : (
+                          <LinkIcon type={cat} />
+                        )}
+                        <span>{link.label}</span>
+                        {link.archived && (
+                          <span className={styles.archived}>
+                            {archivedLabel}
+                          </span>
+                        )}
+                      </a>
+                    );
+                  }),
+                )}
               </div>
             )}
           </>

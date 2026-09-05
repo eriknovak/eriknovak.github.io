@@ -38,6 +38,8 @@ export interface ProjectLink {
     | "github-org";
   label: string;
   url?: string;
+  /** Wayback Machine copy of a page that no longer exists. */
+  archived?: boolean;
   // For GitHub repos
   owner?: string;
   repo?: string;
@@ -48,9 +50,13 @@ export interface ProjectLink {
 export interface ProjectProps {
   title: string;
   type: string;
+  /** CORDIS project ID (EU-funded projects only). */
+  cordis?: string;
   startDate: string;
   endDate: string;
   description?: string[];
+  /** Own contribution to the project, rendered as a highlighted block. */
+  contribution?: string;
   links?: ProjectLink[];
   resources?: ProjectLink[];
 }
