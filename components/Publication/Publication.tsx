@@ -9,7 +9,6 @@ import styles from "./Publication.module.scss";
 
 interface Props extends PublicationProps {
   /** Home view: title + inline meta line, no abstract or links. */
-  minimal?: boolean;
 }
 
 /** Publication-type colour coding (option A); keys are lowercase. */
@@ -42,7 +41,6 @@ export default function Publication(props: Props) {
     abstract,
     thumbnail,
     selected = false,
-    minimal = false,
   } = props;
 
   const tt = (key: string, fallback: string) =>
@@ -56,45 +54,6 @@ export default function Publication(props: Props) {
       setTimeout(() => setCopied(false), 2000);
     }
   };
-
-  if (minimal) {
-    return (
-      <div className={styles.minimal}>
-        <div
-          style={{
-            fontFamily: "var(--ed-serif)",
-            fontSize: 18,
-            lineHeight: 1.4,
-            marginBottom: 6,
-            fontWeight: 500,
-          }}
-        >
-          {url ? (
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "var(--ed-fg)", textDecoration: "none" }}
-            >
-              {title}
-            </a>
-          ) : (
-            title
-          )}
-        </div>
-        <div
-          style={{
-            fontSize: 14,
-            color: "var(--ed-muted)",
-            fontVariantNumeric: "tabular-nums",
-          }}
-        >
-          {authors} · <em style={{ fontStyle: "italic" }}>{reference}</em>
-          {location ? ` (${location})` : ""} · {year}
-        </div>
-      </div>
-    );
-  }
 
   const typeColor = type ? TYPE_COLORS[type.toLowerCase()] : undefined;
   const typeLabel = !type

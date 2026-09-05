@@ -106,11 +106,6 @@
   max-width: 62ch;
 }
 
-.minimal {
-  padding: 18px 0;
-  border-bottom: 1px solid var(--ed-rule);
-}
-
 @media (max-width: 720px) {
   .entryWithThumb {
     gap: 14px;

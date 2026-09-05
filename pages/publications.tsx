@@ -1,5 +1,3 @@
-import fs from "fs";
-import path from "path";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import cn from "classnames";
@@ -13,6 +11,8 @@ import DATASETS from "../assets/publications/datasets";
 import JOURNAL_PAPERS from "../assets/publications/journal_papers";
 import { PublicationProps } from "../Interfaces";
 
+import { withThumbnails } from "../utils/publications";
+import { getThumbnailIds } from "../utils/publications.server";
 import { sortByDate } from "../utils/sort";
 
 import styles from "./publications.module.scss";
@@ -42,26 +42,9 @@ const COUNTS = {
   Datasets: DATASET_ITEMS.length,
 };
 
-/**
- * First-page images live in public/imgs/publications/<id>.png (generated via
- * scripts/generate-publication-thumbnails.mjs). Collect the ids that have one
- * at build time so cards only render thumbnails that actually exist.
- */
-export async function getStaticProps() {
-  const dir = path.join(process.cwd(), "public", "imgs", "publications");
-  let thumbnailIds: string[] = [];
-  try {
-    thumbnailIds = fs
-      .readdirSync(dir)
-      .filter((f) => f.endsWith(".png"))
-      .map((f) => f.replace(/\.png$/, ""));
-  } catch {
-    // Directory may not exist yet; render without thumbnails.
-  }
-  return { props: { thumbnailIds } };
+export function getStaticProps() {
+  return { props: { thumbnailIds: getThumbnailIds() } };
 }
-
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function Publications({
   thumbnailIds,
@@ -86,11 +69,7 @@ export default function Publications({
         : filter === "Datasets"
           ? DATASET_ITEMS
           : ALL_PAPERS.filter((p) => p.type === filter);
-    return list.map((p) =>
-      p.id && thumbnailIds.includes(p.id)
-        ? { ...p, thumbnail: `${BASE_PATH}/imgs/publications/${p.id}.png` }
-        : p,
-    );
+    return withThumbnails(list, thumbnailIds);
   }, [filter, thumbnailIds]);
 
   const byYear = useMemo(() => {

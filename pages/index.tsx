@@ -20,6 +20,8 @@ import JOURNAL_PAPERS from "../assets/publications/journal_papers";
 import CONFERENCE_PAPERS from "../assets/publications/conference_papers";
 import ARXIV_PAPERS from "../assets/publications/arxiv_papers";
 
+import { withThumbnails } from "../utils/publications";
+import { getThumbnailIds } from "../utils/publications.server";
 import { sortByDate } from "../utils/sort";
 import styles from "./index.module.scss";
 
@@ -28,8 +30,8 @@ const CURRENT_PROJECTS = RESEARCH_PROJECTS.filter(
 ).sort((a, b) => sortByDate(a, b, "startDate"));
 
 const LATEST_PUBLICATIONS = [
-  ...JOURNAL_PAPERS.map((paper) => ({ ...paper, type: "journal" })),
-  ...CONFERENCE_PAPERS.map((paper) => ({ ...paper, type: "conference" })),
+  ...JOURNAL_PAPERS.map((paper) => ({ ...paper, type: "Journal" })),
+  ...CONFERENCE_PAPERS.map((paper) => ({ ...paper, type: "Conference" })),
   ...ARXIV_PAPERS.map((paper) => ({ ...paper, type: "arXiv" })),
 ]
   .sort((a, b) => sortByDate(a, b, "year"))
@@ -86,7 +88,11 @@ const SectionHeader = ({
   </div>
 );
 
-export default function Home() {
+export function getStaticProps() {
+  return { props: { thumbnailIds: getThumbnailIds() } };
+}
+
+export default function Home({ thumbnailIds }: { thumbnailIds: string[] }) {
   const { t, ready } = useTranslation("home");
   const profile = useProfile();
   const [mounted, setMounted] = useState(false);
@@ -173,9 +179,11 @@ export default function Home() {
         href="/publications"
         cta={tt("seeAll", "See all")}
       />
-      {LATEST_PUBLICATIONS.map((p, i) => (
-        <Publication key={i} {...p} minimal />
-      ))}
+      <div>
+        {withThumbnails(LATEST_PUBLICATIONS, thumbnailIds).map((p) => (
+          <Publication key={p.id ?? p.title} {...p} />
+        ))}
+      </div>
     </div>
   );
 }
