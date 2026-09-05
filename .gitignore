@@ -37,3 +37,8 @@ frontend
 
 # claude code local settings
 .claude/settings.local.json
+
+# build outputs
+next-env.d.ts
+/public/sitemap.xml
+/public/blog/rss.xml
