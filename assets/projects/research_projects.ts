@@ -58,7 +58,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
       "PREPARE is a Horizon Europe project aimed at improving the lives of people with chronic noncommunicable diseases by developing tools that enable patients and healthcare providers to select optimal therapy strategies. The project transforms rehabilitation through personalized care approaches, combining advances in clinical research, socio-behavioral science, data science, and AI methods to overcome challenges in patient stratification and outcome prediction.",
     ],
     contribution:
-      "Our contributions include developing text anonymization tools (Anonipy) and medical terminology extraction methods (Medtermex) to support privacy-preserving health data analysis. In addition, we developed an extraction tool to support medical term extraction and mapping to standardized medical vocabularies.",
+      "Our contributions include developing text anonymization tools (anonipy) and medical terminology extraction methods (medtermex) to support privacy-preserving health data analysis. In addition, we developed an extraction tool to support medical term extraction and mapping to standardized medical vocabularies.",
     links: [
       {
         type: "homepage",
@@ -69,13 +69,13 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     resources: [
       {
         type: "github",
-        label: "Anonipy",
+        label: "anonipy",
         owner: "eriknovak",
         repo: "anonipy",
       },
       {
         type: "github",
-        label: "Medtermex",
+        label: "medtermex",
         owner: "E3-JSI",
         repo: "medtermex",
       },
@@ -276,7 +276,8 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
       {
         type: "homepage",
         label: "Homepage",
-        url: "https://edsa-project.eu/",
+        url: "https://web.archive.org/web/20241014143838/https://edsa-project.eu/",
+        archived: true,
       },
     ],
   },
