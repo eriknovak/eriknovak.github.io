@@ -13,7 +13,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Project Sheet (PDF)",
         url: "https://www.ijs.si/ijsw/ARRSProjekti/2026?action=AttachFile&do=get&target=Z2-70067.pdf",
       },
     ],
@@ -62,7 +62,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://prepare-rehab.eu/",
       },
     ],
@@ -127,7 +127,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://www.cjvt.si/rsdo/en/project/",
       },
     ],
@@ -158,7 +158,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://www.humane-ai.eu/",
       },
     ],
@@ -174,7 +174,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://web.archive.org/web/20220930071356/https://curlicat.eu/",
         archived: true,
       },
@@ -192,7 +192,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://web.archive.org/web/20240530131226/https://infinitech-h2020.eu/",
         archived: true,
       },
@@ -212,7 +212,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://web.archive.org/web/20251121040253/https://envirolens.eu/",
         archived: true,
       },
@@ -238,19 +238,19 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://web.archive.org/web/20230608190143/https://www.x5gon.org/",
         archived: true,
       },
       {
         type: "service",
-        label: "X5GON Platform",
+        label: "Platform",
         url: "https://web.archive.org/web/20220121153941/https://platform.x5gon.org/",
         archived: true,
       },
       {
         type: "service",
-        label: "X5GON Discovery",
+        label: "Discovery Service",
         url: "https://web.archive.org/web/20211220075714/https://discovery.x5gon.org/",
         archived: true,
       },
@@ -258,7 +258,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     resources: [
       {
         type: "github-org",
-        label: "X5GON Organization",
+        label: "GitHub Organization",
         org: "X5GON",
       },
     ],
@@ -275,7 +275,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Homepage",
         url: "https://edsa-project.eu/",
       },
     ],
@@ -291,7 +291,7 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     links: [
       {
         type: "homepage",
-        label: "Project Homepage",
+        label: "Documentation",
         url: "https://qminer.github.io/",
       },
     ],
