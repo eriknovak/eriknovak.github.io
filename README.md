@@ -2,7 +2,7 @@
 
 Personal academic homepage for Erik Novak, a researcher in Artificial Intelligence.
 It presents a profile/bio, a list of publications (journal, conference, arXiv) and
-datasets, research projects, and a Tufte-styled blog.
+datasets, and research projects.
 
 Built with **Next.js** (Pages Router), **TypeScript**, **Tailwind CSS**, and **SCSS**.
 Content lives in plain TypeScript data files — there is no backend or CMS, so most
@@ -27,12 +27,11 @@ assets/                 # Site content as TypeScript data (edit these)
   profile/              #   bio text, academic links, programming skills
   publications/         #   journal / conference / arXiv papers + datasets
   projects/             #   research projects
-content/blog/           # Blog posts as MDX (+ references.bib) (edit these)
 public/                 # Static files: images, fonts, and i18n locale JSON
   locales/{en,sl}/      #   UI translation strings (edit when adding labels)
 pages/                  # Next.js routes (mostly layout — edit with care)
 components/             # Reusable React components (leave alone unless changing UI)
-utils/                  # Helpers: bibtex, sorting, blog/MDX, i18n, sitemap
+utils/                  # Helpers: bibtex, sorting, i18n, sitemap
 styles/                 # Global SCSS + Tailwind layer
 Interfaces.ts           # TypeScript types for the content data
 tailwind.config.js      # Theme (colors, fonts)
@@ -42,8 +41,8 @@ frontend/               # GENERATED build output — never edit
 
 ## What to edit
 
-Almost all routine content updates happen in `assets/` (and `content/blog/` for
-posts). These are typed against `Interfaces.ts`, so run `npx tsc --noEmit` after
+Almost all routine content updates happen in `assets/`. These are typed against
+`Interfaces.ts`, so run `npx tsc --noEmit` after
 editing to catch mistakes.
 
 ### Publications
@@ -131,20 +130,12 @@ Set `endDate: "Present"` for active projects (these also surface on the home pag
 - `assets/profile/profile.tsx` — name, subtitle, and the bio paragraphs (JSX).
 - `assets/profile/academic.ts` — the academic/contact links (Scholar, GitHub, email, …).
 
-### Blog
-
-Posts are MDX in `content/blog/`, named `YYYY-MM-DD-slug.mdx`, with frontmatter
-(`title`, `date`, `description`, `tags`, `draft`, …). Drafts appear in `npm run dev`
-but are excluded from `npm run build`. Citations resolve against
-`content/blog/references.bib`. See `CLAUDE.md` for the full frontmatter reference
-and the list of available in-post MDX components.
-
 ### UI text / translations
 
 User-facing labels are translated. When you add a new label (e.g. a new filter
 chip), add the key to **both** `public/locales/en/*.json` and
 `public/locales/sl/*.json` for the relevant namespace (`publications`, `projects`,
-`home`, `blog`, `common`).
+`home`, `common`).
 
 ## What to generally leave alone
 
@@ -157,15 +148,13 @@ deliberately changing how the site works, not when updating content:
   whole new publication *group*, the wiring lives in `pages/publications.tsx`.
 - **`components/`** — reusable UI (cards, header, footer, theme toggle). Change only
   for visual/behavioral tweaks.
-- **`utils/`** — BibTeX generation, sorting, MDX/blog pipeline, i18n, sitemap/RSS.
+- **`utils/`** — BibTeX generation, sorting, i18n, sitemap.
 - **`Interfaces.ts`** — change only when a content field needs to be added/changed.
 - **`tailwind.config.js`, `styles/globals.scss`** — theme and design tokens
   (colors, fonts, dark/light variables).
 - **`next.config.js`, `tsconfig.json`, `postcss.config.js`** — build configuration.
-- **`public/sitemap.xml`, `public/blog/rss.xml`** — generated during the build.
+- **`public/sitemap.xml`** — generated during the build.
 
 ## Notes
 
 - After editing any data file, run `npx tsc --noEmit` to type-check.
-- The MDX plugin chain (`utils/blog/mdx.ts`) mixes ESM-only plugins; see `CLAUDE.md`
-  for the gotchas if a blog build fails.

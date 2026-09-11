@@ -22,6 +22,7 @@ import ARXIV_PAPERS from "../assets/publications/arxiv_papers";
 
 import { withThumbnails } from "../utils/publications";
 import { getThumbnailIds } from "../utils/publications.server";
+import { writeSitemap } from "../utils/sitemap";
 import { sortByDate } from "../utils/sort";
 import styles from "./index.module.scss";
 
@@ -89,6 +90,7 @@ const SectionHeader = ({
 );
 
 export function getStaticProps() {
+  writeSitemap();
   return { props: { thumbnailIds: getThumbnailIds() } };
 }
 

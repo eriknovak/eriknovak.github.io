@@ -2,8 +2,7 @@
   "nav": {
     "home": "Home",
     "publications": "Publications",
-    "projects": "Projects",
-    "blog": "Blog"
+    "projects": "Projects"
   },
   "notFound": {
     "title": "Page Not Found",

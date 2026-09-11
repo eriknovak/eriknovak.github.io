@@ -2,8 +2,7 @@
   "nav": {
     "home": "Domov",
     "publications": "Publikacije",
-    "projects": "Projekti",
-    "blog": "Blog"
+    "projects": "Projekti"
   },
   "notFound": {
     "title": "Stran ni najdena",

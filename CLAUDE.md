@@ -75,34 +75,6 @@ Interfaces for data structures are in `Interfaces.ts`:
 - Outputs to `frontend/` directory instead of `.next/`
 - Supports `BASE_PATH` environment variable for deployment subdirectories
 
-## Blog
-
-Blog posts live in `content/blog/` as MDX files named `YYYY-MM-DD-slug.mdx`. Frontmatter:
-
-```yaml
----
-title: "Post title"
-date: 2026-05-01
-description: "One-line summary"
-tags: [research, nlp]
-draft: false           # set true to hide from production builds
-# Optional:
-# updated: 2026-05-15
-# epigraph:
-#   quote: "..."
-#   attribution: "..."
-#   source: "..."
-# bibliography: content/blog/some-other.bib   # default is content/blog/references.bib
----
-```
-
-Available MDX components inside posts (no import needed): `Sidenote`, `MarginNote`, `MarginFigure`, `FullWidthFigure`, `Epigraph`, `NewThought`, `SideTable`, `References`. Math (`$inline$`/`$$display$$`) and code fences are rendered with KaTeX and Shiki respectively. Citations use `[@bibtex-key]` and resolve against `content/blog/references.bib`; place `<References />` where the bibliography should appear.
-
-Drafts (`draft: true`) appear in `npm run dev` but are excluded from `npm run build`.
-
-The MDX plugin chain lives in `utils/blog/mdx.ts`. Some remark/rehype plugins are ESM-only; if `npm run build` reports `ERR_REQUIRE_ESM`, switch the offending import to a dynamic `await import(...)` inside `serializeMdx`.
-
-`rehype-citation` requires `options.path` (directory) and `options.bibliography` (filename) to be passed separately — passing a full absolute path as `bibliography` causes it to join `file.cwd` with the absolute path, producing a broken path. See `utils/blog/mdx.ts` for the correct split approach.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

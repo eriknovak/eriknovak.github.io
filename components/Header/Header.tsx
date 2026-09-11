@@ -16,7 +16,6 @@ const pages = [
     fallback: "Publications",
     route: "/publications",
   },
-  { titleKey: "nav.blog", fallback: "Blog", route: "/blog" },
 ];
 
 export default function Header() {

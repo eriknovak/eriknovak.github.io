@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
 
-import { readAllPosts, readAllTags } from "./blog/posts";
 import { SITE_URL } from "./config";
 
 interface SitemapEntry {
@@ -34,35 +33,14 @@ function entryXml({
   return `  <url>\n${lines.join("\n")}\n  </url>`;
 }
 
-/** Generate sitemap.xml from static routes + dynamic blog posts and tags. */
+/** Generate sitemap.xml from the static routes. */
 export function writeSitemap(): void {
-  const posts = readAllPosts();
-  const tags = readAllTags();
-
   const entries: SitemapEntry[] = [
     { loc: `${SITE_URL}/`, changefreq: "monthly", priority: 1.0 },
     { loc: `${SITE_URL}/projects/`, changefreq: "monthly", priority: 0.8 },
     { loc: `${SITE_URL}/publications/`, changefreq: "monthly", priority: 0.8 },
-    { loc: `${SITE_URL}/blog/`, changefreq: "weekly", priority: 0.8 },
-    { loc: `${SITE_URL}/blog/tags/`, changefreq: "weekly", priority: 0.5 },
   ];
 
-  for (const post of posts) {
-    entries.push({
-      loc: `${SITE_URL}/blog/${post.year}/${post.slug}/`,
-      lastmod: post.updated ?? post.date,
-      changefreq: "monthly",
-      priority: 0.7,
-    });
-  }
-
-  for (const { tag } of tags) {
-    entries.push({
-      loc: `${SITE_URL}/blog/tags/${tag}/`,
-      changefreq: "weekly",
-      priority: 0.4,
-    });
-  }
 
   const xml =
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
