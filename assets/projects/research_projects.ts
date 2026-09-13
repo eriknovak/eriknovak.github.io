@@ -13,11 +13,23 @@ const RESEARCH_PROJECTS: ProjectProps[] = [
     links: [
       {
         type: "homepage",
+        label: "Homepage",
+        url: "https://eriknovak.github.io/SLM4IE/",
+      },
+      {
+        type: "homepage",
         label: "Project Sheet (PDF)",
         url: "https://www.ijs.si/ijsw/ARRSProjekti/2026?action=AttachFile&do=get&target=Z2-70067.pdf",
       },
     ],
-    resources: [],
+    resources: [
+      {
+        type: "github",
+        label: "SLM4IE",
+        owner: "eriknovak",
+        repo: "SLM4IE",
+      },
+    ],
   },
   {
     title: "datachart",
